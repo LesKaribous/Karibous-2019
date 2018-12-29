@@ -1,0 +1,34 @@
+// AUTOMATICALLY GENERATED FILE. PLEASE DO NOT MODIFY IT MANUALLY
+
+// PIO Unified Debugger
+//
+// Documentation: https://docs.platformio.org/page/plus/debugging.html
+// Configuration: https://docs.platformio.org/page/projectconf/section_env_debug.html
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "platformio-debug",
+            "request": "launch",
+            "name": "PIO Debug",
+            "executable": "c:/Users/jules/Documents/GitHub/Karibous-2018/01 - PROGRAMMATION/2018/V0_STRATEGIE/.pioenvs/teensy31/firmware.elf",
+            "toolchainBinDir": "C:/Users/jules/.platformio/packages/toolchain-gccarmnoneeabi/bin",
+            "svdPath": "C:/Users/jules/.platformio/platforms/teensy/misc/svd/MK20D5.svd",
+            "preLaunchTask": {
+                "type": "PlatformIO",
+                "task": "Pre-Debug"
+            },
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "type": "platformio-debug",
+            "request": "launch",
+            "name": "PIO Debug (skip Pre-Debug)",
+            "executable": "c:/Users/jules/Documents/GitHub/Karibous-2018/01 - PROGRAMMATION/2018/V0_STRATEGIE/.pioenvs/teensy31/firmware.elf",
+            "toolchainBinDir": "C:/Users/jules/.platformio/packages/toolchain-gccarmnoneeabi/bin",
+            "svdPath": "C:/Users/jules/.platformio/platforms/teensy/misc/svd/MK20D5.svd",
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}
