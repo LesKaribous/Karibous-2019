@@ -3,12 +3,26 @@
 <eagle version="9.2.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="25" unitdist="mil" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="no" active="yes"/>
+<layer number="4" name="Route4" color="1" fill="4" visible="no" active="yes"/>
+<layer number="5" name="Route5" color="4" fill="4" visible="no" active="yes"/>
+<layer number="6" name="Route6" color="1" fill="8" visible="no" active="yes"/>
+<layer number="7" name="Route7" color="4" fill="8" visible="no" active="yes"/>
+<layer number="8" name="Route8" color="1" fill="2" visible="no" active="yes"/>
+<layer number="9" name="Route9" color="4" fill="2" visible="no" active="yes"/>
+<layer number="10" name="Route10" color="1" fill="7" visible="no" active="yes"/>
+<layer number="11" name="Route11" color="4" fill="7" visible="no" active="yes"/>
+<layer number="12" name="Route12" color="1" fill="5" visible="no" active="yes"/>
+<layer number="13" name="Route13" color="4" fill="5" visible="no" active="yes"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="no" active="yes"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="no" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
@@ -143,7 +157,7 @@
 <layer number="255" name="routoute" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <board>
-<fusionsync huburn="a.cGVyc29uYWw6dWUyOGY1Yzgw" projecturn="a.cGVyc29uYWw6dWUyOGY1YzgwIzIwMTgwNTEzMTMxNzkwNTU2" f3durn="urn:adsk.wipprod:dm.lineage:X8YFSaoRRh-kdU4zkk4eVQ" pcbguid="4495e50f-d913-4bf3-9975-9da3f291a197" lastpulledtime="2018-12-02T22:16:23Z" lastsyncedchangeguid="7e36b392-821b-44dd-ace2-5cf9068ab114"/>
+<fusionsync huburn="a.cGVyc29uYWw6dWUyOGY1Yzgw" projecturn="a.cGVyc29uYWw6dWUyOGY1YzgwIzIwMTgwNTEzMTMxNzkwNTU2" f3durn="urn:adsk.wipprod:dm.lineage:X8YFSaoRRh-kdU4zkk4eVQ" pcbguid="4495e50f-d913-4bf3-9975-9da3f291a197" lastpulledtime="2018-12-02T22:16:23Z" lastsyncedchangeguid="fe207f33-e90e-dc34-9dcc-5073c6b313fd"/>
 <plain>
 <hole x="40" y="5" drill="3.2"/>
 <hole x="5" y="55" drill="3.2"/>
@@ -157,6 +171,11 @@
 <wire x1="0" y1="55" x2="0" y2="5" width="0.254" layer="20"/>
 <wire x1="0" y1="5" x2="5" y2="0" width="0.254" layer="20" curve="90"/>
 <wire x1="5" y1="0" x2="40" y2="0" width="0.254" layer="20"/>
+<text x="24.765" y="57.15" size="1.27" layer="25" ratio="3">Sleep</text>
+<text x="13.335" y="57.15" size="1.27" layer="25" ratio="3">Reset</text>
+<text x="29.21" y="7.62" size="1.778" layer="25" ratio="3">VMot</text>
+<text x="13.335" y="5.08" size="1.27" layer="25" ratio="3">Les Karibous - 2019</text>
+<text x="15.875" y="3.175" size="1.27" layer="25" ratio="3">CC-BY-NC-SA</text>
 </plain>
 <libraries>
 <library name="rcl" urn="urn:adsk.eagle:library:334">
@@ -1427,6 +1446,46 @@ type 0207, grid 2.5 mm</description>
 <text x="-4.318" y="10.414" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="-4.318" y="-11.049" size="0.6096" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
+<package name="1X02" urn="urn:adsk.eagle:footprint:777840/4" library_version="28">
+<description>
+    &lt;h3&gt;Plated Through Hole&lt;/h3&gt;
+&lt;p&gt;Specifications:
+&lt;ul&gt;&lt;li&gt;Pin count:2&lt;/li&gt;
+&lt;li&gt;Pin pitch:0.1"&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
+&lt;p&gt;Example device(s):
+&lt;ul&gt;&lt;li&gt;CONN_02&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
+    &lt;h3&gt;Plated Through Hole&lt;/h3&gt;
+&lt;p&gt;Specifications:
+&lt;ul&gt;&lt;li&gt;Pin count:2&lt;/li&gt;
+&lt;li&gt;Pin pitch:0.1"&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
+&lt;p&gt;Example device(s):
+&lt;ul&gt;&lt;li&gt;CONN_02&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
+  </description>
+<wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="1.27" y2="0.635" width="0.2032" layer="21"/>
+<wire x1="1.27" y1="-0.635" x2="0.635" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="1.27" y1="0.635" x2="1.905" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="1.905" y1="1.27" x2="3.175" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="3.175" y1="1.27" x2="3.81" y2="0.635" width="0.2032" layer="21"/>
+<wire x1="3.81" y1="-0.635" x2="3.175" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="3.175" y1="-1.27" x2="1.905" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="1.905" y1="-1.27" x2="1.27" y2="-0.635" width="0.2032" layer="21"/>
+<wire x1="-1.27" y1="0.635" x2="-1.27" y2="-0.635" width="0.2032" layer="21"/>
+<wire x1="-0.635" y1="1.27" x2="-1.27" y2="0.635" width="0.2032" layer="21"/>
+<wire x1="-1.27" y1="-0.635" x2="-0.635" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="-0.635" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="3.81" y1="0.635" x2="3.81" y2="-0.635" width="0.2032" layer="21"/>
+<pad name="1" x="0" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<pad name="2" x="2.54" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<rectangle x1="2.286" y1="-0.254" x2="2.794" y2="0.254" layer="51"/>
+<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
+<text x="-1.27" y="1.397" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-1.27" y="-2.032" size="0.6096" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+</package>
 </packages>
 <packages3d>
 <package3d name="LED_3MM" urn="urn:adsk.eagle:package:760790/2" type="model" library_version="28">
@@ -1442,7 +1501,10 @@ Diameter: 3mm
 Example device(s):
 LED</description>
 </package3d>
-<package3d name="NSK396-2C" urn="urn:adsk.eagle:package:1585093/1" type="box" library_version="28">
+<package3d name="NSK396-2C" urn="urn:adsk.eagle:package:1585093/1" type="box" library_version="31">
+<packageinstances>
+<packageinstance name="NSK396-2C"/>
+</packageinstances>
 </package3d>
 <package3d name="MOLEX-1X4" urn="urn:adsk.eagle:package:777852/5" type="model" library_version="28">
 <description>
@@ -1476,6 +1538,29 @@ Datasheet referenced for footprint
 Example device(s):
 CONN_05x2
 </description>
+</package3d>
+<package3d name="1X02" urn="urn:adsk.eagle:package:777848/4" type="box" library_version="31">
+<description>
+    Plated Through Hole
+Specifications:
+Pin count:2
+Pin pitch:0.1"
+
+Example device(s):
+CONN_02
+
+    Plated Through Hole
+Specifications:
+Pin count:2
+Pin pitch:0.1"
+
+Example device(s):
+CONN_02
+
+  </description>
+<packageinstances>
+<packageinstance name="1X02"/>
+</packageinstances>
 </package3d>
 </packages3d>
 </library>
@@ -1743,6 +1828,10 @@ design rules under a new name.</description>
 </element>
 <element name="U$1" library="KARIBOUS" library_urn="urn:adsk.eagle:library:1283574" package="DRIVER_CARRIER_POLOLU_16" package3d_urn="urn:adsk.eagle:package:1283583/2" value="" x="27.305" y="36.83" smashed="yes" rot="R180"/>
 <element name="U$2" library="KARIBOUS" library_urn="urn:adsk.eagle:library:1283574" package="DRIVER_CARRIER_POLOLU_16" package3d_urn="urn:adsk.eagle:package:1283583/2" value="" x="27.305" y="13.97" smashed="yes" rot="R180"/>
+<element name="J1" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" package="1X02" package3d_urn="urn:adsk.eagle:package:777848/4" value="" x="19.685" y="57.785" smashed="yes">
+<attribute name="NAME" x="17.78" y="59.182" size="0.6096" layer="25" font="vector" ratio="20"/>
+<attribute name="VALUE" x="18.415" y="55.753" size="0.6096" layer="27" font="vector" ratio="20"/>
+</element>
 </elements>
 <signals>
 <signal name="N$1">
@@ -1901,10 +1990,8 @@ design rules under a new name.</description>
 <contactref element="U$1" pad="P$7"/>
 <contactref element="J4" pad="1"/>
 <wire x1="27.305" y1="52.07" x2="28.575" y2="52.07" width="0.6096" layer="1"/>
-<wire x1="28.575" y1="52.07" x2="31.115" y2="49.53" width="0.6096" layer="1"/>
-<wire x1="31.115" y1="49.53" x2="31.115" y2="43.815" width="0.6096" layer="1"/>
-<wire x1="36.195" y1="43.815" x2="36.195" y2="42.545" width="0.6096" layer="1"/>
-<wire x1="36.195" y1="43.815" x2="31.115" y2="43.815" width="0.6096" layer="1"/>
+<wire x1="28.575" y1="52.07" x2="36.195" y2="44.45" width="0.6096" layer="1"/>
+<wire x1="36.195" y1="44.45" x2="36.195" y2="42.545" width="0.6096" layer="1"/>
 </signal>
 <signal name="DIR_L">
 <contactref element="U$1" pad="P$8"/>
@@ -1955,7 +2042,15 @@ design rules under a new name.</description>
 <signal name="RESET">
 <contactref element="U$1" pad="P$5"/>
 <contactref element="U$2" pad="P$5"/>
-<wire x1="27.305" y1="24.13" x2="27.305" y2="46.99" width="0" layer="19" extent="1-1"/>
+<contactref element="J1" pad="1"/>
+<wire x1="27.305" y1="24.13" x2="22.225" y2="24.13" width="0.6096" layer="16"/>
+<wire x1="22.225" y1="24.13" x2="20.955" y2="25.4" width="0.6096" layer="16"/>
+<wire x1="20.955" y1="25.4" x2="20.955" y2="45.72" width="0.6096" layer="16"/>
+<wire x1="20.955" y1="45.72" x2="22.225" y2="46.99" width="0.6096" layer="16"/>
+<wire x1="22.225" y1="46.99" x2="27.305" y2="46.99" width="0.6096" layer="16"/>
+<wire x1="20.955" y1="46.99" x2="19.685" y2="48.26" width="0.6096" layer="1"/>
+<wire x1="19.685" y1="48.26" x2="19.685" y2="57.785" width="0.6096" layer="1"/>
+<wire x1="27.305" y1="46.99" x2="20.955" y2="46.99" width="0.6096" layer="1"/>
 </signal>
 <signal name="SLEEP">
 <contactref element="U$1" pad="P$6"/>
@@ -1970,6 +2065,10 @@ design rules under a new name.</description>
 <wire x1="29.845" y1="48.26" x2="28.575" y2="49.53" width="0.6096" layer="1"/>
 <wire x1="28.575" y1="49.53" x2="27.305" y2="49.53" width="0.6096" layer="1"/>
 <wire x1="36.195" y1="40.005" x2="29.845" y2="40.005" width="0.6096" layer="1"/>
+<contactref element="J1" pad="2"/>
+<wire x1="27.305" y1="49.53" x2="22.86" y2="49.53" width="0.6096" layer="1"/>
+<wire x1="22.86" y1="49.53" x2="22.225" y2="50.165" width="0.6096" layer="1"/>
+<wire x1="22.225" y1="50.165" x2="22.225" y2="57.785" width="0.6096" layer="1"/>
 </signal>
 </signals>
 <mfgpreviewcolors>

@@ -77,7 +77,7 @@ void deplacementFilm()
 //----------------TEST DE DEPLACEMENT----------------
 void testDeplacement()
 {
-  turnGo(false,false,false,90,100);
+  turnGo(non,0,false,-45,600);
 }
 
 void testErreur()
