@@ -1,0 +1,681 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="class_deplacement" kind="class" language="C++" prot="public">
+    <compoundname>Deplacement</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_deplacement_1ad7cd6cdae714226a5a494c2b8f7e0124" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int Deplacement::_minPulseWidth</definition>
+        <argsstring></argsstring>
+        <name>_minPulseWidth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Temps minimum d&apos;une impulsion en microsecond </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="104" column="1" bodyfile="Deplacement.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1a02975c43c956932d26f2970f1605ce60" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Deplacement::_pins[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>_pins</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pins pour le pilotage des drivers 0 : dirRight 1 : dirLeft 2 : stepRight 3 : stepLeft </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="110" column="1" bodyfile="Deplacement.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1a532bc3bc5d21dd74301d8dd419f9004e" prot="private" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long Deplacement::_lastTime</definition>
+        <argsstring></argsstring>
+        <name>_lastTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="112" column="1" bodyfile="Deplacement.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1af64e45febb3e9957fca907558de2ab54" prot="private" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long Deplacement::_speed</definition>
+        <argsstring></argsstring>
+        <name>_speed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="114" column="1" bodyfile="Deplacement.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1abc5400fde56630645fca4b5ab3da7276" prot="private" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long Deplacement::_accel</definition>
+        <argsstring></argsstring>
+        <name>_accel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="116" column="1" bodyfile="Deplacement.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1a0595f712790ec7081d50bbb4f0f351bf" prot="private" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long Deplacement::_targetStep</definition>
+        <argsstring></argsstring>
+        <name>_targetStep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="118" column="1" bodyfile="Deplacement.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1a92620a50f5612efd4433f464ec681993" prot="private" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long Deplacement::_currentStep</definition>
+        <argsstring></argsstring>
+        <name>_currentStep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="119" column="1" bodyfile="Deplacement.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1adda9c36b9cfde607469db32994d9caf1" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Deplacement::_dirMotorLeft</definition>
+        <argsstring></argsstring>
+        <name>_dirMotorLeft</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="121" column="1" bodyfile="Deplacement.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1a8a19774d861ff1f1a7d46cdae60486fa" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Deplacement::_dirMotorRight</definition>
+        <argsstring></argsstring>
+        <name>_dirMotorRight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="122" column="1" bodyfile="Deplacement.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1a9dc5d86b4005800bbeeaac1b88f0bebf" prot="private" static="no" mutable="no">
+        <type>long</type>
+        <definition>long Deplacement::_XActu</definition>
+        <argsstring></argsstring>
+        <name>_XActu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="124" column="1" bodyfile="Deplacement.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1afb31b3f01d4d7a050145b15442be0ac0" prot="private" static="no" mutable="no">
+        <type>long</type>
+        <definition>long Deplacement::_YActu</definition>
+        <argsstring></argsstring>
+        <name>_YActu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="125" column="1" bodyfile="Deplacement.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1adca0fae17f01646b596f087a99111c1c" prot="private" static="no" mutable="no">
+        <type>long</type>
+        <definition>long Deplacement::_orientationActu</definition>
+        <argsstring></argsstring>
+        <name>_orientationActu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="126" column="1" bodyfile="Deplacement.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1a6809612452d5e1a35e2f8c4c828fe1aa" prot="private" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long Deplacement::_currentStepTime</definition>
+        <argsstring></argsstring>
+        <name>_currentStepTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="128" column="1" bodyfile="Deplacement.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1ae73cffddd465ad3317abb02af3ac5b8d" prot="private" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long Deplacement::_accelDistance</definition>
+        <argsstring></argsstring>
+        <name>_accelDistance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="130" column="1" bodyfile="Deplacement.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1a31cf0ee3a1146db8a4e5590360cf0398" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Deplacement::_P1</definition>
+        <argsstring></argsstring>
+        <name>_P1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="132" column="1" bodyfile="Deplacement.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1a395aff69638c992cce8dbb9d9260df6e" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Deplacement::_R</definition>
+        <argsstring></argsstring>
+        <name>_R</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="133" column="1" bodyfile="Deplacement.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1a0ed0fdf7058a8436fd99b5feba236ab4" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Deplacement::_m</definition>
+        <argsstring></argsstring>
+        <name>_m</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="134" column="1" bodyfile="Deplacement.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1a1a1345f06c5d11e8c4034dbbad3b3e42" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Deplacement::_Pa</definition>
+        <argsstring></argsstring>
+        <name>_Pa</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="135" column="1" bodyfile="Deplacement.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1aed8913fcbf8896f0d22380a862d7617a" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Deplacement::_q</definition>
+        <argsstring></argsstring>
+        <name>_q</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="136" column="1" bodyfile="Deplacement.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1a4943ea04fa4b2394396a8e8d1b7b8dae" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Deplacement::_nbStep</definition>
+        <argsstring></argsstring>
+        <name>_nbStep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Nombre de step par tour de moteur. Défini par le mode de pilotage et par le nombre max de step des moteurs pas à pas </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="142" column="1" bodyfile="Deplacement.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_deplacement_1ae119da9ef84d5f21a951bb20a74af6aa" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Deplacement::_mode</definition>
+        <argsstring></argsstring>
+        <name>_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="144" column="1" bodyfile="Deplacement.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_deplacement_1a89aa7394102665f2b9217283a4eb90f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Deplacement::Deplacement</definition>
+        <argsstring>(int dirRight, int dirLeft, int stepRight, int stepLeft, int mode, int entreAxe, int diametreRoue, int reduction)</argsstring>
+        <name>Deplacement</name>
+        <param>
+          <type>int</type>
+          <declname>dirRight</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dirLeft</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>stepRight</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>stepLeft</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>entreAxe</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>diametreRoue</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>reduction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="17" column="1" bodyfile="Deplacement.cpp" bodystart="6" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1a1d6e33226c4837088168341fbd9a3d95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Deplacement::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fonction permettant de mettre à jour la position du robot en fonction de la vitesse, de l&apos;acceleration et de la position demandée. A appeler le plus souvent possible et au moins une fois par pas. <simplesect kind="return"><para>Vrai si la distance n&apos;est pas encore atteinte. Faux si la distance est atteinte </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="32" column="1" bodyfile="Deplacement.cpp" bodystart="95" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1aef7913bd019404c430043d384611b422" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::setMaxSpeed</definition>
+        <argsstring>(unsigned long speed)</argsstring>
+        <name>setMaxSpeed</name>
+        <param>
+          <type>unsigned long</type>
+          <declname>speed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Définie la vitesse maximum de rotation du robot <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>speed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vitesse de rotation en pas/s </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="37" column="1" bodyfile="Deplacement.cpp" bodystart="136" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1a32473a1c0f69aee2d3c697f64e54be82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::setAcceleration</definition>
+        <argsstring>(unsigned long accel)</argsstring>
+        <name>setAcceleration</name>
+        <param>
+          <type>unsigned long</type>
+          <declname>accel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Définie la valeur de la pente d&apos;acceleration et de déceleration des moteurs <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>accel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Acceleration en pas /s2 </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="42" column="1" bodyfile="Deplacement.cpp" bodystart="143" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1a2551fc48792ae29f6521bd74d9322b61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::turnGo</definition>
+        <argsstring>(long angle, long distance)</argsstring>
+        <name>turnGo</name>
+        <param>
+          <type>long</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type>long</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Permet de faire bouger le robot selon la méthode &quot;turn and go&quot; : rotation puis déplacement <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>rotation en degrées </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dist</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>distance en pas </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="48" column="1" bodyfile="Deplacement.cpp" bodystart="217" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1a26b3ea89348b07bd6575886766888a0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::goTo</definition>
+        <argsstring>(long X, long Y, long orientation)</argsstring>
+        <name>goTo</name>
+        <param>
+          <type>long</type>
+          <declname>X</declname>
+        </param>
+        <param>
+          <type>long</type>
+          <declname>Y</declname>
+        </param>
+        <param>
+          <type>long</type>
+          <declname>orientation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Permet de faire aller le robot en X,Y relatif avec une orientation <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>X</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coordonnée X souhaitée </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coordonnée Y souhaitée </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>orientation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Orientation souhaitée </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="55" column="1" bodyfile="Deplacement.cpp" bodystart="222" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1ae667960cbffb0252eca02bd718130d83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::setMaxPercentageProfil</definition>
+        <argsstring>(char percentage)</argsstring>
+        <name>setMaxPercentageProfil</name>
+        <param>
+          <type>char</type>
+          <declname>percentage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Définit le poucentage du profil de vitesse à vitesse maximum constante <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>percentage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pourcentage du profil entre 0 et 100 </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="61" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1a0453b24fcf218a695f9aed36d2354623" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::turn</definition>
+        <argsstring>(long angle)</argsstring>
+        <name>turn</name>
+        <param>
+          <type>long</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fait tourner le robot autour du centre de l&apos;essieu d&apos;un nombre de pas. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Angle en pas. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="67" column="1" bodyfile="Deplacement.cpp" bodystart="149" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1aec50cd8d856a1cd48394482f273c1a60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::go</definition>
+        <argsstring>(long distance)</argsstring>
+        <name>go</name>
+        <param>
+          <type>long</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="69" column="1" bodyfile="Deplacement.cpp" bodystart="170" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1a0bbdb2bb53503fbe80be74812e596514" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::setNbStep</definition>
+        <argsstring>(int nbStep)</argsstring>
+        <name>setNbStep</name>
+        <param>
+          <type>int</type>
+          <declname>nbStep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="71" column="1" bodyfile="Deplacement.cpp" bodystart="35" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_deplacement_1a154a7c5b3cb9c8195a4a69c2356b5c3b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::enableOutputs</definition>
+        <argsstring>()</argsstring>
+        <name>enableOutputs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="79" column="1" bodyfile="Deplacement.cpp" bodystart="27" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1a443ed9dd512b7b8353bc2e801b5bf371" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::Step</definition>
+        <argsstring>()</argsstring>
+        <name>Step</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Réalise un step en envoyant une impulsion sur les pattes de &quot;step&quot; des drivers. Le temps de l&apos;impulsion est définie par la variable _minPulseWidth </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="84" column="1" bodyfile="Deplacement.cpp" bodystart="48" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1a1a3236d13b2712bf63927c59b01f1e00" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::distanceToStep</definition>
+        <argsstring>(long distance)</argsstring>
+        <name>distanceToStep</name>
+        <param>
+          <type>long</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>convertit la distance en mm en pas moteur en fonction des parametres du robot <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>distance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>distance en mm </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="89" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1a6a46cee16f368917cfa920a8336220a1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::setDirection</definition>
+        <argsstring>()</argsstring>
+        <name>setDirection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="91" column="1" bodyfile="Deplacement.cpp" bodystart="40" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_deplacement_1ac35b2bdce9ab731514456bdd4b474586" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Deplacement::computeSpeedAccel</definition>
+        <argsstring>()</argsstring>
+        <name>computeSpeedAccel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="93" column="1" bodyfile="Deplacement.cpp" bodystart="206" bodyend="215"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Deplacement.h" line="14" column="1" bodyfile="Deplacement.h" bodystart="13" bodyend="154"/>
+    <listofallmembers>
+      <member refid="class_deplacement_1abc5400fde56630645fca4b5ab3da7276" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_accel</name></member>
+      <member refid="class_deplacement_1ae73cffddd465ad3317abb02af3ac5b8d" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_accelDistance</name></member>
+      <member refid="class_deplacement_1a92620a50f5612efd4433f464ec681993" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_currentStep</name></member>
+      <member refid="class_deplacement_1a6809612452d5e1a35e2f8c4c828fe1aa" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_currentStepTime</name></member>
+      <member refid="class_deplacement_1adda9c36b9cfde607469db32994d9caf1" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_dirMotorLeft</name></member>
+      <member refid="class_deplacement_1a8a19774d861ff1f1a7d46cdae60486fa" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_dirMotorRight</name></member>
+      <member refid="class_deplacement_1a532bc3bc5d21dd74301d8dd419f9004e" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_lastTime</name></member>
+      <member refid="class_deplacement_1a0ed0fdf7058a8436fd99b5feba236ab4" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_m</name></member>
+      <member refid="class_deplacement_1ad7cd6cdae714226a5a494c2b8f7e0124" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_minPulseWidth</name></member>
+      <member refid="class_deplacement_1ae119da9ef84d5f21a951bb20a74af6aa" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_mode</name></member>
+      <member refid="class_deplacement_1a4943ea04fa4b2394396a8e8d1b7b8dae" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_nbStep</name></member>
+      <member refid="class_deplacement_1adca0fae17f01646b596f087a99111c1c" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_orientationActu</name></member>
+      <member refid="class_deplacement_1a31cf0ee3a1146db8a4e5590360cf0398" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_P1</name></member>
+      <member refid="class_deplacement_1a1a1345f06c5d11e8c4034dbbad3b3e42" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_Pa</name></member>
+      <member refid="class_deplacement_1a02975c43c956932d26f2970f1605ce60" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_pins</name></member>
+      <member refid="class_deplacement_1aed8913fcbf8896f0d22380a862d7617a" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_q</name></member>
+      <member refid="class_deplacement_1a395aff69638c992cce8dbb9d9260df6e" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_R</name></member>
+      <member refid="class_deplacement_1af64e45febb3e9957fca907558de2ab54" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_speed</name></member>
+      <member refid="class_deplacement_1a0595f712790ec7081d50bbb4f0f351bf" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_targetStep</name></member>
+      <member refid="class_deplacement_1a9dc5d86b4005800bbeeaac1b88f0bebf" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_XActu</name></member>
+      <member refid="class_deplacement_1afb31b3f01d4d7a050145b15442be0ac0" prot="private" virt="non-virtual"><scope>Deplacement</scope><name>_YActu</name></member>
+      <member refid="class_deplacement_1ac35b2bdce9ab731514456bdd4b474586" prot="protected" virt="non-virtual"><scope>Deplacement</scope><name>computeSpeedAccel</name></member>
+      <member refid="class_deplacement_1a89aa7394102665f2b9217283a4eb90f5" prot="public" virt="non-virtual"><scope>Deplacement</scope><name>Deplacement</name></member>
+      <member refid="class_deplacement_1a1a3236d13b2712bf63927c59b01f1e00" prot="protected" virt="non-virtual"><scope>Deplacement</scope><name>distanceToStep</name></member>
+      <member refid="class_deplacement_1a154a7c5b3cb9c8195a4a69c2356b5c3b" prot="protected" virt="non-virtual"><scope>Deplacement</scope><name>enableOutputs</name></member>
+      <member refid="class_deplacement_1aec50cd8d856a1cd48394482f273c1a60" prot="public" virt="non-virtual"><scope>Deplacement</scope><name>go</name></member>
+      <member refid="class_deplacement_1a26b3ea89348b07bd6575886766888a0d" prot="public" virt="non-virtual"><scope>Deplacement</scope><name>goTo</name></member>
+      <member refid="class_deplacement_1a1d6e33226c4837088168341fbd9a3d95" prot="public" virt="non-virtual"><scope>Deplacement</scope><name>run</name></member>
+      <member refid="class_deplacement_1a32473a1c0f69aee2d3c697f64e54be82" prot="public" virt="non-virtual"><scope>Deplacement</scope><name>setAcceleration</name></member>
+      <member refid="class_deplacement_1a6a46cee16f368917cfa920a8336220a1" prot="protected" virt="non-virtual"><scope>Deplacement</scope><name>setDirection</name></member>
+      <member refid="class_deplacement_1ae667960cbffb0252eca02bd718130d83" prot="public" virt="non-virtual"><scope>Deplacement</scope><name>setMaxPercentageProfil</name></member>
+      <member refid="class_deplacement_1aef7913bd019404c430043d384611b422" prot="public" virt="non-virtual"><scope>Deplacement</scope><name>setMaxSpeed</name></member>
+      <member refid="class_deplacement_1a0bbdb2bb53503fbe80be74812e596514" prot="public" virt="non-virtual"><scope>Deplacement</scope><name>setNbStep</name></member>
+      <member refid="class_deplacement_1a443ed9dd512b7b8353bc2e801b5bf371" prot="protected" virt="non-virtual"><scope>Deplacement</scope><name>Step</name></member>
+      <member refid="class_deplacement_1a0453b24fcf218a695f9aed36d2354623" prot="public" virt="non-virtual"><scope>Deplacement</scope><name>turn</name></member>
+      <member refid="class_deplacement_1a2551fc48792ae29f6521bd74d9322b61" prot="public" virt="non-virtual"><scope>Deplacement</scope><name>turnGo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

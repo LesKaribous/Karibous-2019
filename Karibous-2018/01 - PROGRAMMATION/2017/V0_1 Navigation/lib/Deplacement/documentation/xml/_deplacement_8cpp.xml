@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="_deplacement_8cpp" kind="file" language="C++">
+    <compoundname>Deplacement.cpp</compoundname>
+    <includes local="no">Arduino.h</includes>
+    <includes local="no">math.h</includes>
+    <includes refid="_deplacement_8h" local="yes">Deplacement.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>Deplacement.h</label>
+        <link refid="_deplacement_8h_source"/>
+      </node>
+      <node id="2">
+        <label>math.h</label>
+      </node>
+      <node id="1">
+        <label>Arduino.h</label>
+      </node>
+      <node id="0">
+        <label>Deplacement.cpp</label>
+        <link refid="_deplacement_8cpp"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Deplacement.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">Deplacement::Deplacement(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dirRight,</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dirLeft,</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepRight,</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepLeft,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mode,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>entreAxe,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>diametreRoue,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>reduction)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>_pins[0]<sp/>=<sp/>dirRight;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>_pins[1]<sp/>=<sp/>dirLeft;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>_pins[2]<sp/>=<sp/>stepRight;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>_pins[3]<sp/>=<sp/>stepLeft;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>_mode<sp/>=<sp/>mode;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>setNbStep(NB_STEPPER_TURN);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>_minPulseWidth<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>enableOutputs();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Deplacement::enableOutputs()</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;i&lt;=3;i++)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pinMode(_pins[i],<sp/>OUTPUT);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Deplacement::setNbStep(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbStep)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>_nbStep<sp/>=<sp/>_mode*nbStep;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Deplacement::setDirection()</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Mise<sp/>à<sp/>jour<sp/>de<sp/>la<sp/>direction<sp/>de<sp/>rotation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(_pins[0],_dirMotorRight);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(_pins[1],!_dirMotorLeft);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>delayMicroseconds(1200);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a443ed9dd512b7b8353bc2e801b5bf371" kindref="member">Deplacement::Step</ref>()</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Réalisation<sp/>d&apos;un<sp/>pas</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(_pins[2],HIGH);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(_pins[3],HIGH);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>delayMicroseconds(_minPulseWidth);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(_pins[2],LOW);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>digitalWrite(_pins[3],LOW);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="59"><highlight class="comment">DEPRECIATE</highlight></codeline>
+<codeline lineno="60"><highlight class="comment">void<sp/>Deplacement::speedToTime()</highlight></codeline>
+<codeline lineno="61"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/>//Equation<sp/>18</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/>_maxSpeedTime<sp/>=<sp/>1000000/_speed;<sp/>//<sp/>temps<sp/>en<sp/>microsecond<sp/>entre<sp/>deux<sp/>pas<sp/>à<sp/>vitesse<sp/>maxi</highlight></codeline>
+<codeline lineno="64"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="65"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//DEPRECIATE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="69"><highlight class="comment">void<sp/>Deplacement::accelToTime()</highlight></codeline>
+<codeline lineno="70"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/>//------------------</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/>//DEPRECIATE</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/>//Temps<sp/>complet<sp/>de<sp/>la<sp/>phase<sp/>d&apos;acceleration<sp/>avant<sp/>d&apos;atteindre<sp/>la<sp/>vitesse<sp/>maxi</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"></highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/>long<sp/>fullAccelTime<sp/>=<sp/>(_speed/_accel)*1000000;</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/>long<sp/>nbStepAccel<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"></highlight></codeline>
+<codeline lineno="78"><highlight class="comment"></highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/>//Increment<sp/>de<sp/>temps<sp/>entre<sp/>deux<sp/>pas<sp/>dans<sp/>la<sp/>phase<sp/>d&apos;acceleration<sp/>et<sp/>de<sp/>decceleration</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/>//_incAccTime<sp/>=<sp/>sqrt(1000.0/(_accel/_percentages[0]));</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/>//-------------------</highlight></codeline>
+<codeline lineno="82"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="83"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//DEPRECIATE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="86"><highlight class="comment">void<sp/>Deplacement::setMaxPercentageProfil(char<sp/>percentage)</highlight></codeline>
+<codeline lineno="87"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/>if(percentage<sp/>&gt;<sp/>100)percentage=100;</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/>_percentages[1]<sp/>=<sp/>percentage;</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/>_percentages[0]=_percentages[2]=(100-_percentages[1])/2;</highlight></codeline>
+<codeline lineno="91"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="92"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a1d6e33226c4837088168341fbd9a3d95" kindref="member">Deplacement::run</ref>()</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>state;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_currentStep&lt;_targetStep)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((micros()-_lastTime)<sp/>&gt;=_Pa)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(_currentStep&lt;_accelDistance)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Phase<sp/>d&apos;acceleration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_m=-_R;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(_currentStep&gt;=_accelDistance<sp/>&amp;&amp;<sp/>_currentStep&lt;=_targetStep-_accelDistance)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Phase<sp/>vitesse<sp/>constante</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_m=0;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//else<sp/>if(_currentStep&lt;_targetStep<sp/>&amp;&amp;<sp/>_currentStep&gt;_targetStep-_accelDistance<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Phase<sp/>de<sp/>decceleration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_m=_R;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Equation<sp/>22</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_q<sp/>=<sp/>_m*_Pa*_Pa;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Equation<sp/>23</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//p<sp/>=<sp/>p*(1<sp/>+<sp/>q<sp/>+<sp/>q*q)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Pa<sp/>=<sp/>_Pa*(1+_q+_q*_q);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_lastTime<sp/>=<sp/>micros();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_deplacement_1a443ed9dd512b7b8353bc2e801b5bf371" kindref="member">Step</ref>();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_currentStep=_currentStep+1;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1aef7913bd019404c430043d384611b422" kindref="member">Deplacement::setMaxSpeed</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>speed)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>_speed<sp/>=<sp/>speed;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//DEPRECIATE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//_stepTime<sp/>=<sp/>1000000/_speed;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a32473a1c0f69aee2d3c697f64e54be82" kindref="member">Deplacement::setAcceleration</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>accel)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>_accel<sp/>=<sp/>accel;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//accelToTime();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a0453b24fcf218a695f9aed36d2354623" kindref="member">Deplacement::turn</ref>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>angle)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>angle<sp/>en<sp/>pas</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>_targetStep=abs(angle);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>_currentStep=0;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(angle<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dirMotorLeft<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dirMotorRight<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dirMotorLeft<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dirMotorRight<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>setDirection();</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>setProfil();</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>computeSpeedAccel();</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Deplacement::go(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>distance)</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>distance<sp/>en<sp/>pas</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>_targetStep<sp/>=<sp/>abs(distance);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>_currentStep<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(distance<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dirMotorLeft<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dirMotorRight<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dirMotorLeft<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dirMotorRight<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>setDirection();</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>setProfil();</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>computeSpeedAccel();</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="comment">//DEPRECIATE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="194"><highlight class="comment">void<sp/>Deplacement::setProfil()</highlight></codeline>
+<codeline lineno="195"><highlight class="comment">{</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"></highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/><sp/>Depreciate<sp/>Methode</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/><sp/><sp/><sp/>for(int<sp/>i<sp/>=<sp/>0;i&lt;=2;i++)</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_profileSteps[i]=(long(_percentages[i])*_targetStep)/100<sp/>;</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"></highlight></codeline>
+<codeline lineno="203"><highlight class="comment">}</highlight></codeline>
+<codeline lineno="204"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Deplacement::computeSpeedAccel()</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Equation<sp/>17</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>_P1<sp/>=<sp/>1000000/sqrt(2*_accel);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>_Pa=_P1;<sp/></highlight><highlight class="comment">//<sp/>Deplacement<sp/>initial</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Equation<sp/>19</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>_R=_accel/pow(1000000,2);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Equation<sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>_accelDistance=(pow(_speed,2)/(2*_accel));</highlight></codeline>
+<codeline lineno="215"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a2551fc48792ae29f6521bd74d9322b61" kindref="member">Deplacement::turnGo</ref>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>angle,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>distance)</highlight></codeline>
+<codeline lineno="218"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a26b3ea89348b07bd6575886766888a0d" kindref="member">Deplacement::goTo</ref>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>X,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>Y,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>orientation)</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//sqrt((YA<sp/>-<sp/>YB)2<sp/>+<sp/>(XB<sp/>-<sp/>XA)2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>distance;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>angle;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>distance<sp/>=<sp/>sqrt(pow((Y-_YActu),2)+pow((X-_XActu),2));</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>angle<sp/>=<sp/>atan2(Y-_YActu,X-_XActu);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Deplacement.cpp"/>
+  </compounddef>
+</doxygen>

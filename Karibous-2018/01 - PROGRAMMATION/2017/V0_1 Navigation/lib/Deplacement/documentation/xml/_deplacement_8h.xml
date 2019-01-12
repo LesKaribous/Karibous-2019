@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.12">
+  <compounddef id="_deplacement_8h" kind="file" language="C++">
+    <compoundname>Deplacement.h</compoundname>
+    <includedby refid="_deplacement_8cpp" local="yes">Deplacement.cpp</includedby>
+    <innerclass refid="class_deplacement" prot="public">Deplacement</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_deplacement_8h_1a65ffcc85557e6fc00e865d67e20f720e" prot="public" static="no">
+        <name>FULL_STEP</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="4" column="9" bodyfile="Deplacement.h" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_deplacement_8h_1af078dda416ad0114e9c81a6c36c0801f" prot="public" static="no">
+        <name>HALF_STEP</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="5" column="9" bodyfile="Deplacement.h" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_deplacement_8h_1a5bf980ea8dd6df6a0271f6d30d66931b" prot="public" static="no">
+        <name>QUARTER_STEP</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="6" column="9" bodyfile="Deplacement.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_deplacement_8h_1ac3f074c3e3b349fc9f6487a9d9a77399" prot="public" static="no">
+        <name>EIGHTH_STEP</name>
+        <initializer>8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="7" column="9" bodyfile="Deplacement.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_deplacement_8h_1a8493986c329fb4bfde621461028b3a31" prot="public" static="no">
+        <name>SIXTEENTH_STEP</name>
+        <initializer>16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="8" column="9" bodyfile="Deplacement.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_deplacement_8h_1a9150294408a958fdaf288b32fac9ed9e" prot="public" static="no">
+        <name>THIRTYTH_STEP</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="9" column="9" bodyfile="Deplacement.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_deplacement_8h_1a88cbae3abc0ae4b716c5f0372ac7e9a5" prot="public" static="no">
+        <name>NB_STEPPER_TURN</name>
+        <initializer>200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Deplacement.h" line="11" column="9" bodyfile="Deplacement.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>Deplacement_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>Deplacement_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FULL_STEP<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HALF_STEP<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>QUARTER_STEP<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EIGHTH_STEP<sp/>8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SIXTEENTH_STEP<sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>THIRTYTH_STEP<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NB_STEPPER_TURN<sp/>200<sp/>//Nombre<sp/>de<sp/>pas<sp/>pour<sp/>un<sp/>tour<sp/>sur<sp/>un<sp/>moteur<sp/>pas<sp/>à<sp/>pas<sp/>classique.<sp/>Peut<sp/>être<sp/>ajusté<sp/>avec<sp/>setNbStep(int<sp/>nbStep)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="class_deplacement" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_deplacement" kindref="compound">Deplacement</ref></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_deplacement" kindref="compound">Deplacement</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dirRight,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dirLeft,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepRight,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepLeft,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mode,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>entreAxe,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>diametreRoue,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>reduction);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a1d6e33226c4837088168341fbd9a3d95" kindref="member">run</ref>();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1aef7913bd019404c430043d384611b422" kindref="member">setMaxSpeed</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>speed);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a32473a1c0f69aee2d3c697f64e54be82" kindref="member">setAcceleration</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>accel);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a2551fc48792ae29f6521bd74d9322b61" kindref="member">turnGo</ref>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>angle,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>distance);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a26b3ea89348b07bd6575886766888a0d" kindref="member">goTo</ref>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>X,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>Y,<sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>orientation);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1ae667960cbffb0252eca02bd718130d83" kindref="member">setMaxPercentageProfil</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>percentage);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a0453b24fcf218a695f9aed36d2354623" kindref="member">turn</ref>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>angle);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>go(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>distance);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setNbStep(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nbStep);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//DEPRECIATE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//void<sp/>setProfil();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>enableOutputs();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a443ed9dd512b7b8353bc2e801b5bf371" kindref="member">Step</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_deplacement_1a1a3236d13b2712bf63927c59b01f1e00" kindref="member">distanceToStep</ref>(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>distance);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setDirection();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>computeSpeedAccel();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//DEPRECIATE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//void<sp/>speedToTime();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//void<sp/>accelToTime();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_minPulseWidth;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_pins[4];</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>_lastTime;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>_speed;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>_accel;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>_targetStep;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>_currentStep;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>_dirMotorLeft;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>_dirMotorRight;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>_XActu;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>_YActu;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>_orientationActu;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>_currentStepTime;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>_accelDistance;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>_P1;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>_R;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>_m;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>_Pa;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>_q;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_nbStep;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_mode;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//DEPRECIATE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>long<sp/>_percentages[3];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>long<sp/>_profileSteps[3];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>long<sp/>_incAccTime;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>int<sp/>_stepTime;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>int<sp/>_accelTime;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unsigned<sp/>int<sp/>_maxSpeedTime;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Deplacement.h"/>
+  </compounddef>
+</doxygen>

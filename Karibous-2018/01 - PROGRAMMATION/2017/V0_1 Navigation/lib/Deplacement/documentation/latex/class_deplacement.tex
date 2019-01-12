@@ -1,0 +1,151 @@
+\section{Deplacement Class Reference}
+\label{class_deplacement}\index{Deplacement@{Deplacement}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{class_deplacement_a89aa7394102665f2b9217283a4eb90f5} 
+{\bfseries Deplacement} (int dir\+Right, int dir\+Left, int step\+Right, int step\+Left, int mode, int entre\+Axe, int diametre\+Roue, int reduction)
+\item 
+bool {\bf run} ()
+\item 
+void {\bf set\+Max\+Speed} (unsigned long speed)
+\item 
+void {\bf set\+Acceleration} (unsigned long accel)
+\item 
+void {\bf turn\+Go} (long angle, long distance)
+\item 
+void {\bf go\+To} (long X, long Y, long orientation)
+\item 
+void {\bf set\+Max\+Percentage\+Profil} (char percentage)
+\item 
+void {\bf turn} (long angle)
+\item 
+\label{class_deplacement_aec50cd8d856a1cd48394482f273c1a60} 
+void {\bfseries go} (long distance)
+\item 
+\label{class_deplacement_a0bbdb2bb53503fbe80be74812e596514} 
+void {\bfseries set\+Nb\+Step} (int nb\+Step)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{class_deplacement_a154a7c5b3cb9c8195a4a69c2356b5c3b} 
+void {\bfseries enable\+Outputs} ()
+\item 
+void {\bf Step} ()
+\item 
+void {\bf distance\+To\+Step} (long distance)
+\item 
+\label{class_deplacement_a6a46cee16f368917cfa920a8336220a1} 
+void {\bfseries set\+Direction} ()
+\item 
+\label{class_deplacement_ac35b2bdce9ab731514456bdd4b474586} 
+void {\bfseries compute\+Speed\+Accel} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\label{class_deplacement_a1a3236d13b2712bf63927c59b01f1e00} 
+\index{Deplacement@{Deplacement}!distance\+To\+Step@{distance\+To\+Step}}
+\index{distance\+To\+Step@{distance\+To\+Step}!Deplacement@{Deplacement}}
+\subsubsection{distance\+To\+Step()}
+{\footnotesize\ttfamily void Deplacement\+::distance\+To\+Step (\begin{DoxyParamCaption}\item[{long}]{distance }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+[convertit la distance en mm en pas moteur en fonction des parametres du robot] 
+\begin{DoxyParams}{Parameters}
+{\em distance} & [distance en mm] \\
+\hline
+\end{DoxyParams}
+\label{class_deplacement_a26b3ea89348b07bd6575886766888a0d} 
+\index{Deplacement@{Deplacement}!go\+To@{go\+To}}
+\index{go\+To@{go\+To}!Deplacement@{Deplacement}}
+\subsubsection{go\+To()}
+{\footnotesize\ttfamily void Deplacement\+::go\+To (\begin{DoxyParamCaption}\item[{long}]{X,  }\item[{long}]{Y,  }\item[{long}]{orientation }\end{DoxyParamCaption})}
+
+[Permet de faire aller le robot en X,Y relatif avec une orientation] 
+\begin{DoxyParams}{Parameters}
+{\em X} & [Coordonnée X souhaitée] \\
+\hline
+{\em Y} & [Coordonnée Y souhaitée] \\
+\hline
+{\em orientation} & [Orientation souhaitée] \\
+\hline
+\end{DoxyParams}
+\label{class_deplacement_a1d6e33226c4837088168341fbd9a3d95} 
+\index{Deplacement@{Deplacement}!run@{run}}
+\index{run@{run}!Deplacement@{Deplacement}}
+\subsubsection{run()}
+{\footnotesize\ttfamily bool Deplacement\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+[Fonction permettant de mettre à jour la position du robot en fonction de la vitesse, de l\textquotesingle{}acceleration et de la position demandée. A appeler le plus souvent possible et au moins une fois par pas. ] \begin{DoxyReturn}{Returns}
+[Vrai si la distance n\textquotesingle{}est pas encore atteinte. Faux si la distance est atteinte] 
+\end{DoxyReturn}
+\label{class_deplacement_a32473a1c0f69aee2d3c697f64e54be82} 
+\index{Deplacement@{Deplacement}!set\+Acceleration@{set\+Acceleration}}
+\index{set\+Acceleration@{set\+Acceleration}!Deplacement@{Deplacement}}
+\subsubsection{set\+Acceleration()}
+{\footnotesize\ttfamily void Deplacement\+::set\+Acceleration (\begin{DoxyParamCaption}\item[{unsigned long}]{accel }\end{DoxyParamCaption})}
+
+[Définie la valeur de la pente d\textquotesingle{}acceleration et de déceleration des moteurs] 
+\begin{DoxyParams}{Parameters}
+{\em accel} & [Acceleration en pas /s2] \\
+\hline
+\end{DoxyParams}
+\label{class_deplacement_ae667960cbffb0252eca02bd718130d83} 
+\index{Deplacement@{Deplacement}!set\+Max\+Percentage\+Profil@{set\+Max\+Percentage\+Profil}}
+\index{set\+Max\+Percentage\+Profil@{set\+Max\+Percentage\+Profil}!Deplacement@{Deplacement}}
+\subsubsection{set\+Max\+Percentage\+Profil()}
+{\footnotesize\ttfamily void Deplacement\+::set\+Max\+Percentage\+Profil (\begin{DoxyParamCaption}\item[{char}]{percentage }\end{DoxyParamCaption})}
+
+[Définit le poucentage du profil de vitesse à vitesse maximum constante] 
+\begin{DoxyParams}{Parameters}
+{\em percentage} & [Pourcentage du profil entre 0 et 100] \\
+\hline
+\end{DoxyParams}
+\label{class_deplacement_aef7913bd019404c430043d384611b422} 
+\index{Deplacement@{Deplacement}!set\+Max\+Speed@{set\+Max\+Speed}}
+\index{set\+Max\+Speed@{set\+Max\+Speed}!Deplacement@{Deplacement}}
+\subsubsection{set\+Max\+Speed()}
+{\footnotesize\ttfamily void Deplacement\+::set\+Max\+Speed (\begin{DoxyParamCaption}\item[{unsigned long}]{speed }\end{DoxyParamCaption})}
+
+[Définie la vitesse maximum de rotation du robot] 
+\begin{DoxyParams}{Parameters}
+{\em speed} & [Vitesse de rotation en pas/s] \\
+\hline
+\end{DoxyParams}
+\label{class_deplacement_a443ed9dd512b7b8353bc2e801b5bf371} 
+\index{Deplacement@{Deplacement}!Step@{Step}}
+\index{Step@{Step}!Deplacement@{Deplacement}}
+\subsubsection{Step()}
+{\footnotesize\ttfamily void Deplacement\+::\+Step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+[Réalise un step en envoyant une impulsion sur les pattes de \char`\"{}step\char`\"{} des drivers. Le temps de l\textquotesingle{}impulsion est définie par la variable \+\_\+min\+Pulse\+Width ] \label{class_deplacement_a0453b24fcf218a695f9aed36d2354623} 
+\index{Deplacement@{Deplacement}!turn@{turn}}
+\index{turn@{turn}!Deplacement@{Deplacement}}
+\subsubsection{turn()}
+{\footnotesize\ttfamily void Deplacement\+::turn (\begin{DoxyParamCaption}\item[{long}]{angle }\end{DoxyParamCaption})}
+
+Fait tourner le robot autour du centre de l\textquotesingle{}essieu d\textquotesingle{}un nombre de pas. 
+\begin{DoxyParams}{Parameters}
+{\em angle} & Angle en pas. \\
+\hline
+\end{DoxyParams}
+\label{class_deplacement_a2551fc48792ae29f6521bd74d9322b61} 
+\index{Deplacement@{Deplacement}!turn\+Go@{turn\+Go}}
+\index{turn\+Go@{turn\+Go}!Deplacement@{Deplacement}}
+\subsubsection{turn\+Go()}
+{\footnotesize\ttfamily void Deplacement\+::turn\+Go (\begin{DoxyParamCaption}\item[{long}]{angle,  }\item[{long}]{distance }\end{DoxyParamCaption})}
+
+[Permet de faire bouger le robot selon la méthode \char`\"{}turn and go\char`\"{} \+: rotation puis déplacement] 
+\begin{DoxyParams}{Parameters}
+{\em rot} & [rotation en degrées] \\
+\hline
+{\em dist} & [distance en pas] \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Deplacement.\+h\item 
+Deplacement.\+cpp\end{DoxyCompactItemize}

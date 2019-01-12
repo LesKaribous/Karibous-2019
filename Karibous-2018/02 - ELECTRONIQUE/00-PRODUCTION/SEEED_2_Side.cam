@@ -1,0 +1,16 @@
+{
+    "author": {
+        "email": "adrien@lamachinerie.org",
+        "name": "Adrien Bracq"
+    },
+    "description": {
+        "EN": "CAM job description goes here."
+    },
+    "output_type": "zip",
+    "outputs": [
+    ],
+    "timestamp": "2018-01-28T10:58:46",
+    "type": "EAGLE CAM job",
+    "units": "metric",
+    "version": "8.6.0"
+}
