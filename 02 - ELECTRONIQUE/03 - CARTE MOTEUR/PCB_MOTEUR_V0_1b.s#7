@@ -13604,8 +13604,8 @@ distributor Buerklin, 17G552</description>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="53.34" y="55.88"/>
-<instance part="J1" gate="G$1" x="0" y="5.08"/>
-<instance part="J2" gate="G$1" x="0" y="25.4"/>
+<instance part="J1" gate="G$1" x="-7.62" y="5.08"/>
+<instance part="J2" gate="G$1" x="-7.62" y="25.4"/>
 <instance part="J3" gate="G$1" x="88.9" y="45.72" rot="R180"/>
 <instance part="J4" gate="G$1" x="66.04" y="71.12" rot="R180"/>
 <instance part="D1" gate="G$1" x="33.02" y="12.7"/>
@@ -13678,7 +13678,7 @@ distributor Buerklin, 17G552</description>
 <segment>
 <pinref part="J1" gate="G$1" pin="2"/>
 <pinref part="P+1" gate="1" pin="+5V"/>
-<wire x1="7.62" y1="7.62" x2="10.16" y2="7.62" width="0.1524" layer="91"/>
+<wire x1="0" y1="7.62" x2="10.16" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="10.16" y1="7.62" x2="10.16" y2="10.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -13705,7 +13705,7 @@ distributor Buerklin, 17G552</description>
 <segment>
 <pinref part="J1" gate="G$1" pin="1"/>
 <pinref part="GND1" gate="1" pin="GND"/>
-<wire x1="7.62" y1="5.08" x2="10.16" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="0" y1="5.08" x2="10.16" y2="5.08" width="0.1524" layer="91"/>
 <wire x1="10.16" y1="5.08" x2="10.16" y2="2.54" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -13754,7 +13754,7 @@ distributor Buerklin, 17G552</description>
 <segment>
 <pinref part="J2" gate="G$1" pin="2"/>
 <pinref part="P+2" gate="VCC" pin="VCC"/>
-<wire x1="7.62" y1="27.94" x2="10.16" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="0" y1="27.94" x2="10.16" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="10.16" y1="27.94" x2="10.16" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -13789,7 +13789,7 @@ distributor Buerklin, 17G552</description>
 <segment>
 <pinref part="J2" gate="G$1" pin="1"/>
 <pinref part="GND3" gate="1" pin="GNDA"/>
-<wire x1="7.62" y1="25.4" x2="10.16" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="0" y1="25.4" x2="10.16" y2="25.4" width="0.1524" layer="91"/>
 <wire x1="10.16" y1="25.4" x2="10.16" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -13897,20 +13897,6 @@ distributor Buerklin, 17G552</description>
 <label x="40.64" y="15.24" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="RESET_L" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="RESET"/>
-<wire x1="48.26" y1="43.18" x2="38.1" y2="43.18" width="0.1524" layer="91"/>
-<label x="38.1" y="43.18" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="SLEEP_L" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="SLEEP"/>
-<wire x1="48.26" y1="40.64" x2="38.1" y2="40.64" width="0.1524" layer="91"/>
-<label x="38.1" y="40.64" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="STEP_L" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="STEP"/>
@@ -13963,30 +13949,6 @@ distributor Buerklin, 17G552</description>
 <wire x1="83.82" y1="10.16" x2="81.28" y2="10.16" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="RESET_R" class="0">
-<segment>
-<pinref part="U$2" gate="G$1" pin="RESET"/>
-<wire x1="48.26" y1="12.7" x2="38.1" y2="12.7" width="0.1524" layer="91"/>
-<label x="38.1" y="12.7" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="J4" gate="G$1" pin="8"/>
-<wire x1="58.42" y1="73.66" x2="50.8" y2="73.66" width="0.1524" layer="91"/>
-<label x="48.26" y="73.66" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="SLEEP_R" class="0">
-<segment>
-<pinref part="U$2" gate="G$1" pin="SLEEP"/>
-<wire x1="48.26" y1="10.16" x2="38.1" y2="10.16" width="0.1524" layer="91"/>
-<label x="38.1" y="10.16" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="J4" gate="G$1" pin="10"/>
-<wire x1="58.42" y1="76.2" x2="48.26" y2="76.2" width="0.1524" layer="91"/>
-<label x="48.26" y="76.2" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="STEP_R" class="0">
 <segment>
 <pinref part="U$2" gate="G$1" pin="STEP"/>
@@ -13994,9 +13956,9 @@ distributor Buerklin, 17G552</description>
 <label x="38.1" y="7.62" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="J4" gate="G$1" pin="9"/>
-<wire x1="73.66" y1="76.2" x2="81.28" y2="76.2" width="0.1524" layer="91"/>
-<label x="76.2" y="76.2" size="1.778" layer="95"/>
+<pinref part="J4" gate="G$1" pin="1"/>
+<wire x1="73.66" y1="66.04" x2="81.28" y2="66.04" width="0.1524" layer="91"/>
+<label x="73.66" y="66.04" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="DIR_R" class="0">
@@ -14006,23 +13968,33 @@ distributor Buerklin, 17G552</description>
 <label x="38.1" y="5.08" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="J4" gate="G$1" pin="7"/>
-<wire x1="73.66" y1="73.66" x2="81.28" y2="73.66" width="0.1524" layer="91"/>
-<label x="76.2" y="73.66" size="1.778" layer="95"/>
+<pinref part="J4" gate="G$1" pin="3"/>
+<wire x1="73.66" y1="68.58" x2="81.28" y2="68.58" width="0.1524" layer="91"/>
+<label x="73.66" y="68.58" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RESET" class="0">
 <segment>
-<pinref part="J4" gate="G$1" pin="3"/>
-<wire x1="73.66" y1="68.58" x2="81.28" y2="68.58" width="0.1524" layer="91"/>
-<label x="76.2" y="68.58" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="RESET"/>
+<wire x1="48.26" y1="43.18" x2="38.1" y2="43.18" width="0.1524" layer="91"/>
+<label x="38.1" y="43.18" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$2" gate="G$1" pin="RESET"/>
+<wire x1="48.26" y1="12.7" x2="38.1" y2="12.7" width="0.1524" layer="91"/>
+<label x="38.1" y="12.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SLEEP" class="0">
 <segment>
-<pinref part="J4" gate="G$1" pin="1"/>
-<wire x1="73.66" y1="66.04" x2="81.28" y2="66.04" width="0.1524" layer="91"/>
-<label x="76.2" y="66.04" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="SLEEP"/>
+<wire x1="48.26" y1="40.64" x2="38.1" y2="40.64" width="0.1524" layer="91"/>
+<label x="38.1" y="40.64" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$2" gate="G$1" pin="SLEEP"/>
+<wire x1="48.26" y1="10.16" x2="38.1" y2="10.16" width="0.1524" layer="91"/>
+<label x="38.1" y="10.16" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>

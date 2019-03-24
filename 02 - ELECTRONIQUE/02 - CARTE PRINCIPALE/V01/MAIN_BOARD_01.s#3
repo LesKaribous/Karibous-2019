@@ -16162,7 +16162,11 @@ DIN A5, landscape with doc field</description>
 <part name="J4" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_05X2" device="SHD" package3d_urn="urn:adsk.eagle:package:793478/2"/>
 <part name="GND29" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND30" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="ENC_DROIT1" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_04" device="POLAR" package3d_urn="urn:adsk.eagle:package:777852/5"/>
+<part name="COM-XBEE" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_04" device="POLAR" package3d_urn="urn:adsk.eagle:package:777852/5"/>
+<part name="ALIM_OUT" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02" device="POLAR" package3d_urn="urn:adsk.eagle:package:777850/5"/>
+<part name="GND20" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="ALIM_OUT1" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02" device="POLAR" package3d_urn="urn:adsk.eagle:package:777850/5"/>
+<part name="GND31" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -17068,7 +17072,7 @@ DIN A5, landscape with doc field</description>
 </instance>
 <instance part="ENC_GAUCHE" gate="G$1" x="144.78" y="106.68" smashed="yes"/>
 <instance part="ENC_DROIT" gate="G$1" x="144.78" y="88.9" smashed="yes"/>
-<instance part="ENC_DROIT1" gate="G$1" x="142.24" y="45.72" smashed="yes"/>
+<instance part="COM-XBEE" gate="G$1" x="142.24" y="45.72" smashed="yes"/>
 </instances>
 <busses>
 </busses>
@@ -17171,7 +17175,7 @@ DIN A5, landscape with doc field</description>
 <label x="154.94" y="104.14" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="ENC_DROIT1" gate="G$1" pin="1"/>
+<pinref part="COM-XBEE" gate="G$1" pin="1"/>
 <wire x1="147.32" y1="43.18" x2="157.48" y2="43.18" width="0.1524" layer="91"/>
 <label x="152.4" y="43.18" size="1.778" layer="95"/>
 </segment>
@@ -17399,21 +17403,21 @@ DIN A5, landscape with doc field</description>
 </net>
 <net name="XBEE-TX" class="0">
 <segment>
-<pinref part="ENC_DROIT1" gate="G$1" pin="4"/>
+<pinref part="COM-XBEE" gate="G$1" pin="4"/>
 <wire x1="147.32" y1="50.8" x2="157.48" y2="50.8" width="0.1524" layer="91"/>
 <label x="152.4" y="50.8" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="XBEE-RX" class="0">
 <segment>
-<pinref part="ENC_DROIT1" gate="G$1" pin="3"/>
+<pinref part="COM-XBEE" gate="G$1" pin="3"/>
 <wire x1="147.32" y1="48.26" x2="157.48" y2="48.26" width="0.1524" layer="91"/>
 <label x="152.4" y="48.26" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="+3V3/1" class="0">
 <segment>
-<pinref part="ENC_DROIT1" gate="G$1" pin="2"/>
+<pinref part="COM-XBEE" gate="G$1" pin="2"/>
 <wire x1="147.32" y1="45.72" x2="157.48" y2="45.72" width="0.1524" layer="91"/>
 <label x="152.4" y="45.72" size="1.778" layer="95"/>
 </segment>
@@ -17526,6 +17530,20 @@ DIN A5, landscape with doc field</description>
 <attribute name="NAME" x="39.37" y="76.835" size="1.016" layer="95"/>
 <attribute name="VALUE" x="46.99" y="76.835" size="1.016" layer="96"/>
 </instance>
+<instance part="ALIM_OUT" gate="G$1" x="139.7" y="109.22" smashed="yes">
+<attribute name="VALUE" x="137.16" y="104.394" size="1.778" layer="96" font="vector"/>
+<attribute name="NAME" x="137.16" y="114.808" size="1.778" layer="95" font="vector"/>
+</instance>
+<instance part="GND20" gate="1" x="149.86" y="106.68" smashed="yes">
+<attribute name="VALUE" x="147.32" y="104.14" size="1.778" layer="96"/>
+</instance>
+<instance part="ALIM_OUT1" gate="G$1" x="139.7" y="93.98" smashed="yes">
+<attribute name="VALUE" x="137.16" y="89.154" size="1.778" layer="96" font="vector"/>
+<attribute name="NAME" x="137.16" y="99.568" size="1.778" layer="95" font="vector"/>
+</instance>
+<instance part="GND31" gate="1" x="149.86" y="91.44" smashed="yes">
+<attribute name="VALUE" x="147.32" y="88.9" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -17578,6 +17596,16 @@ DIN A5, landscape with doc field</description>
 <wire x1="60.96" y1="48.26" x2="60.96" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="LED4" gate="G$1" pin="C"/>
 </segment>
+<segment>
+<pinref part="ALIM_OUT" gate="G$1" pin="1"/>
+<wire x1="147.32" y1="109.22" x2="149.86" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="GND20" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="ALIM_OUT1" gate="G$1" pin="1"/>
+<wire x1="147.32" y1="93.98" x2="149.86" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="GND31" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="VIN/BATT" class="0">
 <segment>
@@ -17627,6 +17655,11 @@ DIN A5, landscape with doc field</description>
 <label x="88.9" y="96.52" size="1.778" layer="95"/>
 <pinref part="D1" gate="1" pin="A"/>
 </segment>
+<segment>
+<pinref part="ALIM_OUT1" gate="G$1" pin="2"/>
+<wire x1="147.32" y1="96.52" x2="154.94" y2="96.52" width="0.1524" layer="91"/>
+<label x="149.86" y="96.52" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="+5V/2" class="0">
 <segment>
@@ -17670,6 +17703,11 @@ DIN A5, landscape with doc field</description>
 <wire x1="83.82" y1="86.36" x2="93.98" y2="86.36" width="0.1524" layer="91"/>
 <label x="88.9" y="86.36" size="1.778" layer="95"/>
 <pinref part="D3" gate="1" pin="A"/>
+</segment>
+<segment>
+<pinref part="ALIM_OUT" gate="G$1" pin="2"/>
+<wire x1="147.32" y1="111.76" x2="154.94" y2="111.76" width="0.1524" layer="91"/>
+<label x="149.86" y="111.76" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$2" class="0">

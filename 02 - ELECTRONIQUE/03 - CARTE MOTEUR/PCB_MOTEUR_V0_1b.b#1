@@ -173,9 +173,11 @@
 <wire x1="5" y1="0" x2="40" y2="0" width="0.254" layer="20"/>
 <text x="24.765" y="57.15" size="1.27" layer="25" ratio="3">Sleep</text>
 <text x="13.335" y="57.15" size="1.27" layer="25" ratio="3">Reset</text>
-<text x="29.21" y="7.62" size="1.778" layer="25" ratio="3">VMot</text>
+<text x="29.845" y="8.255" size="1.778" layer="25" ratio="3">VMot</text>
 <text x="13.335" y="5.08" size="1.27" layer="25" ratio="3">Les Karibous - 2019</text>
 <text x="15.875" y="3.175" size="1.27" layer="25" ratio="3">CC-BY-NC-SA</text>
+<text x="6.985" y="57.15" size="1.27" layer="25" ratio="3">M3</text>
+<text x="29.845" y="17.78" size="1.778" layer="25" ratio="29">GND</text>
 </plain>
 <libraries>
 <library name="rcl" urn="urn:adsk.eagle:library:334">

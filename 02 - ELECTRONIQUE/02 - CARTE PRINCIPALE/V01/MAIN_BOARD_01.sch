@@ -340,59 +340,6 @@
 <text x="1.1075" y="3.314140625" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="0.729259375" y="-3.274096875" size="0.6096" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
-<package name="NSK396-2C" urn="urn:adsk.eagle:footprint:1585092/1" library_version="29" library_locally_modified="yes">
-<pad name="P$1" x="-1.98" y="0" drill="1" diameter="2.54" shape="long" rot="R90"/>
-<pad name="P$2" x="1.98" y="0" drill="1" diameter="2.54" shape="long" rot="R90"/>
-<wire x1="-4" y1="3.5" x2="-3" y2="3.5" width="0.127" layer="21"/>
-<wire x1="-3" y1="3.5" x2="-3" y2="4" width="0.127" layer="21"/>
-<wire x1="-3" y1="4" x2="-2.5" y2="4" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="4" x2="-1.5" y2="4" width="0.127" layer="21"/>
-<wire x1="-1.5" y1="4" x2="-1" y2="4" width="0.127" layer="21"/>
-<wire x1="-1" y1="4" x2="-1" y2="3.5" width="0.127" layer="21"/>
-<wire x1="-1" y1="3.5" x2="1" y2="3.5" width="0.127" layer="21"/>
-<wire x1="1" y1="3.5" x2="1" y2="4" width="0.127" layer="21"/>
-<wire x1="1" y1="4" x2="1.5" y2="4" width="0.127" layer="21"/>
-<wire x1="1.5" y1="4" x2="2.5" y2="4" width="0.127" layer="21"/>
-<wire x1="2.5" y1="4" x2="3" y2="4" width="0.127" layer="21"/>
-<wire x1="3" y1="4" x2="3" y2="3.5" width="0.127" layer="21"/>
-<wire x1="3" y1="3.5" x2="4" y2="3.5" width="0.127" layer="21"/>
-<wire x1="4" y1="3.5" x2="4" y2="6.5" width="0.127" layer="21"/>
-<wire x1="4" y1="6.5" x2="3" y2="6.5" width="0.127" layer="21"/>
-<wire x1="-4" y1="3.5" x2="-4" y2="6.5" width="0.127" layer="21"/>
-<wire x1="-4" y1="6.5" x2="-3" y2="6.5" width="0.127" layer="21"/>
-<wire x1="-3" y1="4" x2="-3" y2="10.5" width="0.127" layer="21"/>
-<wire x1="-3" y1="10.5" x2="-3" y2="12.5" width="0.127" layer="21"/>
-<wire x1="-3" y1="12.5" x2="-2.5" y2="12.5" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="12.5" x2="-1.5" y2="12.5" width="0.127" layer="21"/>
-<wire x1="-1.5" y1="12.5" x2="1.5" y2="12.5" width="0.127" layer="21"/>
-<wire x1="1.5" y1="12.5" x2="2.5" y2="12.5" width="0.127" layer="21"/>
-<wire x1="2.5" y1="12.5" x2="3" y2="12.5" width="0.127" layer="21"/>
-<wire x1="3" y1="12.5" x2="3" y2="10.5" width="0.127" layer="21"/>
-<wire x1="3" y1="10.5" x2="3" y2="4" width="0.127" layer="21"/>
-<wire x1="3" y1="10.5" x2="-3" y2="10.5" width="0.127" layer="21"/>
-<wire x1="-1.5" y1="-0.5" x2="-2.5" y2="-0.5" width="0.127" layer="21" curve="-180"/>
-<wire x1="-2.5" y1="-0.5" x2="-2.5" y2="4" width="0.127" layer="21"/>
-<wire x1="-1.5" y1="4" x2="-1.5" y2="-0.5" width="0.127" layer="21"/>
-<wire x1="1.5" y1="4" x2="1.5" y2="-0.5" width="0.127" layer="21"/>
-<wire x1="2.5" y1="4" x2="2.5" y2="-0.5" width="0.127" layer="21"/>
-<wire x1="2.5" y1="-0.5" x2="1.5" y2="-0.5" width="0.127" layer="21" curve="-180"/>
-<wire x1="-2.5" y1="12.5" x2="-2.5" y2="13.5" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="13.5" x2="-2.5" y2="13.75" width="0.127" layer="21"/>
-<wire x1="-1.5" y1="12.5" x2="-1.5" y2="13.5" width="0.127" layer="21"/>
-<wire x1="-1.5" y1="13.5" x2="-1.5" y2="13.75" width="0.127" layer="21"/>
-<wire x1="1.5" y1="12.5" x2="1.5" y2="13.5" width="0.127" layer="21"/>
-<wire x1="1.5" y1="13.5" x2="1.5" y2="13.75" width="0.127" layer="21"/>
-<wire x1="2.5" y1="12.5" x2="2.5" y2="13.5" width="0.127" layer="21"/>
-<wire x1="2.5" y1="13.5" x2="2.5" y2="13.75" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="13.75" x2="-2.25" y2="14" width="0.127" layer="21"/>
-<wire x1="-2.25" y1="14" x2="-1.75" y2="14" width="0.127" layer="21"/>
-<wire x1="-1.75" y1="14" x2="-1.5" y2="13.75" width="0.127" layer="21"/>
-<wire x1="1.5" y1="13.75" x2="1.75" y2="14" width="0.127" layer="21"/>
-<wire x1="1.75" y1="14" x2="2.25" y2="14" width="0.127" layer="21"/>
-<wire x1="2.25" y1="14" x2="2.5" y2="13.75" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="13.5" x2="-1.5" y2="13.5" width="0.127" layer="21"/>
-<wire x1="1.5" y1="13.5" x2="2.5" y2="13.5" width="0.127" layer="21"/>
-</package>
 <package name="1X02" urn="urn:adsk.eagle:footprint:777840/4" library_version="29" library_locally_modified="yes">
 <description>
     &lt;h3&gt;Plated Through Hole&lt;/h3&gt;
@@ -524,6 +471,59 @@
 <wire x1="-1.27" y1="17.78" x2="-1.27" y2="16.51" width="0.2032" layer="21"/>
 <text x="-2.54" y="13.97" size="1.27" layer="25" font="vector">&gt;NAME</text>
 </package>
+<package name="NSK396-2C" urn="urn:adsk.eagle:footprint:1585092/2" library_version="32">
+<pad name="P$1" x="-1.98" y="0" drill="1.6" diameter="2.54" shape="long" rot="R90"/>
+<pad name="P$2" x="1.98" y="0" drill="1.6" diameter="2.54" shape="long" rot="R90"/>
+<wire x1="-4" y1="3.5" x2="-3" y2="3.5" width="0.127" layer="21"/>
+<wire x1="-3" y1="3.5" x2="-3" y2="4" width="0.127" layer="21"/>
+<wire x1="-3" y1="4" x2="-2.5" y2="4" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="4" x2="-1.5" y2="4" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="4" x2="-1" y2="4" width="0.127" layer="21"/>
+<wire x1="-1" y1="4" x2="-1" y2="3.5" width="0.127" layer="21"/>
+<wire x1="-1" y1="3.5" x2="1" y2="3.5" width="0.127" layer="21"/>
+<wire x1="1" y1="3.5" x2="1" y2="4" width="0.127" layer="21"/>
+<wire x1="1" y1="4" x2="1.5" y2="4" width="0.127" layer="21"/>
+<wire x1="1.5" y1="4" x2="2.5" y2="4" width="0.127" layer="21"/>
+<wire x1="2.5" y1="4" x2="3" y2="4" width="0.127" layer="21"/>
+<wire x1="3" y1="4" x2="3" y2="3.5" width="0.127" layer="21"/>
+<wire x1="3" y1="3.5" x2="4" y2="3.5" width="0.127" layer="21"/>
+<wire x1="4" y1="3.5" x2="4" y2="6.5" width="0.127" layer="21"/>
+<wire x1="4" y1="6.5" x2="3" y2="6.5" width="0.127" layer="21"/>
+<wire x1="-4" y1="3.5" x2="-4" y2="6.5" width="0.127" layer="21"/>
+<wire x1="-4" y1="6.5" x2="-3" y2="6.5" width="0.127" layer="21"/>
+<wire x1="-3" y1="4" x2="-3" y2="10.5" width="0.127" layer="21"/>
+<wire x1="-3" y1="10.5" x2="-3" y2="12.5" width="0.127" layer="21"/>
+<wire x1="-3" y1="12.5" x2="-2.5" y2="12.5" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="12.5" x2="-1.5" y2="12.5" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="12.5" x2="1.5" y2="12.5" width="0.127" layer="21"/>
+<wire x1="1.5" y1="12.5" x2="2.5" y2="12.5" width="0.127" layer="21"/>
+<wire x1="2.5" y1="12.5" x2="3" y2="12.5" width="0.127" layer="21"/>
+<wire x1="3" y1="12.5" x2="3" y2="10.5" width="0.127" layer="21"/>
+<wire x1="3" y1="10.5" x2="3" y2="4" width="0.127" layer="21"/>
+<wire x1="3" y1="10.5" x2="-3" y2="10.5" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="-0.5" x2="-2.5" y2="-0.5" width="0.127" layer="21" curve="-180"/>
+<wire x1="-2.5" y1="-0.5" x2="-2.5" y2="4" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="4" x2="-1.5" y2="-0.5" width="0.127" layer="21"/>
+<wire x1="1.5" y1="4" x2="1.5" y2="-0.5" width="0.127" layer="21"/>
+<wire x1="2.5" y1="4" x2="2.5" y2="-0.5" width="0.127" layer="21"/>
+<wire x1="2.5" y1="-0.5" x2="1.5" y2="-0.5" width="0.127" layer="21" curve="-180"/>
+<wire x1="-2.5" y1="12.5" x2="-2.5" y2="13.5" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="13.5" x2="-2.5" y2="13.75" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="12.5" x2="-1.5" y2="13.5" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="13.5" x2="-1.5" y2="13.75" width="0.127" layer="21"/>
+<wire x1="1.5" y1="12.5" x2="1.5" y2="13.5" width="0.127" layer="21"/>
+<wire x1="1.5" y1="13.5" x2="1.5" y2="13.75" width="0.127" layer="21"/>
+<wire x1="2.5" y1="12.5" x2="2.5" y2="13.5" width="0.127" layer="21"/>
+<wire x1="2.5" y1="13.5" x2="2.5" y2="13.75" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="13.75" x2="-2.25" y2="14" width="0.127" layer="21"/>
+<wire x1="-2.25" y1="14" x2="-1.75" y2="14" width="0.127" layer="21"/>
+<wire x1="-1.75" y1="14" x2="-1.5" y2="13.75" width="0.127" layer="21"/>
+<wire x1="1.5" y1="13.75" x2="1.75" y2="14" width="0.127" layer="21"/>
+<wire x1="1.75" y1="14" x2="2.25" y2="14" width="0.127" layer="21"/>
+<wire x1="2.25" y1="14" x2="2.5" y2="13.75" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="13.5" x2="-1.5" y2="13.5" width="0.127" layer="21"/>
+<wire x1="1.5" y1="13.5" x2="2.5" y2="13.5" width="0.127" layer="21"/>
+</package>
 </packages>
 <packages3d>
 <package3d name="2X5-SHROUDED" urn="urn:adsk.eagle:package:793478/2" type="model" library_version="29" library_locally_modified="yes">
@@ -612,11 +612,6 @@ CONN_04
 <packageinstance name="MOLEX-1X3"/>
 </packageinstances>
 </package3d>
-<package3d name="NSK396-2C" urn="urn:adsk.eagle:package:1585093/1" type="box" library_version="29" library_locally_modified="yes">
-<packageinstances>
-<packageinstance name="NSK396-2C"/>
-</packageinstances>
-</package3d>
 <package3d name="1X02" urn="urn:adsk.eagle:package:777848/4" type="box" library_version="29" library_locally_modified="yes">
 <description>
     Plated Through Hole
@@ -673,6 +668,11 @@ CONN_02
 <package3d name="RUEF300" urn="urn:adsk.eagle:package:6944927/1" type="box" library_version="31">
 <packageinstances>
 <packageinstance name="RUEF300"/>
+</packageinstances>
+</package3d>
+<package3d name="NSK396-2C" urn="urn:adsk.eagle:package:1585093/2" type="box" library_version="32">
+<packageinstances>
+<packageinstance name="NSK396-2C"/>
 </packageinstances>
 </package3d>
 </packages3d>
@@ -1026,7 +1026,7 @@ CONN_02
 </device>
 </devices>
 </deviceset>
-<deviceset name="CONN_02_PUI" urn="urn:adsk.eagle:component:3504849/2" library_version="31">
+<deviceset name="CONN_02_PUI" urn="urn:adsk.eagle:component:3504849/3" library_version="32">
 <gates>
 <gate name="G$1" symbol="CONN_02_PUI" x="2.54" y="0"/>
 </gates>
@@ -1037,7 +1037,7 @@ CONN_02
 <connect gate="G$1" pin="V+/VCC" pad="P$2"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:1585093/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:1585093/2"/>
 </package3dinstances>
 <technologies>
 <technology name=""/>
@@ -1045,7 +1045,7 @@ CONN_02
 </device>
 </devices>
 </deviceset>
-<deviceset name="CONN_02" urn="urn:adsk.eagle:component:777853/12" prefix="J" uservalue="yes" library_version="31">
+<deviceset name="CONN_02" urn="urn:adsk.eagle:component:777853/13" prefix="J" uservalue="yes" library_version="32">
 <description>
     &lt;h3&gt;Multi connection point. Often used as Generic Header-pin footprint for 0.1 inch spaced/style header connections&lt;/h3&gt;
 
@@ -1158,7 +1158,7 @@ CONN_02
 <connect gate="G$1" pin="2" pad="P$2"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:1585093/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:1585093/2"/>
 </package3dinstances>
 <technologies>
 <technology name=""/>
@@ -16100,7 +16100,7 @@ DIN A5, landscape with doc field</description>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U$3" library="KARIBOUS" library_urn="urn:adsk.eagle:library:1283574" deviceset="R-625.0P" device="" package3d_urn="urn:adsk.eagle:package:6944934/1"/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="U$4" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02_PUI" device="" package3d_urn="urn:adsk.eagle:package:1585093/1"/>
+<part name="U$4" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02_PUI" device="" package3d_urn="urn:adsk.eagle:package:1585093/2"/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>

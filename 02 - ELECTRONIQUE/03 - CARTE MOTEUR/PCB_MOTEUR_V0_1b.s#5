@@ -13455,17 +13455,17 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <instance part="J2" gate="G$1" x="-7.62" y="25.4"/>
 <instance part="J3" gate="G$1" x="88.9" y="45.72" rot="R180"/>
 <instance part="J4" gate="G$1" x="66.04" y="71.12" rot="R180"/>
-<instance part="D1" gate="G$1" x="33.02" y="12.7"/>
-<instance part="R1" gate="G$1" x="33.02" y="22.86" rot="R90"/>
+<instance part="D1" gate="G$1" x="10.16" y="53.34"/>
+<instance part="R1" gate="G$1" x="10.16" y="63.5" rot="R90"/>
 <instance part="P+2" gate="VCC" x="10.16" y="33.02"/>
-<instance part="C1" gate="G$1" x="17.78" y="25.4"/>
+<instance part="C1" gate="G$1" x="-5.08" y="66.04"/>
 <instance part="GND2" gate="1" x="99.06" y="45.72"/>
 <instance part="GND3" gate="1" x="10.16" y="20.32"/>
 <instance part="P+3" gate="VCC" x="99.06" y="58.42"/>
-<instance part="P+4" gate="VCC" x="17.78" y="33.02"/>
-<instance part="GND4" gate="1" x="17.78" y="0"/>
-<instance part="GND5" gate="1" x="33.02" y="0"/>
-<instance part="P+6" gate="VCC" x="33.02" y="33.02"/>
+<instance part="P+4" gate="VCC" x="-5.08" y="73.66"/>
+<instance part="GND4" gate="1" x="-5.08" y="40.64"/>
+<instance part="GND5" gate="1" x="10.16" y="40.64"/>
+<instance part="P+6" gate="VCC" x="10.16" y="73.66"/>
 <instance part="GND7" gate="1" x="45.72" y="66.04"/>
 <instance part="GND8" gate="1" x="86.36" y="66.04"/>
 <instance part="GND9" gate="1" x="81.28" y="30.48"/>
@@ -13474,9 +13474,9 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <instance part="GND11" gate="1" x="99.06" y="15.24"/>
 <instance part="P+8" gate="VCC" x="99.06" y="27.94"/>
 <instance part="GND12" gate="1" x="81.28" y="0"/>
-<instance part="C2" gate="G$1" x="25.4" y="25.4"/>
-<instance part="P+9" gate="VCC" x="25.4" y="33.02"/>
-<instance part="GND13" gate="1" x="25.4" y="0"/>
+<instance part="C2" gate="G$1" x="2.54" y="66.04"/>
+<instance part="P+9" gate="VCC" x="2.54" y="73.66"/>
+<instance part="GND13" gate="1" x="2.54" y="40.64"/>
 </instances>
 <busses>
 </busses>
@@ -13549,12 +13549,12 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <segment>
 <pinref part="C1" gate="G$1" pin="+"/>
 <pinref part="P+4" gate="VCC" pin="VCC"/>
-<wire x1="17.78" y1="30.48" x2="17.78" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="71.12" x2="-5.08" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R1" gate="G$1" pin="2"/>
 <pinref part="P+6" gate="VCC" pin="VCC"/>
-<wire x1="33.02" y1="30.48" x2="33.02" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="71.12" x2="10.16" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U$2" gate="G$1" pin="VMOT"/>
@@ -13565,7 +13565,7 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <segment>
 <pinref part="C2" gate="G$1" pin="+"/>
 <pinref part="P+9" gate="VCC" pin="VCC"/>
-<wire x1="25.4" y1="30.48" x2="25.4" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="71.12" x2="2.54" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GNDA" class="0">
@@ -13584,12 +13584,12 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <segment>
 <pinref part="C1" gate="G$1" pin="-"/>
 <pinref part="GND4" gate="1" pin="GNDA"/>
-<wire x1="17.78" y1="2.54" x2="17.78" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="43.18" x2="-5.08" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="D1" gate="G$1" pin="C"/>
 <pinref part="GND5" gate="1" pin="GNDA"/>
-<wire x1="33.02" y1="2.54" x2="33.02" y2="7.62" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="43.18" x2="10.16" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U$2" gate="G$1" pin="GND_MOT"/>
@@ -13600,14 +13600,14 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <segment>
 <pinref part="C2" gate="G$1" pin="-"/>
 <pinref part="GND13" gate="1" pin="GNDA"/>
-<wire x1="25.4" y1="2.54" x2="25.4" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="43.18" x2="2.54" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$5" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="A"/>
 <pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="33.02" y1="17.78" x2="33.02" y2="15.24" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="58.42" x2="10.16" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="M0" class="0">

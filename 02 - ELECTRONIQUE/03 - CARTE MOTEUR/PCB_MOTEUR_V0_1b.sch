@@ -324,9 +324,9 @@
 <text x="-1.27" y="3.302" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="-1.27" y="-2.794" size="0.6096" layer="27" font="vector" ratio="20" align="top-left">&gt;VALUE</text>
 </package>
-<package name="NSK396-2C" urn="urn:adsk.eagle:footprint:1585092/1" library_version="28">
-<pad name="P$1" x="-1.98" y="0" drill="1" diameter="2.54" shape="long" rot="R90"/>
-<pad name="P$2" x="1.98" y="0" drill="1" diameter="2.54" shape="long" rot="R90"/>
+<package name="NSK396-2C" urn="urn:adsk.eagle:footprint:1585092/2" library_version="32">
+<pad name="P$1" x="-1.98" y="0" drill="1.6" diameter="2.54" shape="long" rot="R90"/>
+<pad name="P$2" x="1.98" y="0" drill="1.6" diameter="2.54" shape="long" rot="R90"/>
 <wire x1="-4" y1="3.5" x2="-3" y2="3.5" width="0.127" layer="21"/>
 <wire x1="-3" y1="3.5" x2="-3" y2="4" width="0.127" layer="21"/>
 <wire x1="-3" y1="4" x2="-2.5" y2="4" width="0.127" layer="21"/>
@@ -581,32 +581,12 @@
 </package>
 </packages>
 <packages3d>
-<package3d name="NSK396-2C" urn="urn:adsk.eagle:package:1585093/1" type="box" library_version="31">
+<package3d name="NSK396-2C" urn="urn:adsk.eagle:package:1585093/2" type="box" library_version="32">
 <packageinstances>
 <packageinstance name="NSK396-2C"/>
 </packageinstances>
 </package3d>
-<package3d name="1X04" urn="urn:adsk.eagle:package:777855/4" type="box" library_version="28">
-<description>
-    Plated Through Hole - 4 Pin
-Specifications:
-Pin count:4
-Pin pitch:0.1"
-
-Example device(s):
-CONN_04
-
-    Plated Through Hole - 4 Pin
-Specifications:
-Pin count:4
-Pin pitch:0.1"
-
-Example device(s):
-CONN_04
-
-  </description>
-</package3d>
-<package3d name="MOLEX-1X4" urn="urn:adsk.eagle:package:777852/5" type="model" library_version="28">
+<package3d name="MOLEX-1X4" urn="urn:adsk.eagle:package:777852/5" type="model" library_version="32">
 <description>
     Molex 4-Pin Plated Through-Hole
 Specifications:
@@ -627,8 +607,11 @@ Example device(s):
 CONN_04
 
   </description>
+<packageinstances>
+<packageinstance name="MOLEX-1X4"/>
+</packageinstances>
 </package3d>
-<package3d name="2X5-SHROUDED" urn="urn:adsk.eagle:package:793478/2" type="model" library_version="28">
+<package3d name="2X5-SHROUDED" urn="urn:adsk.eagle:package:793478/2" type="model" library_version="32">
 <description>Plated Through Hole - 2x5 Shrouded Header
 Specifications:
 Pin count:10
@@ -638,19 +621,11 @@ Datasheet referenced for footprint
 Example device(s):
 CONN_05x2
 </description>
+<packageinstances>
+<packageinstance name="2X5-SHROUDED"/>
+</packageinstances>
 </package3d>
-<package3d name="LED_5MM" urn="urn:adsk.eagle:package:760648/2" type="model" library_version="28">
-<description>LED 5mm PTH
-5 mm, round
-Specifications:
-Pin count: 2
-Pin pitch: 0.1inch
-Diameter: 5mm
-
-Example device(s):
-LED-IR-THRU</description>
-</package3d>
-<package3d name="LED_3MM" urn="urn:adsk.eagle:package:760790/2" type="model" library_version="28">
+<package3d name="LED_3MM" urn="urn:adsk.eagle:package:760790/2" type="model" library_version="32">
 <description>LED 3MM PTH
 
 3 mm, round.
@@ -662,6 +637,9 @@ Diameter: 3mm
 
 Example device(s):
 LED</description>
+<packageinstances>
+<packageinstance name="LED_3MM"/>
+</packageinstances>
 </package3d>
 <package3d name="1X02" urn="urn:adsk.eagle:package:777848/4" type="box" library_version="31">
 <description>
@@ -709,6 +687,43 @@ CONN_02
   </description>
 <packageinstances>
 <packageinstance name="MOLEX-1X2"/>
+</packageinstances>
+</package3d>
+<package3d name="1X04" urn="urn:adsk.eagle:package:777855/4" type="box" library_version="32">
+<description>
+    Plated Through Hole - 4 Pin
+Specifications:
+Pin count:4
+Pin pitch:0.1"
+
+Example device(s):
+CONN_04
+
+    Plated Through Hole - 4 Pin
+Specifications:
+Pin count:4
+Pin pitch:0.1"
+
+Example device(s):
+CONN_04
+
+  </description>
+<packageinstances>
+<packageinstance name="1X04"/>
+</packageinstances>
+</package3d>
+<package3d name="LED_5MM" urn="urn:adsk.eagle:package:760648/2" type="model" library_version="32">
+<description>LED 5mm PTH
+5 mm, round
+Specifications:
+Pin count: 2
+Pin pitch: 0.1inch
+Diameter: 5mm
+
+Example device(s):
+LED-IR-THRU</description>
+<packageinstances>
+<packageinstance name="LED_5MM"/>
 </packageinstances>
 </package3d>
 </packages3d>
@@ -812,7 +827,7 @@ CONN_02
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="CONN_02" urn="urn:adsk.eagle:component:777853/12" prefix="J" uservalue="yes" library_version="31">
+<deviceset name="CONN_02" urn="urn:adsk.eagle:component:777853/13" prefix="J" uservalue="yes" library_version="32">
 <description>
     &lt;h3&gt;Multi connection point. Often used as Generic Header-pin footprint for 0.1 inch spaced/style header connections&lt;/h3&gt;
 
@@ -925,7 +940,7 @@ CONN_02
 <connect gate="G$1" pin="2" pad="P$2"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:1585093/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:1585093/2"/>
 </package3dinstances>
 <technologies>
 <technology name=""/>
@@ -933,7 +948,7 @@ CONN_02
 </device>
 </devices>
 </deviceset>
-<deviceset name="CONN_04" urn="urn:adsk.eagle:component:777856/11" prefix="J" uservalue="yes" library_version="28">
+<deviceset name="CONN_04" urn="urn:adsk.eagle:component:777856/11" prefix="J" uservalue="yes" library_version="32">
 <description>
     &lt;h3&gt;Multi connection point. Often used as Generic Header-pin footprint for 0.1 inch spaced/style header connections&lt;/h3&gt;
 
@@ -1035,7 +1050,7 @@ CONN_02
 </device>
 </devices>
 </deviceset>
-<deviceset name="CONN_05X2" urn="urn:adsk.eagle:component:793479/5" prefix="J" uservalue="yes" library_version="28">
+<deviceset name="CONN_05X2" urn="urn:adsk.eagle:component:793479/5" prefix="J" uservalue="yes" library_version="32">
 <description>&lt;h3&gt;Multi connection point. Often used as Generic Header-pin footprint for 0.1 inch spaced/style header connections&lt;/h3&gt;
 
 &lt;p&gt;&lt;/p&gt;
@@ -1092,7 +1107,7 @@ CONN_02
 </device>
 </devices>
 </deviceset>
-<deviceset name="LED" urn="urn:adsk.eagle:component:760796/15" prefix="D" uservalue="yes" library_version="28">
+<deviceset name="LED" urn="urn:adsk.eagle:component:760796/15" prefix="D" uservalue="yes" library_version="32">
 <description>&lt;b&gt;LED (Generic)&lt;/b&gt;
 &lt;p&gt;Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LEDs. Generic LEDs with no color specified.&lt;/p&gt;</description>
 <gates>
@@ -13423,7 +13438,7 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 </classes>
 <parts>
 <part name="U$1" library="KARIBOUS" library_urn="urn:adsk.eagle:library:1283574" deviceset="DRV8825" device="" package3d_urn="urn:adsk.eagle:package:1283583/2"/>
-<part name="J2" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02" device="7A-C" package3d_urn="urn:adsk.eagle:package:1585093/1"/>
+<part name="J2" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02" device="7A-C" package3d_urn="urn:adsk.eagle:package:1585093/2"/>
 <part name="J3" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_04" device="POLAR" package3d_urn="urn:adsk.eagle:package:777852/5"/>
 <part name="J4" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_05X2" device="SHD" package3d_urn="urn:adsk.eagle:package:793478/2"/>
 <part name="D1" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:760790/2"/>

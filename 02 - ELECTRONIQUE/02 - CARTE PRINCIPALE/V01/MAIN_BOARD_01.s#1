@@ -17788,6 +17788,54 @@ DIN A5, landscape with doc field</description>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,71.12,121.92,U$2,3\,3V,+3V3/1,,,"/>
+<approved hash="104,3,68.58,73.66,U$3,VIN1,VIN/BATT,,,"/>
+<approved hash="104,3,96.52,68.58,U$3,VOUT3,+5V/3,,,"/>
+<approved hash="104,3,96.52,71.12,U$3,VOUT2,+5V/2,,,"/>
+<approved hash="104,3,96.52,73.66,U$3,VOUT1,+5V/1,,,"/>
+<approved hash="204,3,96.52,63.5,U$3,ADJ,,,,"/>
+<approved hash="204,1,177.8,101.6,U$1,AGND,,,,"/>
+<approved hash="204,1,177.8,119.38,U$1,3.3V,,,,"/>
+<approved hash="104,1,177.8,121.92,U$1,VIN,+5V/2,,,"/>
+<approved hash="106,1,93.98,38.1,CON3-5,,,,,"/>
+<approved hash="106,1,93.98,40.64,CON3-6,,,,,"/>
+<approved hash="113,1,27.94,36.9926,J1,,,,,"/>
+<approved hash="113,1,147.32,34.1274,J7,,,,,"/>
+<approved hash="113,2,76.2,39.5326,J10,,,,,"/>
+<approved hash="113,3,105.59,106.68,R7,,,,,"/>
+<approved hash="113,3,113.21,106.68,R8,,,,,"/>
+<approved hash="113,3,120.83,106.68,R9,,,,,"/>
+<approved hash="113,3,59.8703,66.04,R10,,,,,"/>
+<approved hash="113,2,44.6303,45.72,R1,,,,,"/>
+<approved hash="113,3,107.002,95.25,LED1,,,,,"/>
+<approved hash="113,3,114.622,95.25,LED2,,,,,"/>
+<approved hash="113,3,122.242,95.25,LED3,,,,,"/>
+<approved hash="113,3,61.2817,54.61,LED4,,,,,"/>
+<approved hash="113,2,91.971,66.571,FRAME2,,,,,"/>
+<approved hash="113,2,29.8027,91.6026,EQUIPE,,,,,"/>
+<approved hash="113,2,29.8027,73.8226,DETECTION,,,,,"/>
+<approved hash="113,2,60.2827,91.6026,STRATEGIE,,,,,"/>
+<approved hash="113,2,62.1104,73.8226,INIT/RECALAGE,,,,,"/>
+<approved hash="113,2,29.8027,109.383,TIRETTE,,,,,"/>
+<approved hash="113,2,104.892,110.147,BORDURE_1,,,,,"/>
+<approved hash="113,2,104.892,99.9871,BORDURE_2,,,,,"/>
+<approved hash="113,2,104.892,89.8271,BORDURE_3,,,,,"/>
+<approved hash="113,2,104.892,79.6671,BORDURE_4,,,,,"/>
+<approved hash="113,2,104.234,66.9671,ADVERSAIRE_1,,,,,"/>
+<approved hash="113,2,104.234,56.8071,ADVERSAIRE_2,,,,,"/>
+<approved hash="113,2,142.731,66.9671,ORIENTATION,,,,,"/>
+<approved hash="113,2,146.643,112.045,ENC_GAUCHE,,,,,"/>
+<approved hash="113,2,146.643,94.2653,ENC_DROIT,,,,,"/>
+<approved hash="113,1,27.94,14.1326,J2,,,,,"/>
+<approved hash="113,1,86.36,36.9926,J3,,,,,"/>
+<approved hash="113,1,86.36,14.1326,J4,,,,,"/>
+<approved hash="113,2,144.103,51.0853,COM-XBEE,,,,,"/>
+<approved hash="113,3,144.103,96.6826,ALIM_OUT1,,,,,"/>
+<approved hash="113,2,60.2827,117.125,COM-I2C,,,,,"/>
+<approved hash="113,2,80.1903,114.3,R3,,,,,"/>
+<approved hash="113,2,85.2703,114.3,R4,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>

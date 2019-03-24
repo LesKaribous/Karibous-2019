@@ -272,9 +272,9 @@
 <text x="-1.27" y="3.302" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="-1.27" y="-2.794" size="0.6096" layer="27" font="vector" ratio="20" align="top-left">&gt;VALUE</text>
 </package>
-<package name="NSK396-2C" urn="urn:adsk.eagle:footprint:1585092/1" library_version="31">
-<pad name="P$1" x="-1.98" y="0" drill="1" diameter="2.54" shape="long" rot="R90"/>
-<pad name="P$2" x="1.98" y="0" drill="1" diameter="2.54" shape="long" rot="R90"/>
+<package name="NSK396-2C" urn="urn:adsk.eagle:footprint:1585092/2" library_version="32">
+<pad name="P$1" x="-1.98" y="0" drill="1.6" diameter="2.54" shape="long" rot="R90"/>
+<pad name="P$2" x="1.98" y="0" drill="1.6" diameter="2.54" shape="long" rot="R90"/>
 <wire x1="-4" y1="3.5" x2="-3" y2="3.5" width="0.127" layer="21"/>
 <wire x1="-3" y1="3.5" x2="-3" y2="4" width="0.127" layer="21"/>
 <wire x1="-3" y1="4" x2="-2.5" y2="4" width="0.127" layer="21"/>
@@ -405,7 +405,7 @@ CONN_02
 <packageinstance name="MOLEX-1X2"/>
 </packageinstances>
 </package3d>
-<package3d name="NSK396-2C" urn="urn:adsk.eagle:package:1585093/1" type="box" library_version="31">
+<package3d name="NSK396-2C" urn="urn:adsk.eagle:package:1585093/2" type="box" library_version="32">
 <packageinstances>
 <packageinstance name="NSK396-2C"/>
 </packageinstances>
@@ -513,7 +513,7 @@ CONN_02
 </device>
 </devices>
 </deviceset>
-<deviceset name="CONN_02" urn="urn:adsk.eagle:component:777853/12" prefix="J" uservalue="yes" library_version="31">
+<deviceset name="CONN_02" urn="urn:adsk.eagle:component:777853/13" prefix="J" uservalue="yes" library_version="32">
 <description>
     &lt;h3&gt;Multi connection point. Often used as Generic Header-pin footprint for 0.1 inch spaced/style header connections&lt;/h3&gt;
 
@@ -626,7 +626,7 @@ CONN_02
 <connect gate="G$1" pin="2" pad="P$2"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:1585093/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:1585093/2"/>
 </package3dinstances>
 <technologies>
 <technology name=""/>
@@ -634,7 +634,7 @@ CONN_02
 </device>
 </devices>
 </deviceset>
-<deviceset name="CONN_02_PUI" urn="urn:adsk.eagle:component:3504849/2" library_version="31">
+<deviceset name="CONN_02_PUI" urn="urn:adsk.eagle:component:3504849/3" library_version="32">
 <gates>
 <gate name="G$1" symbol="CONN_02_PUI" x="2.54" y="0"/>
 </gates>
@@ -645,7 +645,7 @@ CONN_02
 <connect gate="G$1" pin="V+/VCC" pad="P$2"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:1585093/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:1585093/2"/>
 </package3dinstances>
 <technologies>
 <technology name=""/>
@@ -5398,8 +5398,8 @@ general purpose rectifier, 1 A</description>
 <part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/2V" package3d_urn="urn:adsk.eagle:package:23490/1"/>
 <part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/2V" package3d_urn="urn:adsk.eagle:package:23490/1"/>
 <part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/2V" package3d_urn="urn:adsk.eagle:package:23490/1"/>
-<part name="U$3" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02_PUI" device="" package3d_urn="urn:adsk.eagle:package:1585093/1"/>
-<part name="U$4" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02_PUI" device="" package3d_urn="urn:adsk.eagle:package:1585093/1"/>
+<part name="U$3" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02_PUI" device="" package3d_urn="urn:adsk.eagle:package:1585093/2"/>
+<part name="U$4" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02_PUI" device="" package3d_urn="urn:adsk.eagle:package:1585093/2"/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -5408,7 +5408,7 @@ general purpose rectifier, 1 A</description>
 <part name="BATTERIE" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+24V" device=""/>
 <part name="BATTERIE1" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+24V" device=""/>
 <part name="BATTERIE2" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+24V" device=""/>
-<part name="U$5" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02_PUI" device="" package3d_urn="urn:adsk.eagle:package:1585093/1"/>
+<part name="U$5" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02_PUI" device="" package3d_urn="urn:adsk.eagle:package:1585093/2"/>
 <part name="GND10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="BATTERIE3" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+24V" device=""/>
 <part name="BATTERIE4" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+24V" device=""/>
@@ -5416,9 +5416,10 @@ general purpose rectifier, 1 A</description>
 <part name="GND11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="BATTERIE6" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+24V" device=""/>
 <part name="D4" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="1N4004" device="" package3d_urn="urn:adsk.eagle:package:43336/1" value="1N4007"/>
-<part name="U$1" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02_PUI" device="" package3d_urn="urn:adsk.eagle:package:1585093/1"/>
+<part name="U$1" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02_PUI" device="" package3d_urn="urn:adsk.eagle:package:1585093/2"/>
 <part name="GND12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="BATTERIE5" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+24V" device=""/>
+<part name="U$2" library="OPENBOT" library_urn="urn:adsk.eagle:library:760642" deviceset="CONN_02_PUI" device="" package3d_urn="urn:adsk.eagle:package:1585093/2"/>
 </parts>
 <sheets>
 <sheet>
@@ -5543,6 +5544,9 @@ general purpose rectifier, 1 A</description>
 <instance part="BATTERIE5" gate="+24V" x="63.5" y="33.02" smashed="yes" rot="R270">
 <attribute name="VALUE" x="66.675" y="35.56" size="1.778" layer="96" rot="R270"/>
 </instance>
+<instance part="U$2" gate="G$1" x="66.04" y="71.12" smashed="yes" rot="R180">
+<attribute name="NAME" x="68.58" y="68.58" size="1.778" layer="95" rot="R180"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -5605,9 +5609,10 @@ general purpose rectifier, 1 A</description>
 <wire x1="55.88" y1="15.24" x2="55.88" y2="12.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="73.66" y1="68.58" x2="88.9" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="88.9" y1="68.58" x2="88.9" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="70.485" y1="71.12" x2="88.9" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="71.12" x2="88.9" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="GND11" gate="1" pin="GND"/>
+<pinref part="U$2" gate="G$1" pin="V+/VCC"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="V+/VCC"/>
@@ -5727,12 +5732,13 @@ general purpose rectifier, 1 A</description>
 <segment>
 <pinref part="K2" gate="1" pin="2"/>
 <wire x1="88.9" y1="76.2" x2="88.9" y2="73.66" width="0.1524" layer="91"/>
-<wire x1="88.9" y1="73.66" x2="73.66" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="73.66" x2="70.485" y2="73.66" width="0.1524" layer="91"/>
 <label x="73.66" y="73.66" size="1.778" layer="95"/>
 <pinref part="D4" gate="1" pin="A"/>
 <wire x1="81.28" y1="78.74" x2="81.28" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="76.2" x2="88.9" y2="76.2" width="0.1524" layer="91"/>
 <junction x="88.9" y="76.2"/>
+<pinref part="U$2" gate="G$1" pin="GND/COM"/>
 </segment>
 </net>
 </nets>
