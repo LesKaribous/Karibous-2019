@@ -9,6 +9,8 @@ void setup()
   Serial.begin(9600);     //Demarrage d'un liaison série pour le debug
   Wire.begin();           //Demarrage de la liaison I2C
 
+  delay(500);             //Pause de demarrage avant lancement
+
   u8g2.begin();           //Init du LCD
   u8g2_splash_screen();   //Affichage du Logo des Karibous
   delay(1000);            //Attente affichage logo
@@ -136,14 +138,33 @@ void initRobot()
   // delay(500);
   //-------Checklist-------
   // A FINIR !
-  u8g2.setFont(u8g2_font_fub14_tf);
   for(int i=0;i<6;i++)
   {
-    u8g2.clearBuffer();
-    u8g2.drawStr( 10, 2, list[i]);
-    u8g2.sendBuffer();
-    delay(500);
-    while(analogRead(pinCheck)>10){}  //Attente d'appui sur le bouton check
+    int x = 128;    //On commence le texte à droite
+    do
+    {
+      u8g2.clearBuffer();
+
+      u8g2.drawBox(22,0,2,33);          //Ligne de séparation numéro
+      for(int j=0;j<=128;j=j+4) u8g2.drawBox(j,40,2,1);          //Ligne de séparation texte - tirets
+
+      u8g2.setFont(u8g2_font_logisoso32_tn); //Changer la font pour le numero
+      u8g2.setCursor(0,0);
+      u8g2.print(i+1);                        //Afficher le numero de l'action
+
+      u8g2.setFont(u8g2_font_courB08_tf);       //Changer la font pour la description
+      u8g2.drawStr(28, 0, "Action :");     //Afficher le titre de l'action
+
+      u8g2.setFont(u8g2_font_logisoso22_tf);       //Changer la font pour la description
+      u8g2.drawStr(25, 10, titreList[i]);     //Afficher le titre de l'action
+
+      u8g2.setFont(u8g2_font_courB08_tf);  //Changer la font pour la description
+      u8g2.drawStr(x, 48, list[i]);           //Afficher l'action
+
+      u8g2.sendBuffer();
+      delay(100);
+      x -= 10 ;                               //Scrolling
+    } while(analogRead(pinCheck)>10);
   }
 }
 

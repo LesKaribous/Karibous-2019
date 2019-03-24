@@ -17,8 +17,8 @@ void setup()
   digitalWrite(pinM0, LOW);
   digitalWrite(pinM1, HIGH);
   digitalWrite(pinM2, LOW);
-  //Demarrage des drivers
-  digitalWrite(pinSleep, HIGH);
+  //Pause des drivers avant le premier mouvement
+  digitalWrite(pinSleep, LOW);
 
 	//------Initialisation des communications------
 	Serial.begin(9600);

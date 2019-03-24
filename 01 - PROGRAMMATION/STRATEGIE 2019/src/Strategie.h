@@ -84,13 +84,21 @@ const int pinCheck = A22;       //Pin bouton checklist
 bool tirette = false , detection = false , strategie = false , check = false ;
 
 // Liste d'action de la check list:
+char* titreList[6] = {
+                  "Robot",
+                  "Experi.",
+                  "Palets",
+                  "Table",
+                  "Balise",
+                  "GO !"};
+// Liste d'action de la check list:
 char* list[6] = {
-                  "1-Installer le robot secondaire",
-                  "2-Installer l'experience' ",
-                  "3-Vérifier les palets",
-                  "4-Nettoyer la table",
-                  "5-Poser la balise adversaire",
-                  "6-Bon match !"};
+                  "Installer le robot secondaire ",
+                  "Installer l'experience        ",
+                  "Verifier les palets           ",
+                  "Nettoyer la table             ",
+                  "Poser la balise adversaire    ",
+                  "Bon match !                   "};
 
 // Declaration de l'ecran
 U8G2_ST7920_128X64_F_SW_SPI u8g2(U8G2_R0,13,11,12,U8X8_PIN_NONE);
