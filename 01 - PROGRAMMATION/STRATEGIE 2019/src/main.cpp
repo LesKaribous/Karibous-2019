@@ -96,25 +96,39 @@ void u8g2_splash_screen_GO() {
 }
 
 void u8g2_menu_avant_match() {
+  const int ligneDebut = 10;
+  const int colonne1 = 14;
+  const int colonne2 = 70;
+
   u8g2.clearBuffer();
   u8g2_prepare();
-    u8g2.setFont(u8g2_font_4x6_tf);
-    // Etat equipe :
-      u8g2.drawStr( 0, 10, "Equipe :");
-      if ( equipe == jaune ) u8g2.drawStr( 40, 10, "JAUNE");
-      else u8g2.drawStr( 40, 10, "VIOLET");
-    // Etat detection:
-      u8g2.drawStr( 0, 20, "Detection :");
-      if ( detection ) u8g2.drawStr( 50, 20, "OUI");
-      else u8g2.drawStr( 50, 20, "NON ATTENTION");
-    // Etat strategie :
-      u8g2.drawStr( 0, 30, "Strategie :");
-      if ( strategie ) u8g2.drawStr( 40, 30, "PRIMAIRE");
-      else u8g2.drawStr( 40, 30, "SECONDAIRE");
-    // Etat tirette :
-      u8g2.drawStr( 0, 40, "Etat tirette :");
-      if ( tirette ) u8g2.drawStr( 60, 40, "Attente tirette");
-      else u8g2.drawStr( 60, 40, "Tirette OK");
+
+  u8g2.setFont(u8g2_font_4x6_tf);
+  // Affichages des titres :
+  u8g2.drawStr( colonne1, ligneDebut,    "      EQUIPE");
+  u8g2.drawStr( colonne1, ligneDebut+10, "   DETECTION");
+  u8g2.drawStr( colonne1, ligneDebut+20, "   STRATEGIE");
+  u8g2.drawStr( colonne1, ligneDebut+30, "ETAT TIRETTE");
+  // Ligne de séparation
+  u8g2.drawBox(colonne2-4,ligneDebut,1,ligneDebut+27);
+
+  // Etat equipe :
+  u8g2.setCursor(colonne2,ligneDebut);
+  if ( equipe == jaune ) u8g2.print("JAUNE");
+  else u8g2.print("VIOLET");
+  // Etat detection:
+  u8g2.setCursor(colonne2,ligneDebut+10);
+  if ( detection ) u8g2.print("OUI");
+  else u8g2.print("NON ATTENTION");
+  // Etat strategie :
+  u8g2.setCursor(colonne2,ligneDebut+20);
+  if ( strategie ) u8g2.print("PRIMAIRE");
+  else u8g2.print("SECONDAIRE");
+  // Etat tirette :
+  u8g2.setCursor(colonne2,ligneDebut+30);
+  if ( tirette ) u8g2.print("ATTENTE");
+  else u8g2.print("OK");
+
   u8g2.sendBuffer();
 }
 
