@@ -6,6 +6,24 @@ void setup()
   pinMode(pinDetection,INPUT_PULLUP);
   pinMode(pinStrategie,INPUT_PULLUP);
 
+  pinMode(pinPompeGauche,OUTPUT);
+  digitalWrite(pinPompeGauche,HIGH);
+
+  pinMode(pinEVGauche,OUTPUT);
+  digitalWrite(pinEVGauche,HIGH);
+
+  pinMode(pinPompeDroit,OUTPUT);
+  digitalWrite(pinPompeDroit,HIGH);
+
+  pinMode(pinEVDroit,OUTPUT);
+  digitalWrite(pinEVDroit,HIGH);
+
+  pinMode(pinPompeAvant,OUTPUT);
+  digitalWrite(pinPompeAvant,HIGH);
+
+  pinMode(pinEVAvant,OUTPUT);
+  digitalWrite(pinEVAvant,HIGH);
+
   Serial.begin(9600);     //Demarrage d'un liaison série pour le debug
   Wire.begin();           //Demarrage de la liaison I2C
 
@@ -14,6 +32,15 @@ void setup()
   u8g2.begin();           //Init du LCD
   u8g2_splash_screen();   //Affichage du Logo des Karibous
   delay(1000);            //Attente affichage logo
+
+  //Initialisation des actionneurs
+  servoBalise.attach(pinServoBalise);
+  servoBalise.write(150);
+  delay(800);
+  servoBalise.write(50);
+  delay(800);
+  servoBalise.write(95);
+  initActionneur();
 
   // Gestion tirette
   while (digitalRead(pinTirette))
@@ -37,29 +64,212 @@ void setup()
 
 void loop()
 {
-  testDeplacement();
+  if (strategie == primaire)
+  {
+    testDeplacement();
+  }
+  else
+  {
+    homologationSecondaire();
+  }
+}
+
+//----------------INIT ACTIONNEUR-------------
+void initActionneur()
+{
+  // Initialisation des actionneurs en fonction de la stratégie du type de robot
+  // Si la stratégie a été changée, modifier les actionneurs
+
+  if (changeStrat)
+  {
+    changeStrat == false ;
+    // Detacher les servos par securité
+    servoGauche.detach();
+    servoDroit.detach();
+    servoBrasDroit.detach();
+    servoBrasGauche.detach();
+    servoAvant.detach();
+
+    if (strategie == primaire)
+    {
+      // Si strategie pour le robot primaire selectionné :
+      servoGauche.attach(pinServoGauche);
+      servoDroit.attach(pinServoDroit);
+      servoGauche.write(sgHaut);
+      servoDroit.write(sdHaut);
+      delay(1500);
+      servoGauche.write(sgBas);
+      servoDroit.write(sdBas);
+      delay(1500);
+      servoGauche.write(sgHaut);
+      servoDroit.write(sdHaut);
+      digitalWrite(pinPompeGauche,HIGH);
+      digitalWrite(pinPompeDroit,HIGH);
+    }
+    else
+    {
+      // Si strategie pour le robot secondaire selectionné :
+      servoBrasGauche.attach(pinServoBrasGauche);
+      servoBrasDroit.attach(pinServoBrasDroit);
+      servoAvant.attach(pinServoAvant);
+      servoBrasGauche.write(sgBas_bras);
+      servoBrasDroit.write(sdBas_bras);
+      servoAvant.write(avBas);
+      digitalWrite(pinPompeAvant,LOW);
+      delay(2000);
+      digitalWrite(pinEVAvant,LOW);
+      servoBrasGauche.write(sgHaut_bras);
+      servoBrasDroit.write(sdHaut_bras);
+      servoAvant.write(avHaut);
+      digitalWrite(pinPompeAvant,HIGH);
+      digitalWrite(pinEVAvant,HIGH);
+    }
+  }
 }
 
 //----------------GESTION DES BOUTTONS DE L'IHM----------------
 void bouttonIHM()
 {
   detection = digitalRead(pinDetection) ;
-  strategie = digitalRead(pinStrategie) ;
   tirette   = digitalRead(pinTirette)   ;
 
-  if(analogRead(pinEquipe)>10) equipe = true ;
-  else equipe = false ;
+  bool temp = digitalRead(pinStrategie) ;
+  if (temp != strategie)
+  {
+    strategie = temp ;
+    changeStrat = true;
+    initActionneur();
+  }
 
-  if(analogRead(pinCheck)>10) check = true ;
+  if(analogRead(pinEquipe)>10) equipe = false ;
+  else equipe = true ;
+
+  if(analogRead(pinCheck)>10)
+  {
+    delay(250);
+    if(analogRead(pinCheck)>10) check = true ;
+  }
   else check = false ;
 
   if(!check) initRobot();
 }
 
 //----------------STRATEGIES----------------
+void testLigneDroite()
+{
+  turnGo(non,false,false,0,600);
+  delay(500);
+  turnGo(non,false,false,0,-600);
+  delay(500);
+  turnGo(non,false,false,0,600);
+  delay(500);
+  turnGo(non,false,false,180,600);
+  delay(500);
+  turnGo(non,false,false,-180,0);
+  delay(500);
+  finMatch();
+}
+
 void testDeplacement()
 {
-  turnGo(non,0,false,45,600);
+  turnGo(oui,false,true,0,575);
+  turnGo(oui,false,true,90,780);
+  //Ventousage palets
+  servoGauche.write(sgHaut-10);
+  servoDroit.write(sdHaut+10);
+  digitalWrite(pinPompeGauche,LOW);
+  digitalWrite(pinPompeDroit,LOW);
+  delay(800);
+  //Retour sur la case bleu
+  turnGo(non,false,true,0,-1000);
+  turnGo(non,false,true,90,600);
+  //Depose palets
+  servoGauche.write(sgBas);
+  servoDroit.write(sdBas);
+  delay(500);
+  digitalWrite(pinPompeGauche,HIGH);
+  digitalWrite(pinPompeDroit,HIGH);
+  digitalWrite(pinEVGauche,LOW);
+  digitalWrite(pinEVDroit,LOW);
+  delay(500);
+  digitalWrite(pinEVGauche,HIGH);
+  digitalWrite(pinEVDroit,HIGH);
+  servoGauche.write(sgHaut);
+  servoDroit.write(sdHaut);
+  //Recul
+  turnGo(non,false,true,0,-150);
+  turnGo(non,false,true,-90,0);
+  //turnGo(non,0,false,0,-600);
+  finMatch();
+}
+
+void homologationSecondaire()
+{
+  turnGo(oui,false,false,0,1250);
+  turnGo(oui,true,true,102,-200);
+  turnGo(oui,false,true,0,-20);
+  turnGo(oui,false,true,0,80);
+  //Ouverture Bras Gauche
+  turnGo(oui,false,true,-90,0);
+  if(equipe==jaune) servoBrasGauche.write(sgBas_bras);
+  else servoBrasDroit.write(sdBas_bras);
+  turnGo(oui,false,true,0,150);
+  if(equipe==jaune) servoBrasGauche.write(sgHaut_bras);
+  else servoBrasDroit.write(sdHaut_bras);
+  servoAvant.write(avHaut-5);
+  turnGo(oui,false,true,0,530);
+  digitalWrite(pinPompeAvant,LOW);
+  turnGo(oui,false,true,-90,100);
+  turnGo(oui,false,true,0,-100);
+  servoAvant.write(avHaut+5);
+  turnGo(oui,false,false,-100,1800);
+
+  servoAvant.write(avBas);
+  delay(1000);
+  digitalWrite(pinPompeAvant,HIGH);
+  digitalWrite(pinEVAvant,HIGH);
+  delay(1000);
+  servoAvant.write(avHaut);
+  digitalWrite(pinEVAvant,LOW);
+
+  finMatch();
+}
+
+void sequenceRecalage()
+{
+  bool recalage = true;
+  //Recalage
+  if (strategie == primaire)
+  {
+    turnGo(non,recalage,true,0,-250);
+    turnGo(non,false,true,0,-20);
+    turnGo(non,false,true,0,100);
+    delay(500);
+    turnGo(non,recalage,true,90,-1000);
+    turnGo(non,false,true,0,-20);
+    delay(500);
+    turnGo(non,false,true,0,650);
+    turnGo(non,recalage,true,-90,-250);
+    turnGo(non,false,true,0,-20);
+    turnGo(non,false,true,0,260);
+    //turnGo(non,0,false,0,-600);
+  }
+  else
+  {
+    turnGo(non,recalage,true,0,-250);
+    turnGo(non,false,true,0,-20);
+    turnGo(non,false,true,0,100);
+    delay(500);
+    turnGo(non,recalage,true,90,-1000);
+    turnGo(non,false,true,0,-20);
+    delay(500);
+    turnGo(non,false,true,0,350);
+    turnGo(non,recalage,true,-90,-250);
+    turnGo(non,false,true,0,-20);
+    turnGo(non,false,true,0,250);
+    turnGo(non,false,true,-12,0);
+    //turnGo(non,0,false,0,-600);
+  }
 }
 
 //----------------PROCEDURE D'ATTENTE----------------
@@ -69,7 +279,7 @@ void attente(int temps)
 	while( (millis()-initTemps) <= temps)
 	{
 		majTemps();
-		//u8g2_menu_pendant_match();
+		u8g2_menu_pendant_match();
 	}
 }
 
@@ -107,7 +317,7 @@ void u8g2_menu_avant_match() {
   // Affichages des titres :
   u8g2.drawStr( colonne1, ligneDebut,    "      EQUIPE");
   u8g2.drawStr( colonne1, ligneDebut+10, "   DETECTION");
-  u8g2.drawStr( colonne1, ligneDebut+20, "   STRATEGIE");
+  u8g2.drawStr( colonne1, ligneDebut+20, "       ROBOT");
   u8g2.drawStr( colonne1, ligneDebut+30, "ETAT TIRETTE");
   // Ligne de séparation
   u8g2.drawBox(colonne2-4,ligneDebut,1,ligneDebut+27);
@@ -118,11 +328,11 @@ void u8g2_menu_avant_match() {
   else u8g2.print("VIOLET");
   // Etat detection:
   u8g2.setCursor(colonne2,ligneDebut+10);
-  if ( detection ) u8g2.print("OUI");
+  if ( !detection ) u8g2.print("OUI");
   else u8g2.print("NON ATTENTION");
   // Etat strategie :
   u8g2.setCursor(colonne2,ligneDebut+20);
-  if ( strategie ) u8g2.print("PRIMAIRE");
+  if ( strategie == primaire ) u8g2.print("PRIMAIRE");
   else u8g2.print("SECONDAIRE");
   // Etat tirette :
   u8g2.setCursor(colonne2,ligneDebut+30);
@@ -130,6 +340,28 @@ void u8g2_menu_avant_match() {
   else u8g2.print("OK");
 
   u8g2.sendBuffer();
+}
+
+void u8g2_menu_pendant_match() {
+	u8g2.clearBuffer();
+	u8g2_prepare();
+  u8g2.setFont(u8g2_font_inr42_mn);
+  u8g2.setCursor(8, 9);
+  u8g2.print(score);
+  u8g2.setFont(u8g2_font_4x6_tf);
+  u8g2.drawStr( 0, 0, "Score:");
+  u8g2.drawStr( 68, 0, "Temps:      sec");
+  u8g2.setCursor(93, 0);
+  u8g2.print(tempsRestant);
+  u8g2.drawStr( 105, 57, "points");
+  u8g2.drawStr( 0, 57, "NOK:");
+  u8g2.setCursor(20, 57);
+  u8g2.print(nbrBadCRC);
+	u8g2.sendBuffer();
+}
+
+void majScore(int points, int multiplicateur){
+	score = score + (points*multiplicateur);
 }
 
 //----------------INITIALISATION DU ROBOT----------------
@@ -142,14 +374,7 @@ void initRobot()
   u8g2.sendBuffer();
   delay(1000);
   //-------Recalage bordure-------
-  // turnGo(non,0,true,-90,-370);
-  // delay(500);
-  // turnGo(non,0,true,0,320);
-  // delay(500);
-  // turnGo(non,0,true,90,-110);
-  // delay(500);
-  // turnGo(non,0,true,0,70);
-  // delay(500);
+  sequenceRecalage();
   //-------Checklist-------
   // A FINIR !
   for(int i=0;i<6;i++)
@@ -179,6 +404,7 @@ void initRobot()
       delay(100);
       x -= 10 ;                               //Scrolling
     } while(analogRead(pinCheck)>10);
+    delay(1000);
   }
 }
 
@@ -231,7 +457,7 @@ void sendNavigation(byte fonction, int X, int Y, int rot)
 //----------------ENVOI UNE COMMANDE DE DEPLACEMENT RELATIF----------------
 void sendNavigation(byte fonction, int rot, int dist)
 {
-	if ( equipe == jaune ) rot = -rot ;
+	if ( equipe == violet ) rot = -rot ;
 	// Stockage des valeurs à envoyer dans le buffer
 	bufNavRelatif[0]=fonction;
 	bufNavRelatif[1]=rot >> 8;

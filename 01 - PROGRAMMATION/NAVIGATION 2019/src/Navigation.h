@@ -104,15 +104,15 @@ bool etatLastRot = false;
 
 int16_t targetRot = 0;
 
-const float FacteurX= 1.09; //Ancien : 154.8
+const float FacteurX= 1.03; //Ancien : 154.8
 const float FacteurDroit = 8.0; //Ancien : 154.8
 const float FacteurGauche = 8.0; //Ancien : 154.8
-const float FacteurRot = 4.25; //Ancien : 19.64
+const float FacteurRot = 3.640; // Secondaire : 3.655 | Primaire : 3.600
 
-const float VitesseMaxDroite = 6000.0; //Ancien : 3000 11/05/2018
-const float VitesseMaxGauche = 6000.0; //Ancien : 3000 11/05/2018
-const float VitesseMinDroite = 4000.0; //Ancien : 4000 23/06/2018
-const float VitesseMinGauche = 4000.0; //Ancien : 4000 23/06/2018
+const float VitesseMaxDroite = 4000.0; //Ancien : 3000 11/05/2018
+const float VitesseMaxGauche = 4000.0; //Ancien : 3000 11/05/2018
+const float VitesseMinDroite = 2000.0; //Ancien : 4000 23/06/2018
+const float VitesseMinGauche = 2000.0; //Ancien : 4000 23/06/2018
 const float AccelRot = 2500.0; //Ancien : 2000
 const float AccelMin = 3000.0; //Ancien : 2000
 const float AccelMax = 5000.0; //Ancien : 5000
@@ -120,7 +120,7 @@ const float AccelStop = 4000.0; //Ancien : 8000
 
 byte BORDURE = 0 ;
 // AV_DROIT , AV_GAUCHE , AR_DROIT , AR_GAUCHE
-//int PIN_BORDURE[4] = {20,17,16,21};
+int PIN_BORDURE[4] = {13,14,15,16};
 void debug();
 
 void updatePos();

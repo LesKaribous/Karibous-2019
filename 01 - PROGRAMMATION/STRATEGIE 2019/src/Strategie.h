@@ -3,6 +3,7 @@
 #include <U8g2lib.h>
 #include <SPI.h>
 #include <FastCRC.h>
+#include <Servo.h>
 
 // Points pour chaque action
 
@@ -14,6 +15,9 @@
 // Couleur Equipe
 #define jaune 1
 #define violet 0
+// Strategie
+#define primaire 1
+#define secondaire 0
 // Autres
 #define tempsMatch 99000
 //Etat de la position demandée
@@ -74,14 +78,61 @@ static unsigned char LOGO_KARIBOUS_bits[] = {
 
 
 // Declaration des pins IHM
-const int pinTirette = 39 ;     //Pin tirette
-const int pinDetection = 37 ;   //Pin activation de la detection
-const int pinStrategie = 38 ;   //Pin choix de strategie
-const int pinEquipe = A21;      //Pin choix d'équipe
-const int pinCheck = A22;       //Pin bouton checklist
+const int pinTirette = 39 ;         // Pin tirette
+const int pinDetection = 37 ;       // Pin activation de la detection
+const int pinStrategie = 38 ;       // Pin choix de strategie
+const int pinEquipe = A21;          // Pin choix d'équipe
+const int pinCheck = A22;           // Pin bouton checklist
+
+// Declaration des pins E/S
+const int pinServoGauche = 14 ;     // Pin Servo en bas à gauche
+const int pinPompeGauche = 22 ;     // Pin de la pompe gauche
+const int pinEVGauche = 23 ;        // Pin de l'EV gauche
+
+const int pinServoDroit = 15 ;      // Pin Servo en bas à droit
+const int pinPompeDroit = 21 ;      // Pin de la pompe droite
+const int pinEVDroit = 20 ;         // Pin de l'EV Droite
+
+const int pinServoBalise = 16 ;     // Pin servo Balise
+
+const int pinServoBrasDroit = 14 ;      // Pin Servo bras droit
+const int pinServoBrasGauche = 15 ;     // Pin Servo bras gauche
+
+const int pinServoAvant = 17 ;      // Pin servo avant robot secondaire
+const int pinPompeAvant = 22 ;      // Pin de la pompe avant sur robot secondaire
+const int pinEVAvant = 23 ;         // Pin de l'EV avant sur robot secondaire
+
+// Declaration des servomoteurs
+Servo servoGauche;
+Servo servoDroit;
+
+Servo servoBrasDroit;
+Servo servoBrasGauche;
+
+Servo servoAvant;
+
+Servo servoBalise;
+
+// Declaration des positions servo
+// Bras ventouse
+const int sgHaut = 105;
+const int sgBas = 10;
+
+const int sdHaut = 40;
+const int sdBas = 140;
+
+const int avHaut = 160;
+const int avBas = 80;
+
+// Bras lateraux
+const int sgHaut_bras = 50;
+const int sgBas_bras = 155;
+
+const int sdHaut_bras = 130;
+const int sdBas_bras = 20;
 
 // Declaration des variables IHM
-bool tirette = false , detection = false , strategie = false , check = false ;
+bool tirette = false , detection = false , strategie = false , check = false , changeStrat = true ;
 
 // Liste d'action de la check list:
 char* titreList[6] = {
@@ -116,6 +167,8 @@ byte crcNavAbsolu = 0 ; // CRC de controle pour les ordres de navigation absolus
 bool equipe = violet ;
 byte optionNavigation = 0;
 
+int score = 0;
+
 double tempsRestant = tempsMatch;
 double timeInit=0;
 
@@ -127,9 +180,13 @@ void bouttonIHM();
 
 //INITIALISATION ROBOT----------------
 void initRobot();
+void initActionneur();
+void sequenceRecalage();
 
 //TEST DE DEPLACEMENT----------------
+void testLigneDroite();
 void testDeplacement();
+void homologationSecondaire();
 
 //DEMANDE L'ETAT DU DEPLACEMENT----------------
 int askNavigation();
@@ -162,3 +219,5 @@ void u8g2_menu_pendant_match();
 void u8g2_menu_avant_match();
 
 void u8g2_splash_screen_GO();
+
+void majScore(int points, int multiplicateur);

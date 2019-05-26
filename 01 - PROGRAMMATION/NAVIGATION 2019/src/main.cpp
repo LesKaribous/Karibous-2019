@@ -12,6 +12,11 @@ void setup()
   pinMode(adversaireAvant, INPUT_PULLUP)	;
   pinMode(adversaireArriere, INPUT_PULLUP);
 
+	for (int i=0;i<4;i++)
+	{
+		pinMode(PIN_BORDURE[i], INPUT_PULLUP)	;
+	}
+
   //------Initilisation des I/O------
   //Passage en mode 1/4 de pas
   digitalWrite(pinM0, LOW);
@@ -37,8 +42,9 @@ void setup()
 void loop()
 {
   //------Actualisation des moteurs------
-	MGauche.run();
 	MDroit.run();
+	MGauche.run();
+
 
   //------Affichage du debug------
   //debug();
@@ -183,8 +189,8 @@ void turnGo()
   	        MDroit.setAcceleration(AccelMax);
   		}
 
-        MDroit.move(NewX*FacteurDroit);
-        MGauche.move(-(NewX*FacteurGauche));
+        MDroit.move(-(NewX*FacteurDroit));
+        MGauche.move(NewX*FacteurGauche);
         etatAvance = EN_COURS ;
     }
     if (etatAvance == EN_COURS && optionRecalage)
@@ -201,7 +207,7 @@ void turnGo()
     if (MDroit.distanceToGo() == 0 && MGauche.distanceToGo() == 0 && etatAvance == EN_COURS)
     {
       etatAvance = FINI ;
-			digitalWrite(pinSleep, LOW);
+			//digitalWrite(pinSleep, LOW);
     }
   }
 }
@@ -238,12 +244,12 @@ void recalage()
 
 void bordure()
 {
-	// for(int i = 0;i<4;i++)
-	// {
-	// 	bitWrite(BORDURE,i,digitalRead(PIN_BORDURE[i]));
-	// }
-	// //Serial.println(BORDURE,BIN);
-	// //delay(200);
+	 for(int i = 0;i<4;i++)
+	 {
+	 	bitWrite(BORDURE,i,digitalRead(PIN_BORDURE[i]));
+	 }
+	 //Serial.println(BORDURE,BIN);
+	 //delay(200);
 
 }
 
