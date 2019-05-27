@@ -127,31 +127,31 @@ float AccelStop = 4000.0; //Ancien : 8000
 const float secondaireFacteurX= 1.03; //Ancien : 154.8
 const float secondaireFacteurDroit = 8.0; //Ancien : 154.8
 const float secondaireFacteurGauche = 8.0; //Ancien : 154.8
-const float secondaireFacteurRot = 3.655; // Ancien : 3.655
+const float secondaireFacteurRot = 13.359; // Ancien : 3.655
 
 const float secondaireVitesseMaxDroite = 4000.0; //Ancien : 3000 11/05/2018
 const float secondaireVitesseMaxGauche = 4000.0; //Ancien : 3000 11/05/2018
-const float secondaireVitesseMinDroite = 2000.0; //Ancien : 4000 23/06/2018
-const float secondaireVitesseMinGauche = 2000.0; //Ancien : 4000 23/06/2018
-const float secondaireAccelRot = 2500.0; //Ancien : 2000
-const float secondaireAccelMin = 3000.0; //Ancien : 2000
-const float secondaireAccelMax = 5000.0; //Ancien : 5000
-const float secondaireAccelStop = 4000.0; //Ancien : 8000
+const float secondaireVitesseMinDroite = 1500.0; //Ancien : 4000 23/06/2018
+const float secondaireVitesseMinGauche = 1500.0; //Ancien : 4000 23/06/2018
+const float secondaireAccelRot = 2000.0; //Ancien : 2000
+const float secondaireAccelMin = 2000.0; //Ancien : 2000
+const float secondaireAccelMax = 3000.0; //Ancien : 5000
+const float secondaireAccelStop = 6000.0; //Ancien : 8000
 
 // --PRIMAIRE--
 const float primaireFacteurX= 1.03; //Ancien : 154.8
 const float primaireFacteurDroit = 8.0; //Ancien : 154.8
 const float primaireFacteurGauche = 8.0; //Ancien : 154.8
-const float primaireFacteurRot = 3.640; // Ancien : 3.600
+const float primaireFacteurRot = 13.312; // Ancien : 3.600
 
-const float primaireVitesseMaxDroite = 4000.0; //Ancien : 3000 11/05/2018
-const float primaireVitesseMaxGauche = 4000.0; //Ancien : 3000 11/05/2018
-const float primaireVitesseMinDroite = 2000.0; //Ancien : 4000 23/06/2018
-const float primaireVitesseMinGauche = 2000.0; //Ancien : 4000 23/06/2018
-const float primaireAccelRot = 2500.0; //Ancien : 2000
-const float primaireAccelMin = 3000.0; //Ancien : 2000
-const float primaireAccelMax = 5000.0; //Ancien : 5000
-const float primaireAccelStop = 4000.0; //Ancien : 8000
+const float primaireVitesseMaxDroite = 3000.0; //Ancien : 3000 11/05/2018
+const float primaireVitesseMaxGauche = 3000.0; //Ancien : 3000 11/05/2018
+const float primaireVitesseMinDroite = 1500.0; //Ancien : 4000 23/06/2018
+const float primaireVitesseMinGauche = 1500.0; //Ancien : 4000 23/06/2018
+const float primaireAccelRot = 2000.0; //Ancien : 2000
+const float primaireAccelMin = 2000.0; //Ancien : 2000
+const float primaireAccelMax = 3000.0; //Ancien : 5000
+const float primaireAccelStop = 6000.0; //Ancien : 8000
 
 byte BORDURE = 0 ;
 // AV_DROIT , AV_GAUCHE , AR_DROIT , AR_GAUCHE

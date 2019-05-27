@@ -15,8 +15,8 @@
 #define EQUIPE_JAUNE 1
 #define EQUIPE_VIOLET 0
 // Strategie
-#define STRATEGIE_1 1
-#define STRATEGIE_2 0
+#define STRATEGIE_HOMOLOGATION 1
+#define STRATEGIE_MATCH 0
 // type de Robot
 #define ROBOT_PRIMAIRE 1
 #define ROBOT_SECONDAIRE 0
@@ -184,7 +184,7 @@ void sequenceRecalage();
 
 //TEST DE DEPLACEMENT----------------
 void testLigneDroite();
-void testDeplacement();
+void homologationPrimaire();
 void homologationSecondaire();
 
 //DEMANDE L'ETAT DU DEPLACEMENT----------------

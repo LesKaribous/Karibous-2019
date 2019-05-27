@@ -61,11 +61,13 @@ void loop()
 {
   if (typeRobot == ROBOT_PRIMAIRE)
   {
-    testDeplacement();
+    if (strategie == STRATEGIE_HOMOLOGATION) homologationPrimaire();
+    else testLigneDroite(); // Match
   }
   else
   {
-    homologationSecondaire();
+    if (strategie == STRATEGIE_HOMOLOGATION) homologationSecondaire();
+    else testLigneDroite(); // Match
   }
 }
 
@@ -151,12 +153,12 @@ void testLigneDroite()
   delay(500);
   turnGo(ADVERSAIRE_NON,false,false,180,600);
   delay(500);
-  turnGo(ADVERSAIRE_NON,false,false,-180,0);
+  turnGo(ADVERSAIRE_NON,false,false,180,0);
   delay(500);
   finMatch();
 }
 
-void testDeplacement()
+void homologationPrimaire()
 {
   turnGo(ADVERSAIRE_OUI,false,true,0,575);
   turnGo(ADVERSAIRE_OUI,false,true,90,780);
@@ -302,7 +304,7 @@ void u8g2_menu_avant_match() {
   u8g2.setFont(u8g2_font_4x6_tf);
   // Affichages des titres :
   u8g2.drawStr( colonne1, ligneDebut,    "      EQUIPE");
-  u8g2.drawStr( colonne1, ligneDebut+10, "   DETECTION");
+  u8g2.drawStr( colonne1, ligneDebut+10, "   EVITEMENT");
   u8g2.drawStr( colonne1, ligneDebut+20, "       ROBOT");
   u8g2.drawStr( colonne1, ligneDebut+30, "ETAT TIRETTE");
   u8g2.drawStr( colonne1, ligneDebut+40, "   STRATEGIE");
@@ -315,8 +317,8 @@ void u8g2_menu_avant_match() {
   else u8g2.print("VIOLET");
   // Etat detection:
   u8g2.setCursor(colonne2,ligneDebut+10);
-  if ( !detection ) u8g2.print("OUI");
-  else u8g2.print("NON ATTENTION");
+  if ( !detection ) u8g2.print("SIMPLE");
+  else u8g2.print("COMPLET");
   // Etat type de robot :
   u8g2.setCursor(colonne2,ligneDebut+20);
   if ( typeRobot == ROBOT_PRIMAIRE ) u8g2.print("PRIMAIRE");
@@ -327,8 +329,8 @@ void u8g2_menu_avant_match() {
   else u8g2.print("OK");
   // Etat strategie :
   u8g2.setCursor(colonne2,ligneDebut+40);
-  if ( strategie ) u8g2.print("STRATEGIE 1");
-  else u8g2.print("STRATEGIE 2");
+  if ( strategie ) u8g2.print("HOMOLOGATION");
+  else u8g2.print("MATCH");
 
   u8g2.sendBuffer();
 }

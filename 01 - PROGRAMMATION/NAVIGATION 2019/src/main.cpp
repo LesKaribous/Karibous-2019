@@ -203,8 +203,8 @@ void turnGo()
   			MGauche.setMaxSpeed(VitesseMaxGauche);
   	        MDroit.setMaxSpeed(VitesseMaxDroite);
   		}
-      MDroit.move(NewRot*FacteurRot);
-      MGauche.move(NewRot*FacteurRot);
+      MDroit.move(NewRot);
+      MGauche.move(NewRot);
       etatRotation = EN_COURS ;
     }
     if (MDroit.distanceToGo() == 0 && MGauche.distanceToGo() == 0 && etatRotation == EN_COURS)
