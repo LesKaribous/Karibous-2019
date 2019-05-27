@@ -9,39 +9,41 @@
 //Adresse I2C du module de navigation
 #define ADRESSE 60
 
-//Etat des d�placements
+// Etat des déplacements
 #define FINI 0
 #define EN_COURS 1
 #define PREVU 2
 
+// Type de ROBOT
+#define ROBOT_PRIMAIRE 1
+#define ROBOT_SECONDAIRE 0
 
-//Etat de la nouvelle position demand�e
+// Etat de la nouvelle position demand�e
 #define VALIDEE 0 // Nouvelle position valid�e et prise en compte
 #define DISPONIBLE 1 // Nouvelle position enregistr�e
 #define ERRONEE 2 // nouvelle position erron�e. CRC nok.
 
-
-
 const int16_t centerOffset[2] = {0, 0};
 
 //Variable Pin Moteur
-const int pinStep1=2;
-const int pinDir1=3;
+const int pinStep1 = 2;
+const int pinDir1 = 3;
 
-const int pinStep2=5;
-const int pinDir2=6;
+const int pinStep2 = 5;
+const int pinDir2 = 6;
 
-const int pinSleep=4;
+const int pinSleep = 4;
 
-const int pinM0=7;
-const int pinM1=0;
-const int pinM2=1;
+const int pinM0 = 7;
+const int pinM1 = 0;
+const int pinM2 = 1;
 
+// Pin du type de robot
+const int pinRobot = 17;
 
-
+// Declaration des objets AccelStepper
 AccelStepper MGauche(AccelStepper::DRIVER,pinStep1, pinDir1);
 AccelStepper MDroit(AccelStepper::DRIVER,pinStep2, pinDir2);
-
 
 //Variable I2C
 FastCRC8 CRC8;
@@ -49,8 +51,6 @@ byte bufNavRelatif[6]={0,0,0,0,0,0}; // Buffer de reception des ordres de naviga
 byte crcNavRelatif = 0; // CRC de controle des ordres de navigation relatifs
 byte bufNavAbsolu[8]={0,0,0,0,0,0,0,0}; // Buffer de reception des ordres de navigation relatifs + le CRC
 byte crcNavAbsolu = 0; // CRC de controle des ordres de navigation relatifs
-
-
 
 byte fonction ;
 int16_t relativeRequest[2] ; // rotation, distance
@@ -61,14 +61,14 @@ byte newPos = VALIDEE;
 
 // Declaration des broches d'ES pour les satellites
 // Broches analogiques :
-int ana_1 = A6 ; // 1 - pin 20 ou A6 - PWM
-int ana_2 = 21 ; // 2 - pin 21 ou A7 - PWM
-int ana_3 = 22 ; // 3 - pin 22 ou A8 - PWM
-int ana_4 = A9 ; // 4 - pin 23 ou A9 - PWM
-int ana_5 = A0 ; // 5 - pin 14 ou A0
-int ana_6 = A1 ; // 6 - pin 15 ou A1
-int ana_7 = A2 ; // 7 - pin 16 ou A2
-int ana_8 = A3 ; // 8 - pin 17 ou A3
+// int ana_1 = A6 ; // 1 - pin 20 ou A6 - PWM
+// int ana_2 = 21 ; // 2 - pin 21 ou A7 - PWM
+// int ana_3 = 22 ; // 3 - pin 22 ou A8 - PWM
+// int ana_4 = A9 ; // 4 - pin 23 ou A9 - PWM
+// int ana_5 = A0 ; // 5 - pin 14 ou A0
+// int ana_6 = A1 ; // 6 - pin 15 ou A1
+// int ana_7 = A2 ; // 7 - pin 16 ou A2
+// int ana_8 = A3 ; // 8 - pin 17 ou A3
 // Broches numeriques : ( Utilisé par le module de moteurs pas-à-pas )
 // int digi_1 = 5 ; // 1 - PWM
 // int digi_2 = 4 ; // 2 - PWM
@@ -102,21 +102,56 @@ char etatRotation = 'a', etatAvance = 'a';
 bool etatABS = false;
 bool etatLastRot = false;
 
+bool typeRobot = ROBOT_PRIMAIRE ;
+
 int16_t targetRot = 0;
 
-const float FacteurX= 1.03; //Ancien : 154.8
-const float FacteurDroit = 8.0; //Ancien : 154.8
-const float FacteurGauche = 8.0; //Ancien : 154.8
-const float FacteurRot = 3.640; // Secondaire : 3.655 | Primaire : 3.600
+// Variable par defaut pour le réglage des déplacements
+float FacteurX= 1.03; //Ancien : 154.8
+float FacteurDroit = 8.0; //Ancien : 154.8
+float FacteurGauche = 8.0; //Ancien : 154.8
+float FacteurRot = 3.640; // Secondaire : 3.655 | Primaire : 3.600
 
-const float VitesseMaxDroite = 4000.0; //Ancien : 3000 11/05/2018
-const float VitesseMaxGauche = 4000.0; //Ancien : 3000 11/05/2018
-const float VitesseMinDroite = 2000.0; //Ancien : 4000 23/06/2018
-const float VitesseMinGauche = 2000.0; //Ancien : 4000 23/06/2018
-const float AccelRot = 2500.0; //Ancien : 2000
-const float AccelMin = 3000.0; //Ancien : 2000
-const float AccelMax = 5000.0; //Ancien : 5000
-const float AccelStop = 4000.0; //Ancien : 8000
+float VitesseMaxDroite = 4000.0; //Ancien : 3000 11/05/2018
+float VitesseMaxGauche = 4000.0; //Ancien : 3000 11/05/2018
+float VitesseMinDroite = 2000.0; //Ancien : 4000 23/06/2018
+float VitesseMinGauche = 2000.0; //Ancien : 4000 23/06/2018
+float AccelRot = 2500.0; //Ancien : 2000
+float AccelMin = 3000.0; //Ancien : 2000
+float AccelMax = 5000.0; //Ancien : 5000
+float AccelStop = 4000.0; //Ancien : 8000
+
+// ----------Paramètres selon type de robot-----------
+
+// --SECONDAIRE--
+const float secondaireFacteurX= 1.03; //Ancien : 154.8
+const float secondaireFacteurDroit = 8.0; //Ancien : 154.8
+const float secondaireFacteurGauche = 8.0; //Ancien : 154.8
+const float secondaireFacteurRot = 3.655; // Ancien : 3.655
+
+const float secondaireVitesseMaxDroite = 4000.0; //Ancien : 3000 11/05/2018
+const float secondaireVitesseMaxGauche = 4000.0; //Ancien : 3000 11/05/2018
+const float secondaireVitesseMinDroite = 2000.0; //Ancien : 4000 23/06/2018
+const float secondaireVitesseMinGauche = 2000.0; //Ancien : 4000 23/06/2018
+const float secondaireAccelRot = 2500.0; //Ancien : 2000
+const float secondaireAccelMin = 3000.0; //Ancien : 2000
+const float secondaireAccelMax = 5000.0; //Ancien : 5000
+const float secondaireAccelStop = 4000.0; //Ancien : 8000
+
+// --PRIMAIRE--
+const float primaireFacteurX= 1.03; //Ancien : 154.8
+const float primaireFacteurDroit = 8.0; //Ancien : 154.8
+const float primaireFacteurGauche = 8.0; //Ancien : 154.8
+const float primaireFacteurRot = 3.640; // Ancien : 3.600
+
+const float primaireVitesseMaxDroite = 4000.0; //Ancien : 3000 11/05/2018
+const float primaireVitesseMaxGauche = 4000.0; //Ancien : 3000 11/05/2018
+const float primaireVitesseMinDroite = 2000.0; //Ancien : 4000 23/06/2018
+const float primaireVitesseMinGauche = 2000.0; //Ancien : 4000 23/06/2018
+const float primaireAccelRot = 2500.0; //Ancien : 2000
+const float primaireAccelMin = 3000.0; //Ancien : 2000
+const float primaireAccelMax = 5000.0; //Ancien : 5000
+const float primaireAccelStop = 4000.0; //Ancien : 8000
 
 byte BORDURE = 0 ;
 // AV_DROIT , AV_GAUCHE , AR_DROIT , AR_GAUCHE
@@ -134,6 +169,8 @@ void recalage();
 void bordure();
 
 void adversaire();
+
+void changeTypeRobot(bool type);
 
 //Fin de match
 void FIN_MATCH();

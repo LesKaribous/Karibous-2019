@@ -7,19 +7,21 @@
 
 // Points pour chaque action
 
-
-#define non 1
-#define oui 0
+#define ADVERSAIRE_NON 1
+#define ADVERSAIRE_OUI 0
 // Adressage I2C pour les cartes esclaves
-#define carteDeplacement 60
+#define CARTE_DEPLACEMENT 60
 // Couleur Equipe
-#define jaune 1
-#define violet 0
+#define EQUIPE_JAUNE 1
+#define EQUIPE_VIOLET 0
 // Strategie
-#define primaire 1
-#define secondaire 0
+#define STRATEGIE_1 1
+#define STRATEGIE_2 0
+// type de Robot
+#define ROBOT_PRIMAIRE 1
+#define ROBOT_SECONDAIRE 0
 // Autres
-#define tempsMatch 99000
+#define TEMPS_MATCH 99000
 //Etat de la position demandée
 #define TERMINEE 0  // Position validée et terminée
 #define RECU 1      // Position reçu
@@ -83,6 +85,7 @@ const int pinDetection = 37 ;       // Pin activation de la detection
 const int pinStrategie = 38 ;       // Pin choix de strategie
 const int pinEquipe = A21;          // Pin choix d'équipe
 const int pinCheck = A22;           // Pin bouton checklist
+const int pinRobot = 16;            // Pin jumper type de robot
 
 // Declaration des pins E/S
 const int pinServoGauche = 14 ;     // Pin Servo en bas à gauche
@@ -92,8 +95,6 @@ const int pinEVGauche = 23 ;        // Pin de l'EV gauche
 const int pinServoDroit = 15 ;      // Pin Servo en bas à droit
 const int pinPompeDroit = 21 ;      // Pin de la pompe droite
 const int pinEVDroit = 20 ;         // Pin de l'EV Droite
-
-const int pinServoBalise = 16 ;     // Pin servo Balise
 
 const int pinServoBrasDroit = 14 ;      // Pin Servo bras droit
 const int pinServoBrasGauche = 15 ;     // Pin Servo bras gauche
@@ -110,8 +111,6 @@ Servo servoBrasDroit;
 Servo servoBrasGauche;
 
 Servo servoAvant;
-
-Servo servoBalise;
 
 // Declaration des positions servo
 // Bras ventouse
@@ -132,7 +131,7 @@ const int sdHaut_bras = 130;
 const int sdBas_bras = 20;
 
 // Declaration des variables IHM
-bool tirette = false , detection = false , strategie = false , check = false , changeStrat = true ;
+bool tirette = false , detection = false , strategie = false , check = false , changeStrat = true , typeRobot = ROBOT_PRIMAIRE;
 
 // Liste d'action de la check list:
 char* titreList[6] = {
@@ -164,12 +163,12 @@ byte crcNavRelatif = 0; // CRC de controle pour les ordres de navigation relatif
 byte bufNavAbsolu[6]={0,0,0,0,0,0}; // Buffer d'envoi des ordres de navigation absolus
 byte crcNavAbsolu = 0 ; // CRC de controle pour les ordres de navigation absolus
 
-bool equipe = violet ;
+bool equipe = EQUIPE_VIOLET ;
 byte optionNavigation = 0;
 
 int score = 0;
 
-double tempsRestant = tempsMatch;
+double tempsRestant = TEMPS_MATCH;
 double timeInit=0;
 
 void setup();

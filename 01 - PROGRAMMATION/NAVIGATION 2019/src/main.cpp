@@ -12,18 +12,23 @@ void setup()
   pinMode(adversaireAvant, INPUT_PULLUP)	;
   pinMode(adversaireArriere, INPUT_PULLUP);
 
+	pinMode(pinRobot,INPUT_PULLUP);
+
 	for (int i=0;i<4;i++)
 	{
 		pinMode(PIN_BORDURE[i], INPUT_PULLUP)	;
 	}
 
   //------Initilisation des I/O------
-  //Passage en mode 1/4 de pas
+  // Passage en mode 1/4 de pas
   digitalWrite(pinM0, LOW);
   digitalWrite(pinM1, HIGH);
   digitalWrite(pinM2, LOW);
-  //Pause des drivers avant le premier mouvement
+  // Pause des drivers avant le premier mouvement
   digitalWrite(pinSleep, LOW);
+	// Init du type de robot
+	typeRobot = digitalRead(pinRobot);
+	changeTypeRobot(typeRobot);
 
 	//------Initialisation des communications------
 	Serial.begin(9600);
@@ -56,6 +61,42 @@ void loop()
 	bordure();
 
 	if (fonction == 255) FIN_MATCH();
+}
+
+void changeTypeRobot(bool type)
+{
+	if(type == ROBOT_PRIMAIRE)
+	{
+		FacteurX					= primaireFacteurX ;
+		FacteurDroit 			= primaireFacteurDroit ;
+		FacteurGauche 		= primaireFacteurGauche ;
+		FacteurRot 				= primaireFacteurRot ;
+
+		VitesseMaxDroite 	= primaireVitesseMaxDroite ;
+		VitesseMaxGauche 	= primaireVitesseMaxGauche ;
+		VitesseMinDroite 	= primaireVitesseMinDroite ;
+		VitesseMinGauche 	= primaireVitesseMinGauche ;
+		AccelRot 					= primaireAccelRot ;
+		AccelMin 					= primaireAccelMin ;
+		AccelMax 					= primaireAccelMax ;
+		AccelStop 				= primaireAccelStop ;
+
+	} else {
+
+		FacteurX					= secondaireFacteurX ;
+		FacteurDroit 			= secondaireFacteurDroit ;
+		FacteurGauche 		= secondaireFacteurGauche ;
+		FacteurRot 				= secondaireFacteurRot ;
+
+		VitesseMaxDroite 	= secondaireVitesseMaxDroite ;
+		VitesseMaxGauche 	= secondaireVitesseMaxGauche ;
+		VitesseMinDroite 	= secondaireVitesseMinDroite ;
+		VitesseMinGauche 	= secondaireVitesseMinGauche ;
+		AccelRot 					= secondaireAccelRot ;
+		AccelMin 					= secondaireAccelMin ;
+		AccelMax 					= secondaireAccelMax ;
+		AccelStop 				= secondaireAccelStop ;
+	}
 }
 
 void debug()

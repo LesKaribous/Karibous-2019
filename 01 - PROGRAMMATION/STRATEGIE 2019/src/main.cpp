@@ -5,6 +5,7 @@ void setup()
   pinMode(pinTirette,INPUT_PULLUP);
   pinMode(pinDetection,INPUT_PULLUP);
   pinMode(pinStrategie,INPUT_PULLUP);
+  pinMode(pinRobot,INPUT_PULLUP);
 
   pinMode(pinPompeGauche,OUTPUT);
   digitalWrite(pinPompeGauche,HIGH);
@@ -34,12 +35,6 @@ void setup()
   delay(1000);            //Attente affichage logo
 
   //Initialisation des actionneurs
-  servoBalise.attach(pinServoBalise);
-  servoBalise.write(150);
-  delay(800);
-  servoBalise.write(50);
-  delay(800);
-  servoBalise.write(95);
   initActionneur();
 
   // Gestion tirette
@@ -64,7 +59,7 @@ void setup()
 
 void loop()
 {
-  if (strategie == primaire)
+  if (typeRobot == ROBOT_PRIMAIRE)
   {
     testDeplacement();
   }
@@ -77,20 +72,18 @@ void loop()
 //----------------INIT ACTIONNEUR-------------
 void initActionneur()
 {
-  // Initialisation des actionneurs en fonction de la stratégie du type de robot
-  // Si la stratégie a été changée, modifier les actionneurs
-
-  if (changeStrat)
-  {
-    changeStrat == false ;
+  // Check du type de robot :
+  typeRobot = digitalRead(pinRobot) ;
+  // Initialisation des actionneurs en fonction du type de robot
     // Detacher les servos par securité
+
     servoGauche.detach();
     servoDroit.detach();
     servoBrasDroit.detach();
     servoBrasGauche.detach();
     servoAvant.detach();
 
-    if (strategie == primaire)
+    if (typeRobot == ROBOT_PRIMAIRE)
     {
       // Si strategie pour le robot primaire selectionné :
       servoGauche.attach(pinServoGauche);
@@ -124,7 +117,6 @@ void initActionneur()
       digitalWrite(pinPompeAvant,HIGH);
       digitalWrite(pinEVAvant,HIGH);
     }
-  }
 }
 
 //----------------GESTION DES BOUTTONS DE L'IHM----------------
@@ -132,14 +124,8 @@ void bouttonIHM()
 {
   detection = digitalRead(pinDetection) ;
   tirette   = digitalRead(pinTirette)   ;
-
-  bool temp = digitalRead(pinStrategie) ;
-  if (temp != strategie)
-  {
-    strategie = temp ;
-    changeStrat = true;
-    initActionneur();
-  }
+  strategie = digitalRead(pinStrategie) ;
+  typeRobot = digitalRead(pinRobot) ;
 
   if(analogRead(pinEquipe)>10) equipe = false ;
   else equipe = true ;
@@ -157,23 +143,23 @@ void bouttonIHM()
 //----------------STRATEGIES----------------
 void testLigneDroite()
 {
-  turnGo(non,false,false,0,600);
+  turnGo(ADVERSAIRE_NON,false,false,0,600);
   delay(500);
-  turnGo(non,false,false,0,-600);
+  turnGo(ADVERSAIRE_NON,false,false,0,-600);
   delay(500);
-  turnGo(non,false,false,0,600);
+  turnGo(ADVERSAIRE_NON,false,false,0,600);
   delay(500);
-  turnGo(non,false,false,180,600);
+  turnGo(ADVERSAIRE_NON,false,false,180,600);
   delay(500);
-  turnGo(non,false,false,-180,0);
+  turnGo(ADVERSAIRE_NON,false,false,-180,0);
   delay(500);
   finMatch();
 }
 
 void testDeplacement()
 {
-  turnGo(oui,false,true,0,575);
-  turnGo(oui,false,true,90,780);
+  turnGo(ADVERSAIRE_OUI,false,true,0,575);
+  turnGo(ADVERSAIRE_OUI,false,true,90,780);
   //Ventousage palets
   servoGauche.write(sgHaut-10);
   servoDroit.write(sdHaut+10);
@@ -181,8 +167,8 @@ void testDeplacement()
   digitalWrite(pinPompeDroit,LOW);
   delay(800);
   //Retour sur la case bleu
-  turnGo(non,false,true,0,-1000);
-  turnGo(non,false,true,90,600);
+  turnGo(ADVERSAIRE_NON,false,true,0,-1000);
+  turnGo(ADVERSAIRE_NON,false,true,90,600);
   //Depose palets
   servoGauche.write(sgBas);
   servoDroit.write(sdBas);
@@ -197,32 +183,32 @@ void testDeplacement()
   servoGauche.write(sgHaut);
   servoDroit.write(sdHaut);
   //Recul
-  turnGo(non,false,true,0,-150);
-  turnGo(non,false,true,-90,0);
-  //turnGo(non,0,false,0,-600);
+  turnGo(ADVERSAIRE_NON,false,true,0,-150);
+  turnGo(ADVERSAIRE_NON,false,true,-90,0);
+  //turnGo(ADVERSAIRE_NON,0,false,0,-600);
   finMatch();
 }
 
 void homologationSecondaire()
 {
-  turnGo(oui,false,false,0,1250);
-  turnGo(oui,true,true,102,-200);
-  turnGo(oui,false,true,0,-20);
-  turnGo(oui,false,true,0,80);
+  turnGo(ADVERSAIRE_OUI,false,false,0,1250);
+  turnGo(ADVERSAIRE_OUI,true,true,102,-200);
+  turnGo(ADVERSAIRE_OUI,false,true,0,-20);
+  turnGo(ADVERSAIRE_OUI,false,true,0,80);
   //Ouverture Bras Gauche
-  turnGo(oui,false,true,-90,0);
-  if(equipe==jaune) servoBrasGauche.write(sgBas_bras);
+  turnGo(ADVERSAIRE_OUI,false,true,-90,0);
+  if(equipe==EQUIPE_JAUNE) servoBrasGauche.write(sgBas_bras);
   else servoBrasDroit.write(sdBas_bras);
-  turnGo(oui,false,true,0,150);
-  if(equipe==jaune) servoBrasGauche.write(sgHaut_bras);
+  turnGo(ADVERSAIRE_OUI,false,true,0,150);
+  if(equipe==EQUIPE_JAUNE) servoBrasGauche.write(sgHaut_bras);
   else servoBrasDroit.write(sdHaut_bras);
   servoAvant.write(avHaut-5);
-  turnGo(oui,false,true,0,530);
+  turnGo(ADVERSAIRE_OUI,false,true,0,530);
   digitalWrite(pinPompeAvant,LOW);
-  turnGo(oui,false,true,-90,100);
-  turnGo(oui,false,true,0,-100);
+  turnGo(ADVERSAIRE_OUI,false,true,-90,100);
+  turnGo(ADVERSAIRE_OUI,false,true,0,-100);
   servoAvant.write(avHaut+5);
-  turnGo(oui,false,false,-100,1800);
+  turnGo(ADVERSAIRE_OUI,false,false,-100,1800);
 
   servoAvant.write(avBas);
   delay(1000);
@@ -239,36 +225,36 @@ void sequenceRecalage()
 {
   bool recalage = true;
   //Recalage
-  if (strategie == primaire)
+  if (typeRobot == ROBOT_PRIMAIRE)
   {
-    turnGo(non,recalage,true,0,-250);
-    turnGo(non,false,true,0,-20);
-    turnGo(non,false,true,0,100);
+    turnGo(ADVERSAIRE_NON,recalage,true,0,-250);
+    turnGo(ADVERSAIRE_NON,false,true,0,-20);
+    turnGo(ADVERSAIRE_NON,false,true,0,100);
     delay(500);
-    turnGo(non,recalage,true,90,-1000);
-    turnGo(non,false,true,0,-20);
+    turnGo(ADVERSAIRE_NON,recalage,true,90,-1000);
+    turnGo(ADVERSAIRE_NON,false,true,0,-20);
     delay(500);
-    turnGo(non,false,true,0,650);
-    turnGo(non,recalage,true,-90,-250);
-    turnGo(non,false,true,0,-20);
-    turnGo(non,false,true,0,260);
-    //turnGo(non,0,false,0,-600);
+    turnGo(ADVERSAIRE_NON,false,true,0,650);
+    turnGo(ADVERSAIRE_NON,recalage,true,-90,-250);
+    turnGo(ADVERSAIRE_NON,false,true,0,-20);
+    turnGo(ADVERSAIRE_NON,false,true,0,260);
+    //turnGo(ADVERSAIRE_NON,0,false,0,-600);
   }
   else
   {
-    turnGo(non,recalage,true,0,-250);
-    turnGo(non,false,true,0,-20);
-    turnGo(non,false,true,0,100);
+    turnGo(ADVERSAIRE_NON,recalage,true,0,-250);
+    turnGo(ADVERSAIRE_NON,false,true,0,-20);
+    turnGo(ADVERSAIRE_NON,false,true,0,100);
     delay(500);
-    turnGo(non,recalage,true,90,-1000);
-    turnGo(non,false,true,0,-20);
+    turnGo(ADVERSAIRE_NON,recalage,true,90,-1000);
+    turnGo(ADVERSAIRE_NON,false,true,0,-20);
     delay(500);
-    turnGo(non,false,true,0,350);
-    turnGo(non,recalage,true,-90,-250);
-    turnGo(non,false,true,0,-20);
-    turnGo(non,false,true,0,250);
-    turnGo(non,false,true,-12,0);
-    //turnGo(non,0,false,0,-600);
+    turnGo(ADVERSAIRE_NON,false,true,0,350);
+    turnGo(ADVERSAIRE_NON,recalage,true,-90,-250);
+    turnGo(ADVERSAIRE_NON,false,true,0,-20);
+    turnGo(ADVERSAIRE_NON,false,true,0,250);
+    turnGo(ADVERSAIRE_NON,false,true,-12,0);
+    //turnGo(ADVERSAIRE_NON,0,false,0,-600);
   }
 }
 
@@ -319,25 +305,30 @@ void u8g2_menu_avant_match() {
   u8g2.drawStr( colonne1, ligneDebut+10, "   DETECTION");
   u8g2.drawStr( colonne1, ligneDebut+20, "       ROBOT");
   u8g2.drawStr( colonne1, ligneDebut+30, "ETAT TIRETTE");
+  u8g2.drawStr( colonne1, ligneDebut+40, "   STRATEGIE");
   // Ligne de séparation
-  u8g2.drawBox(colonne2-4,ligneDebut,1,ligneDebut+27);
+  u8g2.drawBox(colonne2-4,ligneDebut,1,ligneDebut+37);
 
   // Etat equipe :
   u8g2.setCursor(colonne2,ligneDebut);
-  if ( equipe == jaune ) u8g2.print("JAUNE");
+  if ( equipe == EQUIPE_JAUNE ) u8g2.print("JAUNE");
   else u8g2.print("VIOLET");
   // Etat detection:
   u8g2.setCursor(colonne2,ligneDebut+10);
   if ( !detection ) u8g2.print("OUI");
   else u8g2.print("NON ATTENTION");
-  // Etat strategie :
+  // Etat type de robot :
   u8g2.setCursor(colonne2,ligneDebut+20);
-  if ( strategie == primaire ) u8g2.print("PRIMAIRE");
+  if ( typeRobot == ROBOT_PRIMAIRE ) u8g2.print("PRIMAIRE");
   else u8g2.print("SECONDAIRE");
   // Etat tirette :
   u8g2.setCursor(colonne2,ligneDebut+30);
   if ( tirette ) u8g2.print("ATTENTE");
   else u8g2.print("OK");
+  // Etat strategie :
+  u8g2.setCursor(colonne2,ligneDebut+40);
+  if ( strategie ) u8g2.print("STRATEGIE 1");
+  else u8g2.print("STRATEGIE 2");
 
   u8g2.sendBuffer();
 }
@@ -413,7 +404,7 @@ int askNavigation()
 {
   int etatNavigation ;
   char reponseNavigation ;
-  Wire.requestFrom(carteDeplacement, 1);
+  Wire.requestFrom(CARTE_DEPLACEMENT, 1);
   while(Wire.available())
   {
     reponseNavigation = Wire.read();
@@ -444,7 +435,7 @@ void sendNavigation(byte fonction, int X, int Y, int rot)
 	//Serial.println(crcNavRelatif);
 
 	// Envoi des données
-	Wire.beginTransmission(carteDeplacement);
+	Wire.beginTransmission(CARTE_DEPLACEMENT);
 	for(int i=0;i<=6;i++)
 	{
 		Wire.write(bufNavRelatif[i]);
@@ -457,7 +448,7 @@ void sendNavigation(byte fonction, int X, int Y, int rot)
 //----------------ENVOI UNE COMMANDE DE DEPLACEMENT RELATIF----------------
 void sendNavigation(byte fonction, int rot, int dist)
 {
-	if ( equipe == violet ) rot = -rot ;
+	if ( equipe == EQUIPE_VIOLET ) rot = -rot ;
 	// Stockage des valeurs à envoyer dans le buffer
 	bufNavRelatif[0]=fonction;
 	bufNavRelatif[1]=rot >> 8;
@@ -468,7 +459,7 @@ void sendNavigation(byte fonction, int rot, int dist)
 	crcNavRelatif = CRC8.smbus(bufNavRelatif, sizeof(bufNavRelatif));
 	//Serial.println(crcNavRelatif);
 	// Envoi des données
-	Wire.beginTransmission(carteDeplacement);
+	Wire.beginTransmission(CARTE_DEPLACEMENT);
 	for(int i=0;i<=4;i++)
 	{
 		Wire.write(bufNavRelatif[i]);
@@ -506,7 +497,7 @@ void turnGo(bool adversaire, bool recalage,bool ralentit,int turn, int go)
 //----------------MISE A JOUR DU TEMPS DE MATCH----------------
 void majTemps()
 {
-  tempsRestant = ( tempsMatch - (millis() - timeInit) ) / 1000;
+  tempsRestant = ( TEMPS_MATCH - (millis() - timeInit) ) / 1000;
   if ( tempsRestant <= 0 )
   {
     finMatch();
