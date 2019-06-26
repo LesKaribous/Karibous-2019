@@ -38,10 +38,10 @@ void setup()
 
 	//------Initialisation Moteur------
 	MGauche.setMaxSpeed(VitesseMaxGauche);
-	MGauche.setAcceleration(AccelMax);
+	MGauche.setAcceleration(AccelMaxGauche);
 
 	MDroit.setMaxSpeed(VitesseMaxDroite);
-	MDroit.setAcceleration(AccelMax);
+	MDroit.setAcceleration(AccelMaxDroite);
 }
 
 void loop()
@@ -77,8 +77,10 @@ void changeTypeRobot(bool type)
 		VitesseMinDroite 	= primaireVitesseMinDroite ;
 		VitesseMinGauche 	= primaireVitesseMinGauche ;
 		AccelRot 					= primaireAccelRot ;
-		AccelMin 					= primaireAccelMin ;
-		AccelMax 					= primaireAccelMax ;
+		AccelMinDroite 		= primaireAccelMinDroite ;
+		AccelMinGauche 		= primaireAccelMinGauche ;
+		AccelMaxDroite 		= primaireAccelMaxDroite ;
+		AccelMaxGauche 		= primaireAccelMaxGauche ;
 		AccelStop 				= primaireAccelStop ;
 
 	} else {
@@ -93,8 +95,10 @@ void changeTypeRobot(bool type)
 		VitesseMinDroite 	= secondaireVitesseMinDroite ;
 		VitesseMinGauche 	= secondaireVitesseMinGauche ;
 		AccelRot 					= secondaireAccelRot ;
-		AccelMin 					= secondaireAccelMin ;
-		AccelMax 					= secondaireAccelMax ;
+		AccelMinDroite 		= secondaireAccelMinDroite ;
+		AccelMinGauche 		= secondaireAccelMinGauche ;
+		AccelMaxDroite 		= secondaireAccelMaxDroite ;
+		AccelMaxGauche 		= secondaireAccelMaxGauche ;
 		AccelStop 				= secondaireAccelStop ;
 	}
 }
@@ -181,8 +185,8 @@ void turnGo()
        MDroit.run();
      }
 
-     MGauche.setAcceleration(AccelMax);
-     MDroit.setAcceleration(AccelMax);
+     MGauche.setAcceleration(AccelMaxGauche);
+     MDroit.setAcceleration(AccelMaxDroite);
 
      MGauche.move(TempGauche);
      MDroit.move(TempDroit);
@@ -219,15 +223,15 @@ void turnGo()
   		{
   			MGauche.setMaxSpeed(VitesseMinGauche);
   	        MDroit.setMaxSpeed(VitesseMinDroite);
-  	        MGauche.setAcceleration(AccelMin);
-  	        MDroit.setAcceleration(AccelMin);
+  	        MGauche.setAcceleration(AccelMinGauche);
+  	        MDroit.setAcceleration(AccelMinDroite);
   		}
   		else
   		{
   			MGauche.setMaxSpeed(VitesseMaxGauche);
   	        MDroit.setMaxSpeed(VitesseMaxDroite);
-  	        MGauche.setAcceleration(AccelMax);
-  	        MDroit.setAcceleration(AccelMax);
+  	        MGauche.setAcceleration(AccelMaxGauche);
+  	        MDroit.setAcceleration(AccelMaxDroite);
   		}
 
         MDroit.move(-(NewX*FacteurDroit));
@@ -240,15 +244,15 @@ void turnGo()
       //MGauche.setAcceleration(AccelMax);
       MDroit.setMaxSpeed(VitesseMinDroite);
       //MDroit.setAcceleration(AccelMax);
-	  MGauche.setAcceleration(AccelMin);
-	  MDroit.setAcceleration(AccelMin);
+	  MGauche.setAcceleration(AccelMinGauche);
+	  MDroit.setAcceleration(AccelMinDroite);
       // Si on est à la fin du mouvement
       recalage();
     }
     if (MDroit.distanceToGo() == 0 && MGauche.distanceToGo() == 0 && etatAvance == EN_COURS)
     {
       etatAvance = FINI ;
-			//digitalWrite(pinSleep, LOW);
+			digitalWrite(pinSleep, LOW);
     }
   }
 }
@@ -267,7 +271,7 @@ void recalage()
       MDroit.run();
     }
     MDroit.setMaxSpeed(VitesseMaxDroite);
-    MDroit.setAcceleration(AccelMax);
+    MDroit.setAcceleration(AccelMaxDroite);
   }
    if ( (bitRead(BORDURE,1) && NewX > 0) || (bitRead(BORDURE,2) && NewX < 0))
   {
@@ -279,7 +283,7 @@ void recalage()
       MGauche.run();
     }
     MGauche.setMaxSpeed(VitesseMaxGauche);
-    MGauche.setAcceleration(AccelMax);
+    MGauche.setAcceleration(AccelMaxGauche);
   }
 }
 

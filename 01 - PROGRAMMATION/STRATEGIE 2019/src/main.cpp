@@ -7,24 +7,6 @@ void setup()
   pinMode(pinStrategie,INPUT_PULLUP);
   pinMode(pinRobot,INPUT_PULLUP);
 
-  pinMode(pinPompeGauche,OUTPUT);
-  digitalWrite(pinPompeGauche,HIGH);
-
-  pinMode(pinEVGauche,OUTPUT);
-  digitalWrite(pinEVGauche,HIGH);
-
-  pinMode(pinPompeDroit,OUTPUT);
-  digitalWrite(pinPompeDroit,HIGH);
-
-  pinMode(pinEVDroit,OUTPUT);
-  digitalWrite(pinEVDroit,HIGH);
-
-  pinMode(pinPompeAvant,OUTPUT);
-  digitalWrite(pinPompeAvant,HIGH);
-
-  pinMode(pinEVAvant,OUTPUT);
-  digitalWrite(pinEVAvant,HIGH);
-
   Serial.begin(9600);     //Demarrage d'un liaison série pour le debug
   Wire.begin();           //Demarrage de la liaison I2C
 
@@ -32,10 +14,8 @@ void setup()
 
   u8g2.begin();           //Init du LCD
   u8g2_splash_screen();   //Affichage du Logo des Karibous
+  initActionneur();       //Initialisation des actionneurs
   delay(1000);            //Attente affichage logo
-
-  //Initialisation des actionneurs
-  initActionneur();
 
   // Gestion tirette
   while (digitalRead(pinTirette))
@@ -55,19 +35,20 @@ void setup()
 	timeInit = millis();
   u8g2_splash_screen_GO();
 	delay (100);
+  digitalWrite(pinBalise,HIGH);
 }
 
 void loop()
 {
   if (typeRobot == ROBOT_PRIMAIRE)
   {
-    if (strategie == STRATEGIE_HOMOLOGATION) homologationPrimaire();
-    else testLigneDroite(); // Match
+    if (strategie == STRATEGIE_HOMOLOGATION) testRotation(); //testLigneDroite(); //homologationPrimaire();
+    else matchPrimaire(); // Match
   }
   else
   {
-    if (strategie == STRATEGIE_HOMOLOGATION) homologationSecondaire();
-    else testLigneDroite(); // Match
+    if (strategie == STRATEGIE_HOMOLOGATION) testLigneDroite(); //testRotation(); // homologationSecondaire();
+    else matchSecondaire(); // Match
   }
 }
 
@@ -88,6 +69,22 @@ void initActionneur()
     if (typeRobot == ROBOT_PRIMAIRE)
     {
       // Si strategie pour le robot primaire selectionné :
+      pinMode(pinPompeGauche,OUTPUT);
+      digitalWrite(pinPompeGauche,HIGH);
+
+      pinMode(pinEVGauche,OUTPUT);
+      digitalWrite(pinEVGauche,HIGH);
+
+      pinMode(pinPompeDroit,OUTPUT);
+      digitalWrite(pinPompeDroit,HIGH);
+
+      pinMode(pinEVDroit,OUTPUT);
+      digitalWrite(pinEVDroit,HIGH);
+
+      pinBalise = pinBalisePrimaire ;
+      pinMode(pinBalise, OUTPUT);
+      digitalWrite(pinBalise,LOW);
+
       servoGauche.attach(pinServoGauche);
       servoDroit.attach(pinServoDroit);
       servoGauche.write(sgHaut);
@@ -104,6 +101,16 @@ void initActionneur()
     else
     {
       // Si strategie pour le robot secondaire selectionné :
+      pinMode(pinPompeAvant,OUTPUT);
+      digitalWrite(pinPompeAvant,HIGH);
+
+      pinMode(pinEVAvant,OUTPUT);
+      digitalWrite(pinEVAvant,HIGH);
+
+      pinBalise = pinBaliseSecondaire ;
+      pinMode(pinBalise, OUTPUT);
+      digitalWrite(pinBalise,LOW);
+
       servoBrasGauche.attach(pinServoBrasGauche);
       servoBrasDroit.attach(pinServoBrasDroit);
       servoAvant.attach(pinServoAvant);
@@ -145,15 +152,23 @@ void bouttonIHM()
 //----------------STRATEGIES----------------
 void testLigneDroite()
 {
-  turnGo(ADVERSAIRE_NON,false,false,0,600);
+  turnGo(ADVERSAIRE_NON,false,false,0,1000);
   delay(500);
-  turnGo(ADVERSAIRE_NON,false,false,0,-600);
-  delay(500);
-  turnGo(ADVERSAIRE_NON,false,false,0,600);
-  delay(500);
-  turnGo(ADVERSAIRE_NON,false,false,180,600);
-  delay(500);
-  turnGo(ADVERSAIRE_NON,false,false,180,0);
+  // turnGo(ADVERSAIRE_NON,false,false,0,-1000);
+  // delay(500);
+  // turnGo(ADVERSAIRE_NON,false,false,0,600);
+  // delay(500);
+  // turnGo(ADVERSAIRE_NON,false,false,180,1000);
+  // delay(500);
+  // turnGo(ADVERSAIRE_NON,false,false,180,0);
+  // delay(500);
+  while(1);
+  finMatch();
+}
+
+void testRotation()
+{
+  turnGo(ADVERSAIRE_NON,false,false,-360*10,0);
   delay(500);
   finMatch();
 }
@@ -167,25 +182,25 @@ void homologationPrimaire()
   servoDroit.write(sdHaut+10);
   digitalWrite(pinPompeGauche,LOW);
   digitalWrite(pinPompeDroit,LOW);
-  delay(800);
+  attente(800);
   //Retour sur la case bleu
-  turnGo(ADVERSAIRE_NON,false,true,0,-1000);
-  turnGo(ADVERSAIRE_NON,false,true,90,600);
+  turnGo(ADVERSAIRE_OUI,false,true,0,-1000);
+  turnGo(ADVERSAIRE_OUI,false,true,90,600);
   //Depose palets
   servoGauche.write(sgBas);
   servoDroit.write(sdBas);
-  delay(500);
+  attente(500);
   digitalWrite(pinPompeGauche,HIGH);
   digitalWrite(pinPompeDroit,HIGH);
   digitalWrite(pinEVGauche,LOW);
   digitalWrite(pinEVDroit,LOW);
-  delay(500);
+  attente(500);
   digitalWrite(pinEVGauche,HIGH);
   digitalWrite(pinEVDroit,HIGH);
   servoGauche.write(sgHaut);
   servoDroit.write(sdHaut);
   //Recul
-  turnGo(ADVERSAIRE_NON,false,true,0,-150);
+  turnGo(ADVERSAIRE_OUI,false,true,0,-150);
   turnGo(ADVERSAIRE_NON,false,true,-90,0);
   //turnGo(ADVERSAIRE_NON,0,false,0,-600);
   finMatch();
@@ -194,8 +209,8 @@ void homologationPrimaire()
 void homologationSecondaire()
 {
   turnGo(ADVERSAIRE_OUI,false,false,0,1250);
-  turnGo(ADVERSAIRE_OUI,true,true,102,-200);
-  turnGo(ADVERSAIRE_OUI,false,true,0,-20);
+  turnGo(ADVERSAIRE_NON,true,true,102,-200);
+  turnGo(ADVERSAIRE_NON,false,true,0,-20);
   turnGo(ADVERSAIRE_OUI,false,true,0,80);
   //Ouverture Bras Gauche
   turnGo(ADVERSAIRE_OUI,false,true,-90,0);
@@ -210,16 +225,17 @@ void homologationSecondaire()
   turnGo(ADVERSAIRE_OUI,false,true,-90,100);
   turnGo(ADVERSAIRE_OUI,false,true,0,-100);
   servoAvant.write(avHaut+5);
+  /*
   turnGo(ADVERSAIRE_OUI,false,false,-100,1800);
 
   servoAvant.write(avBas);
-  delay(1000);
+  attente(1000);
   digitalWrite(pinPompeAvant,HIGH);
   digitalWrite(pinEVAvant,HIGH);
-  delay(1000);
+  attente(1000);
   servoAvant.write(avHaut);
   digitalWrite(pinEVAvant,LOW);
-
+  */
   finMatch();
 }
 
@@ -236,11 +252,11 @@ void sequenceRecalage()
     turnGo(ADVERSAIRE_NON,recalage,true,90,-1000);
     turnGo(ADVERSAIRE_NON,false,true,0,-20);
     delay(500);
-    turnGo(ADVERSAIRE_NON,false,true,0,650);
+    turnGo(ADVERSAIRE_NON,false,true,0,650);          // Centre du robot à 743
     turnGo(ADVERSAIRE_NON,recalage,true,-90,-250);
     turnGo(ADVERSAIRE_NON,false,true,0,-20);
-    turnGo(ADVERSAIRE_NON,false,true,0,260);
-    //turnGo(ADVERSAIRE_NON,0,false,0,-600);
+    turnGo(ADVERSAIRE_NON,false,true,0,165);
+    turnGo(ADVERSAIRE_NON,false,true,90,0);
   }
   else
   {
@@ -258,6 +274,403 @@ void sequenceRecalage()
     turnGo(ADVERSAIRE_NON,false,true,-12,0);
     //turnGo(ADVERSAIRE_NON,0,false,0,-600);
   }
+}
+
+void matchPrimaire()
+{
+  //--------Petit distributeur--------
+  turnGo(ADVERSAIRE_NON,false,false,0,1183);     // Avancer jusqu'au distributeur
+  // Ventousage palets
+  servoGauche.write(sgHaut-12);
+  servoDroit.write(sdHaut+12);
+  digitalWrite(pinPompeGauche,LOW);
+  digitalWrite(pinPompeDroit,LOW);
+  attente(800);
+  servoGauche.write(sgHaut);
+  servoDroit.write(sdHaut);
+  attente(200);
+  // Desengagement bordure
+  turnGo(ADVERSAIRE_NON,false,false,0,-300);
+  // Rotation et avance pour dépose du palet rouge dans la zone
+  turnGo(ADVERSAIRE_NON,false,false,180,1087);
+  // Depose du palet rouge
+  if(equipe==EQUIPE_JAUNE)
+  {
+    servoGauche.write(sgBas);
+    //attente(500);
+    digitalWrite(pinPompeGauche,HIGH);
+    digitalWrite(pinEVGauche,LOW);
+    attente(500);
+    digitalWrite(pinEVGauche,HIGH);
+    servoGauche.write(sgHaut);
+  }
+  else
+  {
+    servoDroit.write(sdBas);
+    //attente(500);
+    digitalWrite(pinPompeDroit,HIGH);
+    digitalWrite(pinEVDroit,LOW);
+    attente(500);
+    digitalWrite(pinEVDroit,HIGH);
+    servoDroit.write(sdHaut);
+  }
+  majScore(6, 1);
+  // depose du palet vert
+  turnGo(ADVERSAIRE_NON,false,false,0,-300);
+  // Depose du palet vert
+  if(equipe==EQUIPE_VIOLET)
+  {
+    servoGauche.write(sgBas);
+    //attente(500);
+    digitalWrite(pinPompeGauche,HIGH);
+    digitalWrite(pinEVGauche,LOW);
+    attente(500);
+    digitalWrite(pinEVGauche,HIGH);
+    servoGauche.write(sgHaut);
+  }
+  else
+  {
+    servoDroit.write(sdBas);
+    //attente(500);
+    digitalWrite(pinPompeDroit,HIGH);
+    digitalWrite(pinEVDroit,LOW);
+    attente(500);
+    digitalWrite(pinEVDroit,HIGH);
+    servoDroit.write(sdHaut);
+  }
+  majScore(6, 1);
+  // Recul pour desengagement
+  turnGo(ADVERSAIRE_NON,false,false,0,-300);
+  // Recalage
+  turnGo(ADVERSAIRE_NON,false,true,90,-240);
+  // Desengagement bordure
+  turnGo(ADVERSAIRE_NON,false,false,0,65);
+  // Avancer jusqu'au distributeur
+  turnGo(ADVERSAIRE_NON,false,false,90,887);
+  // Ventousage palet bleu
+  if(equipe==EQUIPE_JAUNE)
+  {
+    servoDroit.write(sdHaut+12);
+    digitalWrite(pinPompeDroit,LOW);
+    attente(800);
+  }
+  else
+  {
+    servoGauche.write(sgHaut-12);
+    digitalWrite(pinPompeGauche,LOW);
+    attente(800);
+  }
+  // Desengagement bordure
+  turnGo(ADVERSAIRE_NON,false,false,0,-300);
+  // Rotation et avance pour dépose du palet bleu dans la zone
+  turnGo(ADVERSAIRE_NON,false,false,180,487);
+  // Depose du palet bleu
+  if(equipe==EQUIPE_JAUNE)
+  {
+    servoDroit.write(sdMilieu);
+    //attente(500);
+    digitalWrite(pinPompeDroit,HIGH);
+    digitalWrite(pinEVDroit,LOW);
+    attente(500);
+    digitalWrite(pinEVDroit,HIGH);
+    servoDroit.write(sdHaut);
+  }
+  else
+  {
+    servoGauche.write(sgMilieu);
+    //attente(500);
+    digitalWrite(pinPompeGauche,HIGH);
+    digitalWrite(pinEVGauche,LOW);
+    attente(500);
+    digitalWrite(pinEVGauche,HIGH);
+    servoGauche.write(sgHaut);
+  }
+  majScore(6, 1);
+  // Desengagement zone bleu
+  turnGo(ADVERSAIRE_NON,false,false,0,-150);
+  // Recalage
+  turnGo(ADVERSAIRE_NON,false,false,90,-120);
+  //--------Grand distributeur--------
+  //-------------- 1 -----------------
+  // Avance jusqu'au grand distributeur
+  turnGo(ADVERSAIRE_NON,false,false,0,440);
+  // Tourne et prise des palets
+  turnGo(ADVERSAIRE_NON,false,false,90,350);
+  // Ventousage palets
+  servoGauche.write(sgHaut-12);
+  servoDroit.write(sdHaut+12);
+  digitalWrite(pinPompeGauche,LOW);
+  digitalWrite(pinPompeDroit,LOW);
+  attente(800);
+  servoGauche.write(sgHaut);
+  servoDroit.write(sdHaut);
+  attente(200);
+  // Desengagement distributeur
+  turnGo(ADVERSAIRE_NON,false,false,0,-120);
+  // Rotation et positionnement devant la prochaine zone
+  turnGo(ADVERSAIRE_OUI,false,false,180,910);
+  // Positionnement palet Rouge
+  turnGo(ADVERSAIRE_NON,false,false,-90,250);
+  // Depose palet rouge
+  if(equipe==EQUIPE_JAUNE)
+  {
+    servoDroit.write(sdMilieu);
+    //attente(500);
+    digitalWrite(pinPompeDroit,HIGH);
+    digitalWrite(pinEVDroit,LOW);
+    attente(500);
+    digitalWrite(pinEVDroit,HIGH);
+    servoDroit.write(sdHaut);
+  }
+  else
+  {
+    servoGauche.write(sgMilieu);
+    //attente(500);
+    digitalWrite(pinPompeGauche,HIGH);
+    digitalWrite(pinEVGauche,LOW);
+    attente(500);
+    digitalWrite(pinEVGauche,HIGH);
+    servoGauche.write(sgHaut);
+  }
+  majScore(6, 1);
+  // Desengagement zone Rouge
+  turnGo(ADVERSAIRE_OUI,false,false,0,-250);
+  // Positionnement seconde zone
+  turnGo(ADVERSAIRE_OUI,false,false,-90,300);
+  // Positionnement zone verte
+  turnGo(ADVERSAIRE_NON,false,false,90,250);
+  // Depose du palet vert
+  if(equipe==EQUIPE_JAUNE)
+  {
+    servoGauche.write(sgMilieu);
+    //attente(300);
+    digitalWrite(pinPompeGauche,HIGH);
+    digitalWrite(pinEVGauche,LOW);
+    attente(500);
+    digitalWrite(pinEVGauche,HIGH);
+    servoGauche.write(sgHaut);
+  }
+  else
+  {
+    servoDroit.write(sdMilieu);
+    //attente(500);
+    digitalWrite(pinPompeDroit,HIGH);
+    digitalWrite(pinEVDroit,LOW);
+    attente(500);
+    digitalWrite(pinEVDroit,HIGH);
+    servoDroit.write(sdHaut);
+  }
+  majScore(6, 1);
+  // Desengagement vert
+  turnGo(ADVERSAIRE_OUI,false,false,0,-465);
+  //--------Grand distributeur--------
+  //-------------- 2 -----------------
+  // Ventousage palets suivants
+  turnGo(ADVERSAIRE_OUI,false,false,-90,795);
+  // Ventousage palets
+  servoGauche.write(sgHaut-12);
+  servoDroit.write(sdHaut+12);
+  digitalWrite(pinPompeGauche,LOW);
+  digitalWrite(pinPompeDroit,LOW);
+  attente(800);
+  servoGauche.write(sgHaut);
+  servoDroit.write(sdHaut);
+  attente(200);
+  // Desengagement distributeur
+  turnGo(ADVERSAIRE_OUI,false,false,0,-120);
+  // Rotation et positionnement devant la prochaine zone
+  turnGo(ADVERSAIRE_OUI,false,false,180,910);
+  // Positionnement palet Rouge
+  turnGo(ADVERSAIRE_NON,false,false,-90,400);
+  // Depose palet rouge
+  if(equipe==EQUIPE_JAUNE)
+  {
+    servoDroit.write(sdMilieu);
+    //attente(300);
+    digitalWrite(pinPompeDroit,HIGH);
+    digitalWrite(pinEVDroit,LOW);
+    attente(500);
+    digitalWrite(pinEVDroit,HIGH);
+    servoDroit.write(sdHaut);
+  }
+  else
+  {
+    servoGauche.write(sgMilieu);
+    //attente(300);
+    digitalWrite(pinPompeGauche,HIGH);
+    digitalWrite(pinEVGauche,LOW);
+    attente(500);
+    digitalWrite(pinEVGauche,HIGH);
+    servoGauche.write(sgHaut);
+  }
+  majScore(6, 1);
+  // Desengagement zone Rouge
+  turnGo(ADVERSAIRE_OUI,false,false,0,-200);
+  // Positionnement seconde zone
+  turnGo(ADVERSAIRE_OUI,false,false,-90,600);
+  // Positionnement zone bleu
+  turnGo(ADVERSAIRE_NON,false,false,90,200);
+  // Depose du palet bleu
+  if(equipe==EQUIPE_JAUNE)
+  {
+    servoGauche.write(sgMilieu);
+    //attente(500);
+    digitalWrite(pinPompeGauche,HIGH);
+    digitalWrite(pinEVGauche,LOW);
+    attente(500);
+    digitalWrite(pinEVGauche,HIGH);
+    servoGauche.write(sgHaut);
+  }
+  else
+  {
+    servoDroit.write(sdMilieu);
+    //attente(500);
+    digitalWrite(pinPompeDroit,HIGH);
+    digitalWrite(pinEVDroit,LOW);
+    attente(500);
+    digitalWrite(pinEVDroit,HIGH);
+    servoDroit.write(sdHaut);
+  }
+  majScore(6, 1);
+  // Desengagement zone bleu
+  turnGo(ADVERSAIRE_OUI,false,false,0,-620);
+  //--------Grand distributeur--------
+  //-------------- 3 -----------------
+  // Ventousage palets suivants
+  turnGo(ADVERSAIRE_OUI,false,false,-90,465);
+  // Ventousage palets
+  servoGauche.write(sgHaut-12);
+  servoDroit.write(sdHaut+12);
+  digitalWrite(pinPompeGauche,LOW);
+  digitalWrite(pinPompeDroit,LOW);
+  attente(800);
+  servoGauche.write(sgHaut);
+  servoDroit.write(sdHaut);
+  attente(200);
+  // Desengagement distributeur
+  turnGo(ADVERSAIRE_OUI,false,false,0,-120);
+  // Rotation et positionnement devant la prochaine zone
+  turnGo(ADVERSAIRE_OUI,false,false,180,910);
+  // Positionnement palet Rouge
+  turnGo(ADVERSAIRE_NON,false,false,-90,600);
+  // Depose palet rouge
+  if(equipe==EQUIPE_JAUNE)
+  {
+    servoDroit.write(sdMilieu);
+    //attente(500);
+    digitalWrite(pinPompeDroit,HIGH);
+    digitalWrite(pinEVDroit,LOW);
+    attente(500);
+    digitalWrite(pinEVDroit,HIGH);
+    servoDroit.write(sdHaut);
+  }
+  else
+  {
+    servoGauche.write(sgMilieu);
+    //attente(500);
+    digitalWrite(pinPompeGauche,HIGH);
+    digitalWrite(pinEVGauche,LOW);
+    attente(500);
+    digitalWrite(pinEVGauche,HIGH);
+    servoGauche.write(sgHaut);
+  }
+  majScore(6, 1);
+  // Desengagement zone Rouge
+  turnGo(ADVERSAIRE_OUI,false,false,0,-200);
+  // Positionnement seconde zone
+  turnGo(ADVERSAIRE_OUI,false,false,-90,300);
+  // Positionnement zone verte
+  turnGo(ADVERSAIRE_NON,false,false,90,250);
+  // Depose du palet vert
+  if(equipe==EQUIPE_JAUNE)
+  {
+    servoGauche.write(sgMilieu);
+    //attente(500);
+    digitalWrite(pinPompeGauche,HIGH);
+    digitalWrite(pinEVGauche,LOW);
+    attente(500);
+    digitalWrite(pinEVGauche,HIGH);
+    servoGauche.write(sgHaut);
+  }
+  else
+  {
+    servoDroit.write(sdMilieu);
+    //attente(500);
+    digitalWrite(pinPompeDroit,HIGH);
+    digitalWrite(pinEVDroit,LOW);
+    attente(500);
+    digitalWrite(pinEVDroit,HIGH);
+    servoDroit.write(sdHaut);
+  }
+  majScore(6, 1);
+  // Desengagement vert
+  turnGo(ADVERSAIRE_OUI,false,false,0,-450);
+
+
+
+  finMatch();
+}
+
+void matchSecondaire()
+{
+  // Match secondaire
+  // Desengagement zone de départ
+  turnGo(ADVERSAIRE_OUI,false,false,0,1250);
+  majScore(40, 1); // Depose, activation de l'experience et arrivée de l'electron
+  //Recalage bordure accelerateur
+  turnGo(ADVERSAIRE_NON,true,false,102,-200);
+  // Recalage bordure
+  turnGo(ADVERSAIRE_NON,false,true,0,-20);
+  // Desengagement bordure
+  turnGo(ADVERSAIRE_OUI,false,false,0,75);
+  //Ouverture Bras Gauche
+  turnGo(ADVERSAIRE_OUI,false,true,-90,0);
+  if(equipe==EQUIPE_JAUNE) servoBrasGauche.write(sgBas_bras);
+  else servoBrasDroit.write(sdBas_bras);
+  // Poussage du palet dans l'accelerateur
+  turnGo(ADVERSAIRE_OUI,false,true,0,160);
+  majScore(10, 1) ; // 10 points supplémentaires lorsque le détecteur a été déverrouillé (le "Goldenium" à été révélé)
+  majScore(10, 1) ; // 10 points pour chaque atome présent dans l’accélérateur de particules
+  if(equipe==EQUIPE_JAUNE) servoBrasGauche.write(sgHaut_bras);
+  else servoBrasDroit.write(sdHaut_bras);
+  servoAvant.write(avHaut-5);
+  // Positionnement devant le goldenium
+  turnGo(ADVERSAIRE_OUI,false,true,0,500);
+  // Activation pompe
+  digitalWrite(pinPompeAvant,LOW);
+  // Prise du Goldenium
+  turnGo(ADVERSAIRE_OUI,false,true,-90,100);
+  // Desengagement Goldenium
+  turnGo(ADVERSAIRE_OUI,false,true,0,-100);
+  servoAvant.write(avHaut+5);
+  majScore(20, 1); // 20 points supplémentaires si l’atome de "Goldenium" à été extrait du détecteur
+  // Rotation pour Recalage
+  turnGo(ADVERSAIRE_OUI,false,false,-90,890);
+  // Recalage
+  turnGo(ADVERSAIRE_NON,true,false,-90,-160);
+  // Recalage
+  turnGo(ADVERSAIRE_NON,false,false,0,-20);
+  turnGo(ADVERSAIRE_OUI,false,false,0,20);
+  //turnGo(ADVERSAIRE_OUI,false,false,2,0);
+  // Avvance jusqu'à la balance
+  turnGo(ADVERSAIRE_OUI,false,true,0,1600);
+  // // Rotation Et positionnement aucentre de la table en face de la balance
+  // turnGo(ADVERSAIRE_OUI,false,true,51,-1300);
+  // // Rotation en face de la balance
+  // turnGo(ADVERSAIRE_NON,false,true,141,360);
+  // // Depose du goldenium
+
+  servoAvant.write(avQuart);
+  attente(1000);
+  digitalWrite(pinPompeAvant,HIGH);
+  digitalWrite(pinEVAvant,HIGH);
+  attente(1000);
+  servoAvant.write(avHaut);
+  digitalWrite(pinEVAvant,LOW);
+  majScore(24, 1); // Dépose du goldenium dans la balance
+  attente(1000);
+  // Fin de match
+  finMatch();
 }
 
 //----------------PROCEDURE D'ATTENTE----------------
@@ -317,7 +730,7 @@ void u8g2_menu_avant_match() {
   else u8g2.print("VIOLET");
   // Etat detection:
   u8g2.setCursor(colonne2,ligneDebut+10);
-  if ( !detection ) u8g2.print("SIMPLE");
+  if ( detection ) u8g2.print("SIMPLE");
   else u8g2.print("COMPLET");
   // Etat type de robot :
   u8g2.setCursor(colonne2,ligneDebut+20);
@@ -365,11 +778,12 @@ void initRobot()
   u8g2.setFont(u8g2_font_logisoso58_tr);
   u8g2.drawStr( 10, 2, "Init");
   u8g2.sendBuffer();
-  delay(1000);
+  attente(1000);
   //-------Recalage bordure-------
   sequenceRecalage();
   //-------Checklist-------
   // A FINIR !
+  /*
   for(int i=0;i<6;i++)
   {
     int x = 128;    //On commence le texte à droite
@@ -394,11 +808,12 @@ void initRobot()
       u8g2.drawStr(x, 48, list[i]);           //Afficher l'action
 
       u8g2.sendBuffer();
-      delay(100);
+      attente(100);
       x -= 10 ;                               //Scrolling
     } while(analogRead(pinCheck)>10);
-    delay(1000);
+    attente(1000);
   }
+  */
 }
 
 //----------------DEMANDE L'ETAT DU DEPLACEMENT----------------
@@ -516,5 +931,7 @@ void finMatch()
 	{
 		// Stopper les moteurs
 		sendNavigation(255, 0, 0);
+    // Stoppe la Balise
+    digitalWrite(pinBalise,LOW);
 	}
 }

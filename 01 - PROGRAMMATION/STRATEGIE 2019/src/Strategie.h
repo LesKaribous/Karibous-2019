@@ -103,6 +103,11 @@ const int pinServoAvant = 17 ;      // Pin servo avant robot secondaire
 const int pinPompeAvant = 22 ;      // Pin de la pompe avant sur robot secondaire
 const int pinEVAvant = 23 ;         // Pin de l'EV avant sur robot secondaire
 
+const int pinBalisePrimaire = 17 ;
+const int pinBaliseSecondaire = 21 ;
+
+int pinBalise ;
+
 // Declaration des servomoteurs
 Servo servoGauche;
 Servo servoDroit;
@@ -114,21 +119,24 @@ Servo servoAvant;
 
 // Declaration des positions servo
 // Bras ventouse
-const int sgHaut = 105;
-const int sgBas = 10;
+const int sgHaut    = 105 ;
+const int sgMilieu  = 57 ;
+const int sgBas     = 10 ;
 
-const int sdHaut = 40;
-const int sdBas = 140;
+const int sdHaut    = 40 ;
+const int sdMilieu  = 90 ;
+const int sdBas     = 140 ;
 
-const int avHaut = 160;
-const int avBas = 80;
+const int avHaut    = 160 ;
+const int avQuart    = 140 ;
+const int avBas     = 80 ;
 
 // Bras lateraux
 const int sgHaut_bras = 50;
-const int sgBas_bras = 155;
+const int sgBas_bras  = 155;
 
 const int sdHaut_bras = 130;
-const int sdBas_bras = 20;
+const int sdBas_bras  = 30;
 
 // Declaration des variables IHM
 bool tirette = false , detection = false , strategie = false , check = false , changeStrat = true , typeRobot = ROBOT_PRIMAIRE;
@@ -182,10 +190,13 @@ void initRobot();
 void initActionneur();
 void sequenceRecalage();
 
-//TEST DE DEPLACEMENT----------------
+//STRATEGIE DEPLACEMENT----------------
 void testLigneDroite();
 void homologationPrimaire();
 void homologationSecondaire();
+void matchPrimaire();
+void matchSecondaire();
+void testRotation();
 
 //DEMANDE L'ETAT DU DEPLACEMENT----------------
 int askNavigation();

@@ -38,17 +38,22 @@ void setup()
   circle.show();            // Turn OFF all pixels ASAP
   circle.setBrightness(150); // Set BRIGHTNESS to about 1/5 (max = 255)
 
-   
-
   delay(2000);
-}
 
-void loop() {
-
+  while(digitalRead(CAPTEUR_PIN)==HIGH)
+  {
+    delay(200);
+  }
+  
   while(digitalRead(CAPTEUR_PIN)==LOW)
   {
     delay(200);
   }
+}
+
+void loop() {
+
+  
   
   // Demarrage servo
   // Initialisation du Servomoteur :
@@ -71,8 +76,8 @@ void loop() {
   }
 
   circle.clear();
-  delay(200);
-
+  delay(3000);
+ 
   //Fin du programme
   myservo.detach();
   while(1)
