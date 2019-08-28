@@ -152,11 +152,11 @@ const float primaireFacteurDroit = 8.064; //Ancien : 8.064
 const float primaireFacteurGauche = 8.090; //Ancien : 8.128
 const float primaireFacteurRot = 13.149; // Ancien : 3.600
 
-const float facteurPrimaireMax = 5.0 ;
-const float facteurPrimaireAccelMax = 3.0 ;
-const float facteurPrimaireMin = 2.0 ;
-const float facteurPrimaireAccelMin = 2.0 ;
-const float facteurPrimaireAccelRot = 2.0 ;
+const float facteurPrimaireMax = 3.0 ;
+const float facteurPrimaireAccelMax = 2.0 ;
+const float facteurPrimaireMin = 1.0 ;
+const float facteurPrimaireAccelMin = 1.0 ;
+const float facteurPrimaireAccelRot = 1.0 ;
 
 const float primaireVitesseMaxDroite = 2840.0 * facteurPrimaireMax; //Ancien : 2963.253
 const float primaireVitesseMaxGauche = 3000.0 * facteurPrimaireMax; //Ancien : 3000 11/05/2018

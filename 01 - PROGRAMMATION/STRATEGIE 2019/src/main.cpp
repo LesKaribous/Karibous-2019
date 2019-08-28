@@ -42,12 +42,12 @@ void loop()
 {
   if (typeRobot == ROBOT_PRIMAIRE)
   {
-    if (strategie == STRATEGIE_HOMOLOGATION) testRotation(); //testLigneDroite(); //homologationPrimaire();
+    if (strategie == STRATEGIE_HOMOLOGATION) demoRotation(); //testLigneDroite(); //homologationPrimaire();
     else matchPrimaire(); // Match
   }
   else
   {
-    if (strategie == STRATEGIE_HOMOLOGATION) testLigneDroite(); //testRotation(); // homologationSecondaire();
+    if (strategie == STRATEGIE_HOMOLOGATION) demoRotation(); //testRotation(); // homologationSecondaire();
     else matchSecondaire(); // Match
   }
 }
@@ -255,7 +255,7 @@ void sequenceRecalage()
     turnGo(ADVERSAIRE_NON,false,true,0,650);          // Centre du robot à 743
     turnGo(ADVERSAIRE_NON,recalage,true,-90,-250);
     turnGo(ADVERSAIRE_NON,false,true,0,-20);
-    turnGo(ADVERSAIRE_NON,false,true,0,165);
+    turnGo(ADVERSAIRE_NON,false,true,0,160);
     turnGo(ADVERSAIRE_NON,false,true,90,0);
   }
   else
@@ -346,7 +346,7 @@ void matchPrimaire()
   // Desengagement bordure
   turnGo(ADVERSAIRE_NON,false,false,0,65);
   // Avancer jusqu'au distributeur
-  turnGo(ADVERSAIRE_NON,false,false,90,887);
+  turnGo(ADVERSAIRE_NON,false,false,90,875);
   // Ventousage palet bleu
   if(equipe==EQUIPE_JAUNE)
   {
@@ -389,13 +389,13 @@ void matchPrimaire()
   // Desengagement zone bleu
   turnGo(ADVERSAIRE_NON,false,false,0,-150);
   // Recalage
-  turnGo(ADVERSAIRE_NON,false,false,90,-120);
+  turnGo(ADVERSAIRE_NON,false,false,90,-130);
   //--------Grand distributeur--------
   //-------------- 1 -----------------
   // Avance jusqu'au grand distributeur
   turnGo(ADVERSAIRE_NON,false,false,0,440);
   // Tourne et prise des palets
-  turnGo(ADVERSAIRE_NON,false,false,90,350);
+  turnGo(ADVERSAIRE_NON,false,false,90,300);
   // Ventousage palets
   servoGauche.write(sgHaut-12);
   servoDroit.write(sdHaut+12);
@@ -533,11 +533,11 @@ void matchPrimaire()
   }
   majScore(6, 1);
   // Desengagement zone bleu
-  turnGo(ADVERSAIRE_OUI,false,false,0,-620);
+  turnGo(ADVERSAIRE_OUI,false,false,0,-590);
   //--------Grand distributeur--------
   //-------------- 3 -----------------
   // Ventousage palets suivants
-  turnGo(ADVERSAIRE_OUI,false,false,-90,465);
+  turnGo(ADVERSAIRE_OUI,false,false,-90,455);
   // Ventousage palets
   servoGauche.write(sgHaut-12);
   servoDroit.write(sdHaut+12);
@@ -650,10 +650,10 @@ void matchSecondaire()
   turnGo(ADVERSAIRE_NON,true,false,-90,-160);
   // Recalage
   turnGo(ADVERSAIRE_NON,false,false,0,-20);
-  turnGo(ADVERSAIRE_OUI,false,false,0,20);
+  turnGo(ADVERSAIRE_OUI,false,false,0,40);
   //turnGo(ADVERSAIRE_OUI,false,false,2,0);
   // Avvance jusqu'à la balance
-  turnGo(ADVERSAIRE_OUI,false,true,0,1600);
+  turnGo(ADVERSAIRE_OUI,false,true,3,1600);
   // // Rotation Et positionnement aucentre de la table en face de la balance
   // turnGo(ADVERSAIRE_OUI,false,true,51,-1300);
   // // Rotation en face de la balance
@@ -669,6 +669,17 @@ void matchSecondaire()
   digitalWrite(pinEVAvant,LOW);
   majScore(24, 1); // Dépose du goldenium dans la balance
   attente(1000);
+  // Fin de match
+  finMatch();
+}
+
+void demoRotation()
+{
+  // Rotation
+  for(int i=0;i<=10;i++)
+  {
+    turnGo(ADVERSAIRE_OUI,false,true,3600,0);
+  }
   // Fin de match
   finMatch();
 }

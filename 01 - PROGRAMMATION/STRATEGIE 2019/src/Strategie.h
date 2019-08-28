@@ -21,7 +21,7 @@
 #define ROBOT_PRIMAIRE 1
 #define ROBOT_SECONDAIRE 0
 // Autres
-#define TEMPS_MATCH 99000
+#define TEMPS_MATCH 101000
 //Etat de la position demandée
 #define TERMINEE 0  // Position validée et terminée
 #define RECU 1      // Position reçu
@@ -197,6 +197,7 @@ void homologationSecondaire();
 void matchPrimaire();
 void matchSecondaire();
 void testRotation();
+void demoRotation();
 
 //DEMANDE L'ETAT DU DEPLACEMENT----------------
 int askNavigation();
