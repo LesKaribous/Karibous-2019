@@ -42,7 +42,7 @@ void loop()
 {
   if (typeRobot == ROBOT_PRIMAIRE)
   {
-    if (strategie == STRATEGIE_HOMOLOGATION) demoRotation(); //testLigneDroite(); //homologationPrimaire();
+    if (strategie == STRATEGIE_HOMOLOGATION) testActionneur(); //testLigneDroite(); //homologationPrimaire();
     else matchPrimaire(); // Match
   }
   else
@@ -95,8 +95,8 @@ void initActionneur()
       delay(1500);
       servoGauche.write(sgHaut);
       servoDroit.write(sdHaut);
-      digitalWrite(pinPompeGauche,HIGH);
-      digitalWrite(pinPompeDroit,HIGH);
+      digitalWrite(pinPompeGauche,LOW);
+      digitalWrite(pinPompeDroit,LOW);
     }
     else
     {
@@ -682,6 +682,36 @@ void demoRotation()
   }
   // Fin de match
   finMatch();
+}
+
+void testActionneur()
+{
+  turnGo(ADVERSAIRE_NON,false,true,0,40); // Avancer vers le bord
+  turnGo(ADVERSAIRE_NON,false,true,0,-30); // Avancer vers le bord
+  //---------------------------------------
+  // Prendre le gobelet
+  servoGauche.write(sgBas);
+  digitalWrite(pinPompeGauche,HIGH);
+    attente(2000);
+  servoDroit.write(sdBas);
+    attente(800);
+  servoGauche.write(sgHaut);
+    attente(2000);
+  //--------------------------------------
+  turnGo(ADVERSAIRE_NON,false,true,0,-80);
+  turnGo(ADVERSAIRE_NON,false,true,90,250);
+  //---------------------------------------
+  // Poser le gobelet
+  servoGauche.write(sgBas);
+    attente(2000);
+  digitalWrite(pinPompeGauche,LOW);
+  digitalWrite(pinEVGauche,HIGH);
+    attente(1000);
+  servoDroit.write(sdHaut);
+  digitalWrite(pinEVGauche,LOW);
+    attente(1000);
+  servoGauche.write(sgHaut);
+    attente(2000);
 }
 
 //----------------PROCEDURE D'ATTENTE----------------

@@ -119,13 +119,13 @@ Servo servoAvant;
 
 // Declaration des positions servo
 // Bras ventouse
-const int sgHaut    = 105 ;
+const int sgHaut    = 95 ;
 const int sgMilieu  = 57 ;
 const int sgBas     = 10 ;
 
-const int sdHaut    = 40 ;
+const int sdHaut    = 50 ;
 const int sdMilieu  = 90 ;
-const int sdBas     = 140 ;
+const int sdBas     = 130 ;
 
 const int avHaut    = 160 ;
 const int avQuart    = 140 ;
@@ -198,6 +198,7 @@ void matchPrimaire();
 void matchSecondaire();
 void testRotation();
 void demoRotation();
+void testActionneur();
 
 //DEMANDE L'ETAT DU DEPLACEMENT----------------
 int askNavigation();
